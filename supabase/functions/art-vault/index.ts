@@ -9,7 +9,9 @@ async function api(path:string,init:RequestInit={}){const h=new Headers(init.hea
 const titles=['Quiet Geometry','Terracotta Study','The Long Afternoon','Indigo Memory','A Place Between','Still in Bloom','Golden Hour','Earth & Silence','Monsoon Notes','The Courtyard','Soft Boundaries','Woven Light','Distant Hills','Open Window','Evening Rhythm','Ochre Fields','Blue Passage','A Small Gathering','Lines of Home','After the Rain'];
 Deno.serve(async(req:Request)=>{
  const token=(req.headers.get('authorization')||'').replace(/^Bearer /,'');
- if(!token||await digest(new TextEncoder().encode(token))!==TOKEN_HASH)return json({error:'Unauthorized'},401);
+ const configuredToken=Deno.env.get('SERAAI_BACKEND_TOKEN');
+ const expectedHash=configuredToken?await digest(new TextEncoder().encode(configuredToken)):TOKEN_HASH;
+ if(!token||await digest(new TextEncoder().encode(token))!==expectedHash)return json({error:'Unauthorized'},401);
  const url=new URL(req.url);const media=url.pathname.endsWith('/api/media');const data=url.pathname.endsWith('/api/data');
  try{
  if(data&&req.method==='GET'){
