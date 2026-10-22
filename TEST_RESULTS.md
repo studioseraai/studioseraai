@@ -15,3 +15,13 @@
 - Token-protected storage Worker: Wrangler deploy --dry-run PASSED; no live resources created.
 - Server adapter tests PASSED: missing-password fail closed, wrong-password 401, owner authentication, missing-backend 503, bearer forwarding, POST origin rejection.
 - Vercel hosting deployment, actual D1/R2 connectivity and data migration remain unverified; account-specific resources and environment variables must be configured using DEPLOY_VERCEL.md.
+
+## Supabase backend integration
+- Active project inspected before changes; public schema was empty.
+- Postgres schema, restricted RPC and private photo bucket deployed.
+- Edge Function art-vault deployed with its own bearer-token hash verification.
+- End-to-end remote tests PASSED: unauthorized request rejection, artwork save/readback, atomic movement, separate sale/location, invalid transfer rejection, original photo upload, hash-verified download, unauthorized photo rejection, archival of fictional test artwork.
+- Next.js production build PASSED after integration.
+- Supabase path-prefix and token-forwarding unit check PASSED.
+- Security advisors: no warnings/errors; two INFO notices for RLS without policies, intentional because direct anon/authenticated table access is revoked and only the protected server backend operates on these tables.
+- Vercel environment update was blocked by automatic approval review pending explicit approval to transmit the generated backend token to Vercel. Live Vercel-to-Supabase connection is therefore not verified yet.
