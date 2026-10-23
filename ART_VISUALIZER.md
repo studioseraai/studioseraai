@@ -29,3 +29,13 @@ Saved sessions and reusable template persistence; perspective warp; calibration;
 
 ## Preview acceptance
 Existing login → inventory loads → open visualizer → choose actual painting → custom room upload → drag/resize/rotate → frame/shadow → PNG matches the editor without selection guides. Then check missing photos, invalid uploads, unprepared replacement blocking, clean-background replacement and existing inventory/photo vault navigation.
+
+## Realistic rooms upgrade
+Five bundled photorealistic generated interiors replace the illustrated fallback: living room, corridor, guest room, dining hall and office. Assets were generated using the built-in image-generation tool with frontal empty plaster walls, then optimized to WebP. They are illustrative interiors, not photographs of Studio Seraai or a specific client's property.
+
+Each room includes a prepared alpha wall mask that excludes furniture, openings and major foreground objects. Wall presets and custom HEX colors apply a texture-preserving multiply tint within this mask; paint strength is adjustable. For custom uploads, define a rectangular wall region manually. This is an approximate visualization, not calibrated paint color matching or automatic wall segmentation. Arbitrary foreground objects inside a manually selected region are not automatically excluded.
+
+Frames now support custom colors and adjustable thickness. PNG exports use the same wall/frame rendering as the editor. Resetting the wall color restores the original background. Room switches reset artwork placement to the room's suggested starting position and preserve selected wall/frame colors.
+
+Validation for upgrade: 9 renderer tests pass, including custom frame geometry, wall clipping, tint layer ordering, and original-wall reset; image/mask dimensions and selected wall/furniture alpha samples pass for all five rooms. TypeScript and targeted lint pass (image optimization warnings remain). Browser interaction and actual download still require acceptance testing; no live inventory records were modified.
+Local production-server checks also passed: `/visualizer` returns 401 without credentials and 200 with a temporary valid owner login. All five room photographs and five wall masks returned 200 with byte-for-byte matching SHA-256 hashes. This checks the local serving/authentication boundary; it does not replace a live browser acceptance test.
