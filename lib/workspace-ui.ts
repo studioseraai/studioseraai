@@ -1,4 +1,4 @@
-export const workspacePages = ['Overview', 'Artwork Inventory', 'Artists', 'Photo Vault', 'Art Visualizer', 'Daily Movements', 'Locations', 'Reports', 'Settings'] as const;
+export const workspacePages = ['Overview', 'Artwork Inventory', 'Artists', 'Art Visualizer', 'Daily Movements', 'Reports'] as const;
 export function workspacePage(value: string | null | undefined) { return workspacePages.find(page => page === value) || 'Overview'; }
 export function workspaceUrl(value:string){const page=workspacePage(value);return page==='Art Visualizer'?'/visualizer':page==='Overview'?'/':'/?view='+encodeURIComponent(page);}
 export function errorMessage(error: unknown) { return error instanceof Error ? error.message : 'Something went wrong. Please try again.'; }
