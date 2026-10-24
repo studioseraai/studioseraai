@@ -35,3 +35,6 @@ Run `supabase/import.sql` after the base schema. Include `import-validation.ts` 
 
 ### Artwork archive and restore
 Apply `supabase/archive.sql` after the base schema and deploy the updated art-vault function. This adds reversible archive/restore actions and preserves archive state during ordinary edits. See `docs/ARCHIVE_ARTWORKS.md`.
+
+### Permanent artwork deletion
+Apply `supabase/delete-artworks.sql` and redeploy art-vault. The Archive / Delete manager provides selection, archive/restore and confirmed permanent deletion. File-removal retries are recorded durably in private audit records.
