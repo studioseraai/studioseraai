@@ -32,3 +32,6 @@ Keep coordinated database and original-photo backups independently. A Postgres b
 
 ### Excel imports
 Run `supabase/import.sql` after the base schema. Include `import-validation.ts` when deploying the art-vault Edge Function. See `docs/EXCEL_IMPORT.md` for workflow, transaction semantics and limits.
+
+### Artwork archive and restore
+Apply `supabase/archive.sql` after the base schema and deploy the updated art-vault function. This adds reversible archive/restore actions and preserves archive state during ordinary edits. See `docs/ARCHIVE_ARTWORKS.md`.

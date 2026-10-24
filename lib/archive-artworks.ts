@@ -1,0 +1,3 @@
+import type {GalleryRecord} from './workspace-ui';
+export function archiveCandidates(records:GalleryRecord[],archived:boolean,query:string){const term=query.trim().toLowerCase();return records.filter(a=>a.kind==='artwork'&&!!a.archived===archived&&[a.title,a.artist,a.legacyInventoryId,a.webId,`SS-${String(a.id).padStart(4,'0')}`].some(v=>String(v??'').toLowerCase().includes(term)));}
+export function validateArchiveSelection(ids:unknown,archived:unknown):number[]{if(typeof archived!=='boolean'||!Array.isArray(ids)||!ids.length||ids.length>1000||ids.some(id=>typeof id!=='number'||!Number.isSafeInteger(id)||id<1)||new Set(ids).size!==ids.length)throw Error('Choose 1 to 1,000 distinct artworks and an archive or restore action.');return [...ids].sort((a,b)=>a-b);}
