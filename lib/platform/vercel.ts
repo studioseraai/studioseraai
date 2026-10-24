@@ -11,7 +11,7 @@ export async function forward(request:Request, endpoint:string){
  const origin=process.env.SERAAI_BACKEND_URL, token=process.env.SERAAI_BACKEND_TOKEN;
  if(!origin||!token)return Response.json({error:'Storage backend is not configured. Follow DEPLOY_VERCEL.md to set SERAAI_BACKEND_URL and SERAAI_BACKEND_TOKEN.'},{status:503});
  if(request.method==='POST'&&request.headers.get('origin')!==new URL(request.url).origin)return new Response('Forbidden',{status:403});
- const base=new URL(origin);if(base.protocol!=='https:')return Response.json({error:'Backend must use HTTPS'},{status:503});
+ let base:URL;try{base=new URL(origin);}catch{return Response.json({error:'Backend URL is invalid. Check server configuration.'},{status:503});}if(base.protocol!=='https:')return Response.json({error:'Backend must use HTTPS'},{status:503});
  const url=new URL(base.href.replace(/\/$/,'')+'/'+endpoint.replace(/^\//,''));url.search=new URL(request.url).search;
  const headers=new Headers();headers.set('authorization',`Bearer ${token}`);headers.set('origin',url.origin);
  const contentType=request.headers.get('content-type');if(contentType)headers.set('content-type',contentType);

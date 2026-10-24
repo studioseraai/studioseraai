@@ -1,17 +1,24 @@
-# Studio Seraai OS — Art Vault
-Private first release. Built with React/Vinext, Cloudflare D1 and R2 through Sites.
+# SERAAI OS
+Private artwork inventory and gallery operations for Studio Seraai. The current target is **Vercel + Next.js + Supabase**. The approved logo, charcoal/ivory/gold palette and locally bundled Cormorant Garamond / Manrope fonts are preserved.
 
-## Run
-Node 22+, npm install, npm run db:generate, npm run build; apply the generated SQL locally using the starter D1 command; npm run dev. Hosted publishing applies migrations automatically. Sites private owner access is required; do not make this deployment public or share it until per-user authorization is implemented. Hosted platform authentication protects both API records and media.
+## Local use
+Use the Node/pnpm versions declared in package.json and install with `pnpm install --frozen-lockfile`. Put the three owner-supplied server variables from [DEPLOY_VERCEL.md](DEPLOY_VERCEL.md) in your ignored `.env.local`. Never paste secrets into source files or commit them.
 
-## Implemented
-Persistent artwork create/edit, database-sequence inventory identifiers, artist profiles, search and availability filter, grid/table, original multi-file image upload (20 MB per file), SHA-256 integrity metadata, permanent movement register with atomic conditional location changes, dashboard statistics, CSV export and opt-in 20 fictional records. Editing availability never triggers delivery. Existing artwork locations change only through movement events.
+- `pnpm run dev:vercel` - local Next.js application with the same protected proxy used on Vercel.
+- `pnpm run build:vercel` - production Next.js build.
+- `pnpm run start:vercel` - serve that build locally.
 
-## Architecture decision
-Providence repository inspected through GitHub: PHP 8.2/8.3, GPL-3.0, cataloging backend, native media and GraphQL. Sites runs JS Workers rather than PHP, so Providence cannot be installed into this runtime. No Providence code copied. Smaller repository retrieval failed; no assumptions made about completeness or license. The present app is an independent foundation, not a Providence integration. Actual database model consists of typed records plus media references. Artist many-to-many normalization and full metadata schema remain future work.
+Do not connect a local development session to production for write tests. Use the isolated regression suite or a separately approved staging backend. Legacy Vinext/Cloudflare commands and backend source are retained for the original hosting alternative; they are not the current production target.
 
-## Known limitations
-Owner-only access; no staff roles. No sales ledger, payments, bulk import, QR printing, archive/reversal workflow, return reconciliation, image variants, primary/reordering controls, background uploads, automatic backups or verified recovery. Artist links currently use names rather than normalized relations. Timestamps record effective and creation time; no authenticated actor audit yet. Inventory ID uses a global sequence shared by record types, with intentional gaps. Original media are preserved; placeholder abstract graphics are explicitly demo visuals, not actual paintings. Prices stored as integer PKR in the interface; commercial decimal accounting remains unimplemented. No production-readiness claim.
+## Checks
+`pnpm run test`, `pnpm exec tsc --noEmit`, `pnpm run lint`, `pnpm run build:vercel`, then `pnpm run test:smoke`.
 
-## Before real migration
-Implement and validate staff permissions, normalized artist links, complete artwork schema, safe CSV/Excel import, backup export and restoration, media processing and movement corrections. Keep existing source inventory and originals backed up independently. Database and object storage require coordinated snapshots; restore into an isolated staging environment and verify photo hashes, record counts and movement locations before cutover. No recovery test has been completed.
+For isolated SQL/Edge tests and release gates, see [docs/CEO_REVIEW.md](docs/CEO_REVIEW.md). Tests never require production credentials. The CEO review candidate is not unconditional operational sign-off.
+
+## Current scope
+Inventory create/edit, artist-name directory and profile creation, original multi-photo uploads, permanent movements with atomic location updates, fixed location counts, current inventory summaries/CSV and an interactive room visualizer with PNG export. Commercial availability changes do not physically move an artwork.
+
+## Important boundaries
+Single shared owner login; no individual staff roles or reliable application logout. Artist links use names, not normalized foreign keys. Artist profile edit/detail screens, editable settings, sales accounting, import, QR labels, saved visualizations, perspective editing and verified backup restoration are not implemented. Photographs through Vercel are limited to 4 MB per file. Lists reveal 36 artworks at a time and lazily load original images; derivative thumbnails are not generated.
+
+Keep coordinated database and original-photo backups independently. A source checkout or CSV is not a complete backup. Confirm verified real demo metadata and complete authenticated browser/restore acceptance before relying on the app as the sole gallery record.
