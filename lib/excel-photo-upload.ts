@@ -1,0 +1,5 @@
+// Larger embedded originals are resized only for the uploaded copy; the workbook is unchanged.
+export async function prepareExcelPhoto(blob:Blob):Promise<{blob:Blob;optimized:boolean}>{
+ if(blob.size<=3.5*1024*1024)return {blob,optimized:false};
+ const bitmap=await createImageBitmap(blob);try{if(bitmap.width*bitmap.height>80_000_000)throw Error('Photograph is too large to process in this browser.');const scale=Math.min(1,2800/Math.max(bitmap.width,bitmap.height));const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));const ctx=canvas.getContext('2d');if(!ctx)throw Error('Image processing is unavailable.');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);for(const quality of [.9,.8,.65]){const result=await new Promise<Blob|null>(resolve=>canvas.toBlob(resolve,'image/jpeg',quality));if(result&&result.size<=3.5*1024*1024)return {blob:result,optimized:true};}throw Error('Photograph remains too large. Upload a smaller copy manually.');}finally{bitmap.close();}
+}

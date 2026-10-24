@@ -38,3 +38,6 @@ Apply `supabase/archive.sql` after the base schema and deploy the updated art-va
 
 ### Permanent artwork deletion
 Apply `supabase/delete-artworks.sql` and redeploy art-vault. The Archive / Delete manager provides selection, archive/restore and confirmed permanent deletion. File-removal retries are recorded durably in private audit records.
+
+### Excel photo import
+Apply `supabase/excel-photo-import.sql` and deploy art-vault. The separate Import Excel photos action attaches embedded pictures to existing records without importing artwork details again. See `docs/EXCEL_PHOTOS.md`.

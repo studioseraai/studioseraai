@@ -10,7 +10,7 @@ The preview displays actual Excel row numbers, validation errors, duplicate refe
 
 Imports only add artworks and never replace existing records. Repeated old inventory numbers are skipped. Without an old ID, an exact title/artist/dimension signature is used. Similar existing manual records start unselected and require review. Up to 1,000 artworks / 2 MB of selected data may be committed per import. Database transactions roll back every insert if any submitted row is invalid; a unique import key prevents retry/concurrent import duplicates. Photos and movement records are not changed.
 
-Embedded images and Excel image formulas are not imported. Photographs are uploaded separately from the artwork detail view. The original workbook is read locally, not uploaded to the application server. Older `.xls` workbooks must first be saved as `.xlsx`.
+The data import does not attach images. Use the separate Import Excel photos action to extract and attach embedded pictures to existing artwork records, or upload photographs individually from artwork details. The original workbook is read locally, not uploaded to the application server. Older `.xls` workbooks must first be saved as `.xlsx`.
 
 ## Backend setup
 
