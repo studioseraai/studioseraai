@@ -4,6 +4,16 @@ export function workspaceUrl(value:string){const page=workspacePage(value);retur
 export function errorMessage(error: unknown) { return error instanceof Error ? error.message : 'Something went wrong. Please try again.'; }
 export type GalleryRecord = {
     id: number;
+    legacyInventoryId?: string;
+    legacyWebNumber?: string;
+    webId?: string;
+    webCode?: string;
+    surface?: string;
+    originalSize?: string;
+    importKey?: string;
+    importSource?: string;
+    importSheet?: string;
+    importRow?: number;
     kind: string;
     title: string;
     artist?: string;

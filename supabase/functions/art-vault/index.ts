@@ -1,3 +1,4 @@
+import {validateImportRows} from './import-validation.ts';
 // Deno Edge Function; calls PostgREST/Storage using platform-managed server credentials.
 const API=Deno.env.get('SUPABASE_URL')!;
 const KEY=JSON.parse(Deno.env.get('SUPABASE_SECRET_KEYS')||'{}').default||Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -20,12 +21,12 @@ Deno.serve(async(req:Request)=>{
   return json({records:records.map(r=>({...r.data,id:r.id,kind:r.kind,created:r.created})),photos});
  }
  if(data&&req.method==='POST'){
-  const b=await req.json();if(!['save','movement','seed'].includes(b.action))return json({error:'Invalid action'},400);
+  const h=new Headers({'Content-Type':'application/json','apikey':KEY});if(KEY.startsWith('eyJ'))h.set('Authorization','Bearer '+KEY);
+  const b=await req.json();if(b.action==='import'){let rows;try{rows=validateImportRows(b.rows);}catch(e){return json({error:e instanceof Error?e.message:'Invalid import'},400);}const result=await fetch(API+'/rest/v1/rpc/seraai_import',{method:'POST',headers:h,body:JSON.stringify({rows})});if(!result.ok){const error=await result.json();return json({error:error.message||'Import failed; no artworks saved'},400);}return json(await result.json());}if(!['save','movement','seed'].includes(b.action))return json({error:'Invalid action'},400);
   if(b.action==='save'&&(!['artist','artwork'].includes(b.kind)||!b.data?.title?.trim()))return json({error:'Title is required'},400);
   if(b.action==='save'&&b.data?.price!==undefined&&b.data.price!==''&&(!Number.isFinite(Number(b.data.price))||Number(b.data.price)<0))return json({error:'Invalid price'},400);
   if(b.action==='movement'&&b.effective){const date=new Date(b.effective+(b.effective.length===16?'+05:00':''));if(Number.isNaN(date.getTime()))return json({error:'Invalid movement time'},400);b.effective=date.toISOString();}
   if(b.action==='seed')b.records=titles.map((title,i)=>({title,artist:`Fictional Artist ${i%5+1}`,medium:['Oil on canvas','Acrylic on canvas','Mixed media'][i%3],style:['Abstract','Landscape','Contemporary'][i%3],year:2024+i%3,width:60+i*2,height:80,price:45000+i*12000,status:i===3?'Reserved':i===7?'Sold':'Available',location:['Gallery · Wall A','Storage · Rack A','Gallery · Wall B','External exhibition'][i%4],ownership:i%2?'Consignment':'Gallery-owned',condition:'Good',notes:'Fictional demonstration record',sample:true}));
-  const h=new Headers({'Content-Type':'application/json','apikey':KEY});if(KEY.startsWith('eyJ'))h.set('Authorization','Bearer '+KEY);
   const r=await fetch(API+'/rest/v1/rpc/seraai_action',{method:'POST',headers:h,body:JSON.stringify({b})});
   if(!r.ok){const e=await r.json();return json({error:e.message||'Unable to save record'},400);}return json(await r.json());
  }

@@ -29,3 +29,6 @@ Vercel Function payload limits still apply; use photographs under 4 MB for this 
 The preferred no-production-write checks are documented in `docs/CEO_REVIEW.md`. The legacy `python tests/supabase_smoke.py` must only target a separately approved disposable test workspace; it reads its URL and token from hidden stdin, creates a fictional artwork and tiny photo, tests readback, movement, sale/location separation and private media, then archives the test artwork while retaining its audit history.
 
 Keep coordinated database and original-photo backups independently. A Postgres backup alone does not include Storage file bodies.
+
+### Excel imports
+Run `supabase/import.sql` after the base schema. Include `import-validation.ts` when deploying the art-vault Edge Function. See `docs/EXCEL_IMPORT.md` for workflow, transaction semantics and limits.
