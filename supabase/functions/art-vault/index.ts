@@ -15,8 +15,8 @@ Deno.serve(async(req:Request)=>{
  const url=new URL(req.url);const media=url.pathname.endsWith('/api/media');const data=url.pathname.endsWith('/api/data');
  try{
  if(data&&req.method==='GET'){
-  let records:any[]=[];for(let offset=0;;offset+=1000){const rows=await(await api(`/rest/v1/seraai_records?select=*&order=id.desc&offset=${offset}&limit=1000`)).json();records.push(...rows);if(rows.length<1000)break;}
-  let photos:any[]=[];for(let offset=0;;offset+=1000){const rows=await(await api(`/rest/v1/seraai_media?select=*&order=created.asc&offset=${offset}&limit=1000`)).json();photos.push(...rows);if(rows.length<1000)break;}
+  const records:{id:number;kind:string;created:string;data:Record<string,unknown>}[]=[];for(let offset=0;;offset+=1000){const rows=await(await api(`/rest/v1/seraai_records?select=*&order=id.desc&offset=${offset}&limit=1000`)).json();records.push(...rows);if(rows.length<1000)break;}
+  const photos:Record<string,unknown>[]=[];for(let offset=0;;offset+=1000){const rows=await(await api(`/rest/v1/seraai_media?select=*&order=created.asc&offset=${offset}&limit=1000`)).json();photos.push(...rows);if(rows.length<1000)break;}
   return json({records:records.map(r=>({...r.data,id:r.id,kind:r.kind,created:r.created})),photos});
  }
  if(data&&req.method==='POST'){

@@ -17,6 +17,7 @@ export type GalleryRecord = {
     medium?: string;
     created: string;
     effective: string;
+    artworkId?: number;
     type?: string;
     from?: string;
     to?: string;
@@ -29,7 +30,7 @@ export type GalleryRecord = {
     notes?: string;
 };
 export type GalleryPhoto = {
-    id: number;
+    id: MediaId;
     artwork_id: number;
     category: string;
 };
@@ -40,3 +41,9 @@ export type RecordModal = {
     artworkId?: number;
 };
 export async function readInventory(signal?:AbortSignal){const response=await fetch('/api/data',{signal});const data=await response.json() as {records?:GalleryRecord[];photos?:GalleryPhoto[];error?:string};if(!response.ok)throw Error(data.error||'Could not load inventory. Please retry.');if(!Array.isArray(data.records)||!Array.isArray(data.photos))throw Error('Inventory response was incomplete. Please retry.');return {records:data.records,photos:data.photos};}
+export type MediaId=string|number;
+export function moneyLabel(value:unknown){if(value===null||value===undefined||String(value).trim()===''||!Number.isFinite(Number(value)))return 'Not recorded';return 'PKR '+Number(value).toLocaleString('en-PK');}
+export function recordIssues(art:GalleryRecord,hasPhoto:boolean){const issues:string[]=[];if(!art.title?.trim())issues.push('title');if(!art.artist?.trim())issues.push('artist');if(!art.medium?.trim())issues.push('medium');if(!(Number(art.width)>0&&Number(art.height)>0))issues.push('dimensions');if(moneyLabel(art.price)==='Not recorded')issues.push('asking price');if(!art.location?.trim())issues.push('location');if(!art.status?.trim())issues.push('availability');if(!hasPhoto)issues.push('photograph');return issues;}
+export function formatGalleryDate(value:string|undefined,withTime=false){if(!value||Number.isNaN(new Date(value).getTime()))return 'Date not recorded';return new Date(value).toLocaleString('en-GB',{timeZone:'Asia/Karachi',day:'2-digit',month:'short',year:'numeric',...(withTime?{hour:'2-digit',minute:'2-digit'}:{})});}
+export function mediaId(value:string){return value;}
+export function csvCell(value:unknown){let text=String(value??'');if(/^\s*[=+@-]|^[\t\r]/.test(text))text="'"+text;return '"'+text.replaceAll('"','""')+'"';}
