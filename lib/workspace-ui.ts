@@ -24,6 +24,10 @@ export type GalleryRecord = {
     price?: number;
     width?: number | string;
     height?: number | string;
+    framedWidth?: number | string;
+    framedHeight?: number | string;
+    dimensionUnit?: string;
+    measurementVerified?: boolean;
     medium?: string;
     created: string;
     effective: string;
