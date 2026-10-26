@@ -473,6 +473,12 @@ function representative(pool: Layer[], limit: number) {
     ).values(),
   ];
 }
+export function selectableArt(a: Art, availableOnly = false) {
+  return (
+    !a.archived &&
+    (!availableOnly || (a.status || "").trim().toLowerCase() === "available")
+  );
+}
 export function recommend(
   arts: Art[],
   wall: Wall,
@@ -483,7 +489,9 @@ export function recommend(
     return [];
   const pool = arts
       .filter(
-        (a) => !a.archived && a.status !== "Sold" && a.status !== "Reserved",
+        (a) =>
+          !a.archived &&
+          !["sold", "reserved"].includes((a.status || "").trim().toLowerCase()),
       )
       .map((a) => makeLayer(a, wall, frame))
       .filter(

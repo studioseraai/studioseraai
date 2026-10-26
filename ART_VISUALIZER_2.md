@@ -8,7 +8,7 @@ Existing inventory width/height remain centimetres. Optional `framedWidth`, `fra
 
 Wall dimensions, margins, exclusion zones, layer centres and footprints are millimetres. Unit selection and viewport zoom never modify geometry. Rotation is explicit and cardinal. Framed mode uses recorded outside sizes; unknown frames stay clearly unverified and are excluded from framed recommendations. Invalid geometry blocks proposals. Missing photos render explicit placeholders.
 
-Single, pair, triptych, salon, statement/support, grid, vertical and freeform compositions preserve real artwork size. Recommendations use bounded candidate searches (up to 2,500 attempts) and deterministic final fit validation. Searches are not exhaustive. Default filters require Available status; sold/reserved never enter recommendations.
+Single, pair, triptych, salon, statement/support, grid, vertical and freeform compositions preserve real artwork size. Recommendations use bounded candidate searches (up to 2,500 attempts) and deterministic final fit validation. Searches are not exhaustive. The chooser shows all active inventory by default, including imported records with unrecorded availability. Available-only is opt-in. Unrecorded statuses stay visibly unrecorded and require confirmation before a client offer; sold/reserved never enter recommendations.
 
 Room projection uses the same coordinates and a homography from four user-marked corners. It depends on correct wall-plane measurements, a clean photo and calibration. It does not reconstruct depth, remove existing objects or calculate furniture occlusion. Installation references remain the measured wall and physical site checks.
 

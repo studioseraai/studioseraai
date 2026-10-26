@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   mm,
+  selectableArt,
   defaultWall,
   makeLayer,
   bounds,
@@ -223,4 +224,21 @@ test("small companions remain discoverable beneath hundreds of larger artworks",
   ];
   const results = recommend(arts, wall, "pair");
   assert.ok(results.some((r) => r.layers.some((l) => l.artworkId >= 599)));
+});
+
+test("imported artworks with blank availability remain selectable without being relabelled available", () => {
+  const a = { ...art(), status: "" };
+  assert.equal(selectableArt(a), true);
+  assert.equal(selectableArt(a, true), false);
+  assert.equal(selectableArt({ ...a, archived: true }), false);
+  assert.equal(recommend([a], wall, "single").length, 1);
+  assert.equal(a.status, "");
+  assert.equal(
+    recommend([{ ...a, status: " sold " }], wall, "single").length,
+    0,
+  );
+  assert.equal(
+    recommend([{ ...a, status: "reserved" }], wall, "single").length,
+    0,
+  );
 });

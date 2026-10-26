@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   align,
+  selectableArt,
   arrange,
   bounds,
   centre,
@@ -90,7 +91,7 @@ export default function MeasurementStudio({
       "single" | "pair" | "triptych" | "collage" | "statement"
     >("single"),
     [frame, setFrame] = useState(false),
-    [available, setAvailable] = useState(true),
+    [available, setAvailable] = useState(false),
     [preset, setPreset] = useState<Preset>("Salon Wall"),
     [labels, setLabels] = useState(true),
     [grid, setGrid] = useState(true),
@@ -116,8 +117,7 @@ export default function MeasurementStudio({
     () =>
       artworks.filter(
         (a) =>
-          !a.archived &&
-          (!available || a.status === "Available") &&
+          selectableArt(a, available) &&
           `${a.title} ${a.artist || ""} ${a.style || ""} ${a.medium || ""} ${inv(a.id)} ${a.legacyInventoryId || ""}`
             .toLowerCase()
             .includes(query.toLowerCase()),
@@ -586,9 +586,55 @@ export default function MeasurementStudio({
             <button onClick={() => setTab("find")}>
               Find Art That Fits My Wall
             </button>
+            <button
+              onClick={() => {
+                const match = recommend(
+                  filtered,
+                  layout.wall,
+                  category,
+                  frame,
+                )[0];
+                if (!match) {
+                  setTab("find");
+                  setMessage(
+                    "No fit found. Check wall size, clearances, frame dimensions or inventory filters.",
+                  );
+                  return;
+                }
+                commit({ ...layout, layers: match.layers });
+                setSelected(match.layers[0]?.artworkId);
+                setTab("canvas");
+              }}
+            >
+              Auto-select art that fits
+            </button>
+            <p>
+              Click an artwork to add it, or let us choose a fitting
+              arrangement. Auto-select uses the collection category selected in
+              Find a collection and replaces the current wall.
+            </p>
+            {!available && (
+              <p>
+                Unrecorded availability is included for visual planning. Confirm
+                availability before offering artwork to a client.
+              </p>
+            )}
             <p>
               {filtered.length} artworks · {layout.layers.length}/12 on wall
             </p>
+            {!filtered.length && (
+              <div className="measure-alert">
+                No artworks match these filters.{" "}
+                <button
+                  onClick={() => {
+                    setAvailable(false);
+                    setQuery("");
+                  }}
+                >
+                  Show all inventory
+                </button>
+              </div>
+            )}
             <div className="measure-list">
               {filtered.map((a) => {
                 const d = dimensions(a, frame),
@@ -615,7 +661,17 @@ export default function MeasurementStudio({
                           ? d.error
                           : `${fmt(d.width, u)} × ${fmt(d.height, u)}${d.verified ? "" : " · unverified"}`}
                       </small>
+                      <small>
+                        {a.status?.trim() || "Availability not recorded"}
+                      </small>
                       {!photo && <small>No photograph</small>}
+                      <strong>
+                        {layout.layers.some((l) => l.artworkId === a.id)
+                          ? "On wall · Select"
+                          : "error" in d
+                            ? "Add dimensions in Inventory"
+                            : "＋ Add to wall"}
+                      </strong>
                     </span>
                   </button>
                 );
@@ -890,6 +946,13 @@ export default function MeasurementStudio({
               </select>
               <button
                 onClick={() => {
+                  if (!layout.layers.length) {
+                    setTab("find");
+                    setMessage(
+                      "Choose artworks using Add to wall, or use Auto-select art that fits to fill an empty wall.",
+                    );
+                    return;
+                  }
                   const n =
                     preset === "Single Statement"
                       ? 1
