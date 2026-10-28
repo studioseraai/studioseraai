@@ -1,6 +1,8 @@
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-const [command,...args]=process.argv.slice(2);
+const [command,...rawArgs]=process.argv.slice(2);
+// The managed preview uses Vite-style flags; translate them for Next.js.
+const args=rawArgs.filter(arg=>arg!=='--strictPort').map(arg=>arg==='--host'?'--hostname':arg);
 if(!['dev','build','start'].includes(command))throw Error('Expected dev, build or start.');
 const next=fileURLToPath(new URL('../node_modules/next/dist/bin/next',import.meta.url));
 const result=spawnSync(process.execPath,[next,command,...(command==='start'?[]:['--webpack']),...args],{stdio:'inherit',env:{...process.env,VERCEL:'1'}});
