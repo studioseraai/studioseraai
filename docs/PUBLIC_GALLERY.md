@@ -44,3 +44,28 @@ Before release: deploy the feature branch to Vercel preview, confirm backend var
 - Hero uses approved raster artwork with scroll parallax, not a 3D model. The generated gallery interior is explicitly labeled a gallery concept.
 
 Rollback: revert the feature commit or redeploy the previous Vercel production deployment. Preserve the additive tables to retain any submitted inquiries and publication choices.
+
+## Editorial website upgrade — October 2026
+
+This release changes only public website components and pages. It adds a centered,
+keyboard-accessible perspective collection carousel, published-artwork artist
+spotlight, editorial banners, contact FAQs, and scoped responsive styling. Hero
+motion uses layered images and respects reduced-motion preferences. Menu search
+is available on small screens. Existing backend contracts are unchanged.
+
+The separate `studioseraai/seraai-os` repository and `seraai-os` Vercel project are
+not modified. Legacy protected routes still present in this website repository
+are retained; this release does not claim to remove them or change credentials.
+
+At implementation time there were zero published artworks and zero published
+events. No inventory was automatically published. Artist profiles derive from
+published artwork; authentic portraits and biographies still need editorial
+content. The spotlight uses artwork, not invented artist portraits. Existing
+publication tooling described above lives in the legacy protected website routes;
+do not assume the recovered standalone OS includes that newer tooling.
+
+Validation: 81 automated tests passed; changed public pages/components lint with
+zero errors and seven native-image warnings. Local desktop browser verified hero,
+navigation, menu search, query routing and inquiry form rendering. Mobile/tablet
+browser QA and live populated carousel/profile testing remain outstanding. No
+production inquiries or inventory mutations were submitted as test data.
