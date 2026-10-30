@@ -11,7 +11,7 @@ export function ArtistSpotlight({artworks}:{artworks:Artwork[]}) {
  const work=works[0];
  return <section className="sg-artists-feature sg-light" aria-label="Artist spotlight">
   <div className="sg-artists-photo" key={name||'gallery'}>
-   <img src={work?.photos[0]?'/api/gallery/image/'+work.photos[0].id:'/gallery/gallery.webp'} alt={work?`${work.title}, by ${name}`:'An imagined gallery interior, illustrating our curatorial direction'} loading="lazy" decoding="async"/>
+   <img src={work?.photos[0]?'/api/gallery/image/'+work.photos[0].id:'/gallery/warm-corridor.webp'} alt={work?`${work.title}, by ${name}`:'An imagined gallery interior, illustrating our curatorial direction'} loading="lazy" decoding="async"/>
    <small>{work?'SELECTED WORK · '+work.title:'GALLERY CONCEPT · STUDIO SERAAI'}</small>
   </div>
   <div className="sg-artists-copy">
@@ -30,7 +30,7 @@ export function ArtistSpotlight({artworks}:{artworks:Artwork[]}) {
 }
 
 export function EditorialBanner({label,title,description,kind='gallery'}:{label:string;title:string;description:string;kind?:'gallery'|'clouds'}) {
- return <section className={'sg-editorial-banner sg-editorial-'+kind}><img src={'/gallery/'+kind+'.webp'} alt="" fetchPriority="high"/><div className="sg-editorial-overlay"/><div className="sg-editorial-copy"><p className="sg-kicker">{label}</p><h1>{title}</h1><p>{description}</p></div><span className="sg-banner-caption">{kind==='gallery'?'AN IMAGINED GALLERY · AN OPEN INVITATION':'STUDIO SERAAI · KARACHI'}</span></section>;
+ return <section className={'sg-editorial-banner sg-editorial-'+kind}><img src={kind==='gallery'?'/gallery/warm-corridor.webp':'/gallery/warm-collection.webp'} alt="" fetchPriority="high"/><div className="sg-editorial-overlay"/><div className="sg-editorial-copy"><p className="sg-kicker">{label}</p><h1>{title}</h1><p>{description}</p></div><span className="sg-banner-caption">{kind==='gallery'?'AN IMAGINED GALLERY · AN OPEN INVITATION':'STUDIO SERAAI · KARACHI'}</span></section>;
 }
 
 export function ViewingQuestions(){return <div className="sg-faq"><p className="sg-kicker">A FEW THINGS TO KNOW</p>{[

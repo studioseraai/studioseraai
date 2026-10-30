@@ -69,3 +69,21 @@ zero errors and seven native-image warnings. Local desktop browser verified hero
 navigation, menu search, query routing and inquiry form rendering. Mobile/tablet
 browser QA and live populated carousel/profile testing remain outstanding. No
 production inquiries or inventory mutations were submitted as test data.
+
+## Warm architectural redesign — 30 October 2026
+
+The latest supplied reference supersedes the earlier charcoal floating-cube
+homepage. Public pages now use warm stone, golden-hour concept interiors, a
+sculptural table hero, curved chapter boundaries and compact navigation/footer.
+Home order: hero, artworks, artists, story, exhibitions, private viewing.
+Published artwork browsing remains connected to the same data contract; the
+optional selected-work carousel appears when published records exist.
+
+Three new generated decorative concept images live in public/gallery/warm-*.webp.
+They are clearly labeled illustrative architecture, not actual gallery premises
+or inventory. Generated via the built-in image tool; no external image API key.
+Asset briefs: warm travertine table and suspended folded stone with skyline;
+curved staircase with abstract artwork; golden-hour gallery corridor. All are
+text-free, 16:9, converted to WebP (about 200 KB each). The hero uses restrained
+image parallax with reduced-motion fallback, not a genuine interactive 3D model.
+Backend, authentication, Supabase, standalone OS, credentials and DNS unchanged.
