@@ -26,7 +26,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
     Array.from(el.children).forEach((c,i)=>{const item=c as HTMLElement;const d=Math.abs(item.offsetLeft+item.offsetWidth/2-center);if(d<dist){dist=d;closest=i;}});
     setIndex(closest);
   }
-  return <section className={styles.section} id="collections" aria-labelledby="curated-heading">
+  return <section className={styles.section} id="collections" style={{marginTop:0,clipPath:"none"}} aria-labelledby="curated-heading">
     <div className={styles.sheet} aria-hidden="true"><svg viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 364 C160 414 340 297 545 216 S1082 20 1440 77 L1440 0 L0 0 Z"/></svg></div>
     <div className={styles.intro}>
       <div className={styles.number}>02 <span/></div>
