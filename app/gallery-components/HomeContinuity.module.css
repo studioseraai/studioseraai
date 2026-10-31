@@ -23,3 +23,8 @@
 .flow :global(.wa-viewing){margin-top:-24px!important;z-index:6}
 .flow :global(.wa-scroll),.flow :global(.wa-concept){display:none!important}
 @media(max-width:800px){.flow :global(#collections){margin-top:-10px!important}.flow :global(section[aria-label="Meet our artists"]),.flow :global(section[aria-labelledby="home-story-title"]),.flow :global(.wa-exhibitions){margin-top:-10px!important}.flow :global(.wa-exhibitions){padding-top:75px}}
+
+/* Final homepage section labels: centered and bold, isolated to the events section. */
+.flow :global(.wa-exhibitions) :global(.wa-exhibition-heading) :global(.sg-kicker){position:absolute;top:45px;left:0;right:0;text-align:center;font:700 15px Arial,sans-serif;letter-spacing:.22em;color:#3a2a22;pointer-events:none}
+.flow :global(.wa-exhibitions) :global(.wa-exhibition-heading){padding-top:40px}
+@media(max-width:800px){.flow :global(.wa-exhibitions) :global(.wa-exhibition-heading) :global(.sg-kicker){top:29px;font-size:13px}}
