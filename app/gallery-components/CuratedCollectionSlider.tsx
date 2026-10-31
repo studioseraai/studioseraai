@@ -48,7 +48,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
           const aspect=Number.isFinite(width)&&width>0&&Number.isFinite(height)&&height>0?Math.max(.62,Math.min(1.55,width/height)):1;
           return <div key={art.id} className={styles.item} data-active={i===index} data-side={i<index?'left':'right'}>
             <Link href={'/artworks/'+art.id} className={styles.artLink} aria-label={art.title+' by '+(art.artist||'Studio Seraai')}>
-              <div className={styles.artwork} style={{aspectRatio:String(aspect)}}>
+              <div className={styles.artwork} style={{aspectRatio:String(aspect),width:`min(100%, calc(var(--art-height) * ${aspect}))`}}>
                 <img src={'/api/gallery/image/'+art.photos[0].id} alt={art.title} loading={i<3?'eager':'lazy'} decoding="async" draggable={false}/>
                 <span className={styles.frame} aria-hidden="true"/>
               </div>
