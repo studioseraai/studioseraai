@@ -12,8 +12,8 @@ export default function PrivateViewing(){
      <span className={s.footnote}>STUDIO SERAAI · KARACHI</span>
    </div>
    <div className={s.gallery}>
-    <div className={s.mainPhoto}><img src="/gallery/private-viewing-main.webp" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/gallery/warm-corridor.webp"}} alt="Studio Seraai gallery interior" loading="lazy"/></div>
-    <div className={s.secondary}><img src="/gallery/private-viewing-detail.webp" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src="/gallery/warm-collection.webp"}} alt="Selected gallery artwork display" loading="lazy"/></div>
+    <div className={s.mainPhoto}><img src="/gallery/warm-corridor.webp" alt="Studio Seraai gallery interior" loading="lazy"/></div>
+    <div className={s.secondary}><img src="/gallery/warm-collection.webp" alt="Selected gallery artwork display" loading="lazy"/></div>
     <div className={s.details}><span className={s.line}/><span>THE ART OF LOOKING CLOSER</span><span>01 — 02</span></div>
    </div>
  </section>
