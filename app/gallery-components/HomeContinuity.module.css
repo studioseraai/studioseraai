@@ -1,0 +1,14 @@
+/* Homepage-only continuity. Existing individual section designs remain intact. */
+.flow{--seraai-ivory:#f0e2d4;--seraai-sand:#e4d0bd;--seraai-bronze:#b69a7e;overflow:hidden}
+.flow :global(#collections){margin-top:-1px!important;position:relative;z-index:2}
+.flow :global(#collections)::after{content:"";position:absolute;z-index:3;pointer-events:none;inset:auto 0 0;height:84px;background:linear-gradient(to bottom,transparent,#e6d6c7a1 62%,#e7d6c7);opacity:.54}
+.flow :global(#collections) + :global(.sg-service){position:relative;z-index:8}
+.flow :global(#collections) ~ :global(section[aria-label="Meet our artists"]){margin-top:-1px}
+.flow :global(section[aria-label="Meet our artists"])::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:1;pointer-events:none;background:linear-gradient(180deg,#e7d6c7bd,transparent)}
+.flow :global(section[aria-label="Meet our artists"]) + :global(section[aria-labelledby="home-story-title"]){margin-top:-1px}
+.flow :global(section[aria-labelledby="home-story-title"])::after{content:"";position:absolute;left:0;right:0;bottom:0;height:80px;z-index:0;pointer-events:none;background:linear-gradient(0deg,#ead9c5a8,transparent)}
+.flow :global(.wa-exhibitions){margin-top:-1px;border-radius:0;background:linear-gradient(180deg,#e7d7c6 0%,#ead9c4 17%,#e9d7c0 100%);position:relative;z-index:4}
+.flow :global(.wa-exhibitions)::before{content:"";display:block;position:absolute;top:-33px;left:0;right:0;height:34px;pointer-events:none;background:#e7d7c6;clip-path:ellipse(76% 85% at 38% 100%)}
+.flow :global(.wa-viewing){margin-top:-2px;z-index:5}
+@media(max-width:800px){.flow :global(#collections)::after{height:48px}.flow :global(section[aria-label="Meet our artists"])::before{height:55px}.flow :global(section[aria-labelledby="home-story-title"])::after{height:45px}.flow :global(.wa-exhibitions)::before{top:-20px;height:21px}}
+@media(prefers-reduced-motion:reduce){.flow *{scroll-behavior:auto}}
