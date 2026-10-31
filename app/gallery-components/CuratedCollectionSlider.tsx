@@ -59,7 +59,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
       </div>:<div className={styles.empty}><p>Our selection is being curated.</p><Link href="/contact">INQUIRE WITH THE GALLERY →</Link></div>}
     </div>
     <div className={styles.controls}>
-      <span className={styles.drag}>↕ <span>DRAG TO EXPLORE</span><i/></span>
+      <span aria-hidden="true"/>
       <div className={styles.navigation}>
         <button type="button" onClick={()=>moveTo(index-1)} disabled={index===0||!count} aria-label="Previous artwork">←</button>
         <span aria-live="polite">{String(count?index+1:0).padStart(2,'0')} / {String(count).padStart(2,'0')}</span>
