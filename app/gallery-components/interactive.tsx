@@ -1,8 +1,8 @@
 'use client';
-import {useEffect,useRef,useState} from 'react';
+import {useRef,useState} from 'react';
 import Link from 'next/link';
 import type {Artwork} from '../../lib/gallery/types';
-export function Hero(){const scene=useRef<HTMLElement>(null);useEffect(()=>{const mq=matchMedia('(min-width: 900px) and (prefers-reduced-motion: no-preference)');let frame=0;const scroll=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const el=scene.current;if(el)el.style.setProperty('--drift',mq.matches?String(Math.min(70,Math.max(0,-el.getBoundingClientRect().top*.12))):'0');});};addEventListener('scroll',scroll,{passive:true});return()=>{removeEventListener('scroll',scroll);cancelAnimationFrame(frame);};},[]);return <section className="wa-hero" ref={scene}><img className="wa-hero-image" src="/gallery/warm-hero.webp" alt="Architectural concept: suspended stone sculpture above a sculptural travertine table in golden sunlight" fetchPriority="high"/><div className="wa-hero-shade"/><div className="wa-hero-copy"><p className="sg-kicker">ART LIVES IN SPACE</p><h1>STUDIO<br/>SERAAI</h1><p>Contemporary art for considered spaces.<br/>A meeting point between art, architecture<br/>and life.</p><a className="wa-action" href="#collections"><span>↗</span>EXPLORE THE COLLECTION</a></div><a className="wa-scroll" href="#collections">SCROLL TO DISCOVER <span>↓</span></a><span className="wa-concept">ARCHITECTURAL CONCEPT · STUDIO SERAAI</span></section>}
+export {default as Hero} from './StudioSeraaiAnimatedHero';
 export function ArtCard({art}:{art:Artwork}){return <Link className="sg-art-card" href={'/artworks/'+art.id}><div className="sg-art-image"><img src={'/api/gallery/image/'+art.photos[0]?.id} alt={art.title} loading="lazy" decoding="async"/></div><h3>{art.title}</h3><p>{art.artist||'Artist not recorded'}</p><small>{art.medium}<span>↗</span></small></Link>}
 export function CollectionCarousel({artworks}:{artworks:Artwork[]}) {
  const rail=useRef<HTMLDivElement>(null);
