@@ -4,7 +4,7 @@ import s from './PrivateViewing.module.css';
 export default function PrivateViewing(){
  return <section className={s.section} aria-labelledby="private-viewing-heading">
    <div className={s.copy}>
-     <div className={s.label}><span>06</span><i/> PRIVATE VIEWING</div>
+     <div className={s.label}>PRIVATE VIEWING</div>
      <p className={s.eyebrow}>AN INVITATION TO EXPLORE</p>
      <h2 id="private-viewing-heading">A More <em>Personal</em><br/>Experience.</h2>
      <p className={s.description}>An intimate encounter with art, at your own pace. Visit Studio Seraai, discover remarkable works and find the pieces that speak to you.</p>
