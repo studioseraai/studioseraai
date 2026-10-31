@@ -15,7 +15,7 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}){
  const change=(step:number)=>setIndex(i=>(i+step+total)%total);
  return <section className={s.section} aria-labelledby="home-artist-heading">
   <div className={s.container}>
-   <div className={s.label}><span>03</span><i/><span>OUR ARTISTS</span></div>
+   <div className={s.label}><span>OUR ARTISTS</span></div>
    <div className={s.layout}>
     <div className={s.visual} key={imageId||name||'empty'}>
      {imageId?<img src={'/api/gallery/image/'+encodeURIComponent(imageId)} alt={featured.title+' — a selected artwork by '+name} loading="lazy" decoding="async"/>:<div className={s.placeholder} aria-hidden="true">STUDIO SERAAI</div>}
