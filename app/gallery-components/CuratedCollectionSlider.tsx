@@ -9,6 +9,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
  const count=works.length;
  const initial=Math.min(2,Math.max(0,count-1));
  const [index,setIndex]=useState(initial);
+ const [frameColor,setFrameColor]=useState<'gold'|'black'|'white'>('gold');
  const rail=useRef<HTMLDivElement>(null);
  const drag=useRef<{x:number;left:number;didDrag:boolean}|null>(null);
  const cancelClick=useRef(false);
@@ -48,7 +49,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
       const ratio=w>0&&h>0?Math.max(.68,Math.min(1.38,w/h)):.82;
       return <div className={styles.item} key={art.id} data-active={i===index} data-side={i<index?'left':'right'} data-distance={Math.min(3,Math.abs(i-index))}>
        <Link className={styles.artLink} href={'/artworks/'+art.id} aria-label={'View '+art.title}>
-        <div className={styles.artwork} style={{width:`min(100%, calc(var(--art-height) * ${ratio}))`}}>
+        <div className={styles.artwork} data-frame={frameColor} onPointerMove={e=>{if(i!==index||e.pointerType==='touch'||e.buttons)return;const r=e.currentTarget.getBoundingClientRect();const x=((e.clientX-r.left)/r.width-.5)*2,y=((e.clientY-r.top)/r.height-.5)*2;e.currentTarget.style.setProperty('--mx',String(x));e.currentTarget.style.setProperty('--my',String(y));}} onPointerLeave={e=>{e.currentTarget.style.setProperty('--mx','0');e.currentTarget.style.setProperty('--my','0')}} style={{width:`min(100%, calc(var(--art-height) * ${ratio}))`}}>
          <img src={'/api/gallery/image/'+encodeURIComponent(art.photos[0].id)} alt={art.title} loading={Math.abs(i-initial)<3?'eager':'lazy'} draggable={false}/>
          <span className={styles.frame} aria-hidden="true"/>
         </div>
@@ -60,6 +61,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
    <button className={styles.rightArrow} type="button" onClick={()=>moveTo(index+1)} disabled={index===count-1} aria-label="Next artwork">→</button>
   </div>:<div className={styles.empty}>The collection is being curated. <Link href="/contact">Inquire with the gallery →</Link></div>}
   <div className={styles.footer}>
+   <div className={styles.framePicker} role="group" aria-label="Center painting frame color"><span>FRAME</span>{(['gold','black','white'] as const).map(color=><button key={color} type="button" className={styles.frameChoice} data-color={color} aria-label={`${color} frame`} aria-pressed={frameColor===color} onClick={()=>setFrameColor(color)}><i aria-hidden="true"/>{color.toUpperCase()}</button>)}</div>
    <span className={styles.counter} aria-live="polite">{String(count?index+1:0).padStart(2,'0')} <span className={styles.progress}><i style={{width:count?`${((index+1)/count)*100}%`:'0%'}}/></span> {String(count).padStart(2,'0')}</span>
    <Link className={styles.cta} href="/collections">VIEW COLLECTION <span aria-hidden="true">→</span></Link>
   </div>
