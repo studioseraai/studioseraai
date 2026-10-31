@@ -3,8 +3,7 @@ import styles from './HomeStory.module.css';
 
 export default function HomeStory(){
   return <section className={styles.story} aria-labelledby="home-story-title">
-    <div className={styles.scene} aria-hidden="true"><img src="/gallery/warm-corridor.webp" alt="" loading="lazy" decoding="async"/></div>
-    <div className={styles.arch} aria-hidden="true"/>
+    <div className={styles.scene} aria-hidden="true"><img src="/gallery/our-story-reference.svg" alt="" loading="lazy" decoding="async"/></div>
     <div className={styles.copy}>
       <span className={styles.number}>04</span>
       <p className={styles.kicker}>Our Story</p>
