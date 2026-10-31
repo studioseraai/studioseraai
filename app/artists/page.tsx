@@ -1,4 +1,13 @@
-import {EditorialBanner} from '../gallery-components/editorial';
-import Link from 'next/link';import Shell from '../gallery-components/shell';import {ConnectionNotice} from '../gallery-components/views';import {getGallery} from '../../lib/gallery/server';
-export const metadata={title:'Artists — Studio Seraai'};export const dynamic='force-dynamic';
-export default async function Page(){const data=await getGallery();const names=[...new Set(data.artworks.map(a=>a.artist).filter(Boolean))].sort();return <Shell><EditorialBanner label="OUR ARTISTS" title="The Minds Behind the Masterpieces." description="Every artwork begins with a human story."/><ConnectionNotice data={data}/><section className="sg-section sg-light">{names.length?<div className="sg-artist-directory">{names.map(name=>{const works=data.artworks.filter(a=>a.artist===name);return <Link href={'/artists/'+encodeURIComponent(name)} key={name}><div className="sg-art-image"><img src={'/api/gallery/image/'+works[0].photos[0].id} alt={'Artwork by '+name} loading="lazy"/></div><h2>{name}</h2><p>{works.length} published {works.length===1?'work':'works'} · Explore works ↗</p></Link>;})}</div>:<div className="sg-empty"><h2>The people behind the work.</h2><p>Our artist directory will grow with the published collection. In the meantime, the gallery can introduce you to the works available for viewing.</p><Link className="sg-button" href="/contact">BEGIN A CONVERSATION ↗</Link></div>}</section></Shell>;}
+import Shell from '../gallery-components/shell';
+import {ConnectionNotice} from '../gallery-components/views';
+import {getGallery} from '../../lib/gallery/server';
+import ArtistExperience from './ArtistExperience';
+export const metadata={title:'Artists — Studio Seraai'};
+export const dynamic='force-dynamic';
+export default async function Page(){
+ const data=await getGallery();
+ const grouped=new Map<string,typeof data.artworks>();
+ for(const work of data.artworks){const name=work.artist?.trim();if(!name)continue;grouped.set(name,[...(grouped.get(name)||[]),work]);}
+ const artists=[...grouped].map(([name,works])=>({name,works})).sort((a,b)=>a.name.localeCompare(b.name));
+ return <Shell><ConnectionNotice data={data}/><ArtistExperience artists={artists}/></Shell>;
+}
