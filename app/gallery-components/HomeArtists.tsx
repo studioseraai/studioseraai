@@ -39,6 +39,5 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}){
     </div>
    </div>
   </div>
-  <div className={s.scroll} aria-hidden="true"><span>↓</span> SCROLL TO EXPLORE <i/></div>
  </section>;
 }
