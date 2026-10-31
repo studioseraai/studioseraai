@@ -12,3 +12,14 @@
 .flow :global(.wa-viewing){margin-top:-2px;z-index:5}
 @media(max-width:800px){.flow :global(#collections)::after{height:48px}.flow :global(section[aria-label="Meet our artists"])::before{height:55px}.flow :global(section[aria-labelledby="home-story-title"])::after{height:45px}.flow :global(.wa-exhibitions)::before{top:-20px;height:21px}}
 @media(prefers-reduced-motion:reduce){.flow *{scroll-behavior:auto}}
+
+/* Light architectural continuity: no changes to page geometry or content blocks */
+.flow :global(#collections){margin-top:-28px!important}
+.flow :global(section[aria-label="Meet our artists"]){margin-top:-22px!important;z-index:3}
+.flow :global(section[aria-label="Meet our artists"])::before{height:110px;background:linear-gradient(180deg,#e4d0bde6,transparent 90%)}
+.flow :global(section[aria-labelledby="home-story-title"]){margin-top:-22px!important;z-index:4}
+.flow :global(section[aria-labelledby="home-story-title"])::after{height:95px;background:linear-gradient(0deg,#e9d7c0,transparent)}
+.flow :global(.wa-exhibitions){margin-top:-22px!important;z-index:5;padding-top:95px}
+.flow :global(.wa-viewing){margin-top:-24px!important;z-index:6}
+.flow :global(.wa-scroll),.flow :global(.wa-concept){display:none!important}
+@media(max-width:800px){.flow :global(#collections){margin-top:-10px!important}.flow :global(section[aria-label="Meet our artists"]),.flow :global(section[aria-labelledby="home-story-title"]),.flow :global(.wa-exhibitions){margin-top:-10px!important}.flow :global(.wa-exhibitions){padding-top:75px}}
