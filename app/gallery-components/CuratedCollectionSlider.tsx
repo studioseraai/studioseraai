@@ -29,11 +29,11 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
  }
  return <section className={styles.section} id="collections" aria-labelledby="collection-title">
   <div className={styles.architecture} aria-hidden="true"/>
-  <header className={styles.intro}>
+  <div className={styles.intro}>
    <p className={styles.kicker}>OUR COLLECTION</p>
    <h2 id="collection-title">Beyond the Ordinary.<br/><em>Into Art.</em></h2>
    <p className={styles.description}>A carefully curated collection of timeless works, from emerging voices to established masters.</p>
-  </header>
+  </div>
   {count>0?<div className={styles.stage}>
    <button className={styles.leftArrow} type="button" onClick={()=>moveTo(index-1)} disabled={index===0} aria-label="Previous artwork">←</button>
    <div className={styles.rail} ref={rail} role="region" aria-label="Artworks carousel" tabIndex={0} onScroll={syncIndex}
