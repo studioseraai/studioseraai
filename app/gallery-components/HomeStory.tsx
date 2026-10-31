@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import styles from './HomeStory.module.css';
+
+export default function HomeStory(){return <section className={styles.story} aria-labelledby="home-story-title"><div className={styles.scene} aria-hidden="true"><img src="/gallery/warm-corridor.webp" alt="" loading="lazy" decoding="async"/></div><div className={styles.arch} aria-hidden="true"/><div className={styles.copy}><span className={styles.number}>04</span><p className={styles.kicker}>Our Story</p><h2 id="home-story-title">A Gallery<br/>Without Walls.</h2><p className={styles.description}>We believe art belongs beyond the boundaries of a gallery — in the spaces we inhabit, the conversations we share, and the stories we carry.</p><Link href="/about" className={styles.action}>Discover Our Story <span aria-hidden="true">→</span></Link></div><span className={styles.footer}>ART · ARCHITECTURE · LIFE</span></section>}
