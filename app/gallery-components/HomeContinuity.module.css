@@ -54,3 +54,13 @@
 .flow :global(#collections)::after{display:none!important}
 .flow :global(section[aria-label="Meet our artists"]){margin-top:0!important;border-top:1px solid #d6c0aa;z-index:3}
 @media(max-width:800px){.flow :global(section[aria-label="Meet our artists"]){margin-top:0!important}}
+
+/* V3 color micro-fix: blend image crop edges into the neighbouring section.
+   No layout, sizing, image scale or section content changes. */
+.flow{background:#f0e1d4}
+.flow :global(#collections){background-color:#f1dfce}
+.flow :global(#featured-artists){background-color:#f1e3d6;border-top-color:#ead8c8}
+.flow :global(#exhibitions){background-color:#eddfd3;margin-top:-1px}
+.flow :global(#exhibitions)::before{content:"";position:absolute;inset:0 0 auto;height:34px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,#f0dfd3,rgba(240,223,211,0))}
+.flow :global(#exhibitions)::after{background:linear-gradient(180deg,rgba(240,225,211,.15),#eee1d6)}
+.flow :global(section[aria-labelledby="private-viewing-heading"]){background-color:#eee2d9;margin-top:-1px}
