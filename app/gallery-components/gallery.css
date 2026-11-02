@@ -109,3 +109,27 @@
 @media(max-width:850px){.wa-home .ev3-feature{grid-template-columns:1fr}.wa-home .ev3-feature-art{min-height:450px}.wa-home .ev3-feature-copy{padding:45px}.wa-home .ev3-archive{gap:15px}.wa-home .ev3-archive-art{height:260px}.wa-home .ev3-archive-art strong{font-size:48px}}
 @media(max-width:600px){.wa-home .wa-exhibitions{padding:60px 5% 70px}.wa-home .ev3-intro{margin-bottom:28px}.wa-home .ev3-intro h2{font-size:47px}.wa-home .ev3-feature{margin-bottom:50px}.wa-home .ev3-feature-copy{padding:31px 24px}.wa-home .ev3-feature h3{font-size:65px}.wa-home .ev3-feature-art{min-height:395px}.wa-home .ev3-announcement{max-width:280px}.wa-home .ev3-archive{grid-template-columns:1fr}.wa-home .ev3-archive-heading{align-items:flex-start;flex-direction:column}.wa-home .ev3-archive-art{height:290px}.wa-home .ev3-archive-art strong{font-size:60px}}
 @media(prefers-reduced-motion:reduce){.wa-home .ev3-announcement{animation:none}.wa-home .ev3-archive-art{transition:none}}
+
+/* V2 final visual polish — reuse bundled Cormorant Garamond + Manrope. */
+.wa-home{font-family:var(--font-interface),Arial,sans-serif}
+.wa-home h1,.wa-home h2,.wa-home h3,.wa-home h4{font-family:var(--font-display),Georgia,serif;text-wrap:balance}
+.wa-home .ev3-archive-copy h4,.wa-home .ev3-feature h3{letter-spacing:-.035em}
+.wa-home .ev3-archive-copy p{min-height:0}
+.wa-home .ev3-archive-card:focus-visible,.wa-home .ev3-actions a:focus-visible{outline:2px solid #805b3f;outline-offset:4px}
+.wa-home .ev3-feature-art{overflow:hidden}
+.wa-home .ev3-feature-copy,.wa-home .ev3-archive-copy{min-width:0}
+.wa-home .wa-exhibitions .ev3-archive-card h4{overflow-wrap:break-word}
+.wa .sg-header .wa-desktop-nav a{font-family:var(--font-interface),Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.025em}
+.wa .sg-header .wa-desktop-nav a:hover,.wa .wa-footer nav a:hover{text-decoration:underline;text-underline-offset:6px}
+.wa .sg-header .sg-inquire{font-family:var(--font-interface),Arial,sans-serif;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;min-height:38px;display:inline-flex;align-items:center}
+.wa .sg-header .sg-icon{min-width:44px;min-height:44px}
+.wa .wa-footer{font-family:var(--font-interface),Arial,sans-serif}
+.wa .wa-footer .sg-wordmark{font-family:var(--font-display),Georgia,serif;letter-spacing:.14em}
+@media(max-width:650px){
+ .wa .sg-header .sg-inquire{font-size:10px;padding:7px 11px}
+ .wa-home .ev3-feature-copy{padding:32px 22px}
+ .wa-home .ev3-actions a:first-child{min-height:48px}
+ .wa-home .ev3-archive-copy{padding:23px}
+ .wa-home .ev3-archive-heading>a{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){.wa-home *{scroll-behavior:auto!important}}
