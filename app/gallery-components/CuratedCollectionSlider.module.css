@@ -51,3 +51,6 @@
 
 /* Keep the arch atmospheric rather than squeezing or covering the carousel. */
 @media(max-width:700px){.architecture:before{top:0;left:-44%;width:188%;height:91%;border-width:30px;border-radius:50% 50% 0 0 / 33% 33% 0 0}.architecture:after{bottom:-12%;height:28%}}
+
+/* V2.4: remove the curved floor/wave underneath the collection controls. */
+.architecture:after{display:none!important}
