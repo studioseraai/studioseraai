@@ -13,19 +13,19 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}){
  const featured=works.find(a=>a.photos?.[0]?.id);
  const imageId=featured?.photos[0]?.id;
  const change=(step:number)=>setIndex(i=>total?(i+step+total)%total:0);
- return <section className={s.section} aria-labelledby="home-artist-heading">
-  <div className={s.container}>
+ return <section className={s.section} aria-labelledby="home-artist-heading" aria-label="Meet our artists">
+  <div className={s.arch} aria-hidden="true"/><div className={s.container}>
    <div className={s.heading}><p className={s.kicker}>THE PEOPLE BEHIND THE ART</p><h2 id="home-artist-heading">Meet Our <em>Artists.</em></h2></div>
    <div className={s.layout}>
-    <div className={s.visual} key={imageId||name||'empty'}>
+    <div className={s.visualWrap}><div className={s.visual} key={imageId||name||'empty'}>
      {imageId?<img src={'/api/gallery/image/'+encodeURIComponent(imageId)} alt={'Selected artwork by '+name+': '+featured.title} loading="lazy" decoding="async"/>:<div className={s.placeholder} aria-hidden="true">STUDIO SERAAI</div>}
      <span className={s.photoCredit}>{imageId?'FEATURED ARTWORK · '+(featured?.title||name):'ARTISTS OF STUDIO SERAAI'}</span>
-    </div>
+    </div><div className={s.artBadge} aria-hidden="true"><span>ART</span><i>Without</i><span>WALLS</span></div></div>
     <div className={s.content}>
-     <p className={s.eyebrow}>FEATURED ARTIST <span>{String(total?index+1:0).padStart(2,'0')} / {String(total).padStart(2,'0')}</span></p>
+     <p className={s.eyebrow}>AN ARTIST IN FOCUS <span>{String(total?index+1:0).padStart(2,'0')} — {String(total).padStart(2,'0')}</span></p>
      <div className={s.copy} key={name||'none'}>
       <h3>{name||'The People Behind The Art.'}</h3>
-      <span className={s.rule}/>
+      <span className={s.rule}/><p className={s.subline}>A DIFFERENT WAY OF SEEING</p>
       <p className={s.description}>{name?`Explore the distinctive perspective of ${name} through ${works.length===1?'a selected artwork':`${works.length} artworks`} in the Studio Seraai collection.`:'Discover the creative voices who bring our collection to life.'}</p>
       {featured&&<p className={s.artNote}>SELECTED WORK <span>{featured.title}</span></p>}
       <Link className={s.cta} href={name?'/artists/'+encodeURIComponent(name):'/artists'}>{name?'EXPLORE ARTIST COLLECTION':'DISCOVER ARTISTS'} <span aria-hidden="true">↗</span></Link>
@@ -39,7 +39,7 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}){
      </div>
     </div>
    </div>
-   <div className={s.bottom}><span>STUDIO SERAAI · A GALLERY WITHOUT WALLS</span><Link href="/artists">VIEW ALL ARTISTS ↗</Link></div>
+   <div className={s.bottom}><span>CURATED VOICES · STUDIO SERAAI</span><Link href="/artists">VIEW ALL ARTISTS ↗</Link></div>
   </div>
  </section>;
 }
