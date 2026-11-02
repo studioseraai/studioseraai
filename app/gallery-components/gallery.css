@@ -33,3 +33,14 @@
 @media (max-width: 650px) {
   .wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"]) > .sg-header { height: 90px; }
 }
+
+/* V2 brand navigation: uploaded black Seraai emblem and accessible ivory header. */
+.wa .sg-header{display:flex;align-items:center;gap:18px}
+.wa .sg-brand-logo{display:flex;align-items:center;justify-content:center;flex:0 0 94px;width:94px;height:94px;margin-right:auto}
+.wa .sg-brand-logo img{width:92px;height:92px;object-fit:contain;display:block}
+.wa .sg-header .wa-desktop-nav{position:absolute;left:50%;transform:translateX(-50%);margin:0;gap:24px;white-space:nowrap}
+.wa .sg-header .sg-header-actions{margin-left:auto;order:2}
+.wa .sg-header>.sg-icon{order:3}
+.wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"])>.sg-header{color:#31261f;background:#eadbca;border-bottom:1px solid #c9b49c}
+.wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"]) .sg-inquire{border-color:#8a715c;color:#31261f}
+@media(max-width:800px){.wa .sg-header .wa-desktop-nav{display:none}.wa .sg-brand-logo{flex-basis:76px;width:76px;height:76px}.wa .sg-brand-logo img{width:74px;height:74px}.wa .sg-header{gap:8px}}
