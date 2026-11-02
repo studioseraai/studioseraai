@@ -3,18 +3,22 @@ import s from './PrivateViewing.module.css';
 
 export default function PrivateViewing(){
  return <section className={s.section} aria-labelledby="private-viewing-heading">
+   <div className={s.arch} aria-hidden="true"/>
    <div className={s.copy}>
-     <div className={s.label}>PRIVATE VIEWING</div>
-     <p className={s.eyebrow}>AN INVITATION TO EXPLORE</p>
-     <h2 id="private-viewing-heading">A More <em>Personal</em><br/>Experience.</h2>
-     <p className={s.description}>An intimate encounter with art, at your own pace. Visit Studio Seraai, discover remarkable works and find the pieces that speak to you.</p>
-     <Link className={s.cta} href="/contact?viewing=1">ARRANGE A PRIVATE VIEWING <span aria-hidden="true">↗</span></Link>
-     <span className={s.footnote}>STUDIO SERAAI · KARACHI</span>
+     <p className={s.label}><span/>REQUEST A<span/></p>
+     <h2 id="private-viewing-heading">Private View</h2>
+     <p className={s.description}>Experience a curated selection of works in a<br className={s.desktopBreak}/> personal and focused setting at Studio Seraai.</p>
+     <Link className={s.cta} href="/contact?viewing=1">REQUEST A PRIVATE VIEW <span aria-hidden="true">→</span></Link>
    </div>
-   <div className={s.gallery}>
-    <div className={s.mainPhoto}><img src="/gallery/warm-corridor.webp" alt="Studio Seraai gallery interior" loading="lazy"/></div>
-    <div className={s.secondary}><img src="/gallery/warm-collection.webp" alt="Selected gallery artwork display" loading="lazy"/></div>
-    <div className={s.details}><span className={s.line}/><span>THE ART OF LOOKING CLOSER</span><span>01 — 02</span></div>
+   <div className={s.scene} aria-hidden="true">
+     <div className={s.bench}>
+       <div className={s.top}>
+         <div className={s.booksLeft}><i/><i/><i/></div>
+         <div className={s.notebook}/>
+         <div className={s.booksRight}><i/><i/><i/></div>
+       </div>
+       <div className={s.leftLeg}/><div className={s.rightLeg}/>
+     </div>
    </div>
- </section>
+ </section>;
 }
