@@ -49,3 +49,8 @@
   .flow :global(#collections)::after{height:95px}
   .flow :global(section[aria-label="Meet our artists"]){margin-top:-1px!important}
 }
+
+/* User-approved clean cut: straight divider between Collections and Artists. */
+.flow :global(#collections)::after{display:none!important}
+.flow :global(section[aria-label="Meet our artists"]){margin-top:0!important;border-top:1px solid #d6c0aa;z-index:3}
+@media(max-width:800px){.flow :global(section[aria-label="Meet our artists"]){margin-top:0!important}}
