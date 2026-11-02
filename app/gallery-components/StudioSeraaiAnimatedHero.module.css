@@ -45,3 +45,7 @@
  .sideTables,.mainTable,.cube,.eyebrow,.title,.description,.cta,.scrollHint{animation:none;will-change:auto;}
  .cta{transition:none;}
 }
+
+/* V3 final hero type and action styling */
+.eyebrow{font-family:var(--font-display),Georgia,serif;font-style:italic;letter-spacing:.19em}
+.cta{border-radius:999px}
