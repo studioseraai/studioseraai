@@ -9,10 +9,10 @@
 .sideTables, .mainTable, .cube {position:absolute; pointer-events:none; will-change:transform,opacity;}
 .sideTables img,.mainTable img,.cube img {display:block;width:100%;height:auto;}
 /* Position the transparent full-canvas product PNGs, not a flat composite. */
-.sideTables {left:2%; bottom:10%; width:28%; z-index:2; animation:sideIn 1.35s var(--ease) .45s both;}
-.mainTable {left:24%; bottom:12%; width:52%; z-index:3; animation:tableIn 1.55s var(--ease) .16s both;}
+.sideTables {left:2%; bottom:2%; width:28%; z-index:2; animation:sideIn 1.35s var(--ease) .45s both;}
+.mainTable {left:27%; bottom:4%; width:54%; z-index:3; animation:tableIn 1.55s var(--ease) .16s both;}
 .cube {right:8%; top:1%; width:24%; z-index:2; animation:cubeIn 1.55s var(--ease) 0s both;}
-.copy {position:absolute; left:10%; top:24%; z-index:4; max-width:41%;}
+.copy {position:absolute; left:10%; top:17%; z-index:4; max-width:38%;}
 .eyebrow {margin:0 0 19px; letter-spacing:.30em; font-size:clamp(10px,.9vw,14px); font-weight:500; animation:copyIn .9s var(--ease) 1.06s both;}
 .title {margin:0; font:400 clamp(58px,5.4vw,104px)/.99 var(--font-display), Georgia,serif; letter-spacing:-.035em; animation:copyIn 1s var(--ease) 1.2s both;}
 .title em {font-weight:400;}
@@ -27,18 +27,18 @@
 @keyframes tableIn {from {opacity:0;transform:translate3d(0,85%,0);}to {opacity:1;transform:translate3d(0,0,0);}}
 @keyframes sideIn {from {opacity:0;transform:translate3d(-105%,0,0);}to {opacity:1;transform:translate3d(0,0,0);}}
 @keyframes copyIn {from {opacity:0;transform:translate3d(0,30px,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@media(max-width:1100px){.hero{height:calc(100svh - 110px);min-height:650px}.copy{left:8%;top:20%;max-width:54%}.title{font-size:clamp(55px,7vw,82px)}.sideTables{width:34%;left:0%;bottom:10%}.mainTable{width:64%;left:20%;bottom:12%}.cube{width:31%;right:4%;top:1%}}
+@media(max-width:1100px){.hero{height:calc(100svh - 110px);min-height:650px}.copy{left:8%;top:15%;max-width:50%}.title{font-size:clamp(55px,7vw,82px)}.sideTables{width:34%;left:0%;bottom:3%}.mainTable{width:64%;left:22%;bottom:5%}.cube{width:31%;right:4%;top:1%}}
 @media(max-width:650px){
   .hero{height:calc(100svh - 90px);max-height:none;min-height:650px}
   .room{object-position:47% center}.navBackdrop{height:90px}
-  .copy{left:7%;right:7%;top:145px;max-width:none}
+  .copy{left:7%;right:7%;top:105px;max-width:none}
   .eyebrow{font-size:9px;margin-bottom:14px;letter-spacing:.23em}
   .title{font-size:clamp(43px,11vw,65px)}
   .description{font-size:12px;margin:18px 0 21px}
   .cta{min-height:45px;padding:12px 16px;font-size:9px;gap:12px}
   .cube{width:42%;top:1%;right:-4%}
-  .sideTables{width:46%;left:-4%;bottom:15%}
-  .mainTable{width:98%;left:0%;bottom:15%}
+  .sideTables{width:46%;left:-4%;bottom:5%}
+  .mainTable{width:98%;left:0%;bottom:7%}
   .scrollHint{font-size:8px;bottom:3%;right:5%}
 }
 @media(prefers-reduced-motion:reduce){
