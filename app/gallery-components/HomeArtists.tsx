@@ -16,11 +16,12 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}){
  return <section className={s.section} aria-label="Meet our artists" aria-labelledby="home-artist-heading">
   <div className={s.canvas}>
    <div className={s.left}>
+    <div className={s.stoneCircle} aria-hidden="true"/><div className={s.stoneBlock} aria-hidden="true"/><div className={s.bronzeOutline} aria-hidden="true"/>
     <div className={s.archFrame} key={name||'empty'}>
      {featured?<img className={s.heroArt} src={image(featured)} alt={'Featured artwork by '+name+': '+featured.title} loading="lazy"/>:<div className={s.placeholder}>STUDIO SERAAI</div>}
      <span className={s.artCaption}>FEATURED ARTWORK · {featured?.title||'STUDIO SERAAI'}</span>
     </div>
-    <div className={s.plinth} aria-hidden="true"><span className={s.vase}/><span className={s.twig}/></div>
+
    </div>
    <div className={s.right}>
     <div className={s.kickerLine}><span>OUR ARTISTS</span><i/></div>
