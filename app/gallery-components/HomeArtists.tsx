@@ -27,12 +27,8 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}){
     <div className={s.kickerLine}><span>OUR ARTISTS</span><i/></div>
     <h2 id="home-artist-heading" className={s.name} key={name||'heading'}>{name||'The People Behind The Art.'}</h2>
     <p className={s.description}> {name?`Discover the perspective and creative practice of ${name} through a curated selection of works in the Studio Seraai collection.`:'Discover the voices shaping the Studio Seraai collection.'}</p>
-    <Link className={s.cta} href={name?'/artists/'+encodeURIComponent(name):'/artists'}>EXPLORE ARTIST COLLECTION <span aria-hidden="true">→</span></Link>
-    <div className={s.galleryRow}>
-     <div className={s.gallery} aria-label="Selected works by featured artist">
-      {works.slice(0,3).map(a=><Link href={'/artworks/'+a.id} key={a.id} className={s.thumb} aria-label={'View '+a.title}><img src={image(a)} alt={a.title} loading="lazy"/></Link>)}
-      {works.length===0?<span className={s.noWorks}>Explore the artist collection</span>:null}
-     </div>
+    <div className={s.actionRow}>
+     <Link className={s.cta} href={name?'/artists/'+encodeURIComponent(name):'/artists'}>EXPLORE ARTIST COLLECTION <span aria-hidden="true">→</span></Link>
      <div className={s.navigation}>
       <div className={s.arrows}><button type="button" disabled={total<2} aria-label="Previous artist" onClick={()=>change(-1)}>←</button><button type="button" disabled={total<2} aria-label="Next artist" onClick={()=>change(1)}>→</button></div>
       <span aria-live="polite">{String(total?index+1:0).padStart(2,'0')} / {String(total).padStart(2,'0')}</span>
