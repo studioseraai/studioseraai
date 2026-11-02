@@ -47,7 +47,6 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
    </div>
    <div className={styles.footer}>
     <div className={styles.framePicker} role="group" aria-label="Center painting frame finish"><span>FRAME</span>{(['wood','black','white'] as const).map(color=><button key={color} className={styles.frameChoice} type="button" data-color={color} aria-pressed={frameColor===color} onClick={()=>setFrameColor(color)}><i aria-hidden="true"/>{color.toUpperCase()}</button>)}</div>
-    <p className={styles.systemNote}>✧ <i>Adaptive Frame System</i> <span>Automatically fits artwork inside a single frame.</span></p>
     <span className={styles.counter} aria-live="polite">{String(index+1).padStart(2,'0')} <span className={styles.progress}><i style={{width:`${((index+1)/count)*100}%`}}/></span> {String(count).padStart(2,'0')}</span>
     <Link className={styles.cta} href="/collections">VIEW COLLECTION <span aria-hidden="true">→</span></Link>
    </div>
