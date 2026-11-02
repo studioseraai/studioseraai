@@ -44,3 +44,18 @@
 .wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"])>.sg-header{color:#31261f;background:#eadbca;border-bottom:1px solid #c9b49c}
 .wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"]) .sg-inquire{border-color:#8a715c;color:#31261f}
 @media(max-width:800px){.wa .sg-header .wa-desktop-nav{display:none}.wa .sg-brand-logo{flex-basis:76px;width:76px;height:76px}.wa .sg-brand-logo img{width:74px;height:74px}.wa .sg-header{gap:8px}}
+
+/* V2 homepage exhibitions — gallery calendar with one upcoming editorial feature. */
+.wa-home .wa-exhibitions .wa-event-intro{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(24px,4vw,62px);background:linear-gradient(115deg,#f3e5d5,#e6cdb5);border:1px solid #bb997e;min-height:245px;margin:24px 0 32px}
+.wa-home .wa-exhibitions .wa-event-intro>span{font-size:11px;letter-spacing:.24em;color:#946b49;font-weight:600}
+.wa-home .wa-exhibitions .wa-event-intro h3{font:400 clamp(42px,5vw,72px)/1.05 var(--font-display),Georgia,serif;margin:14px 0;color:#32231c}
+.wa-home .wa-exhibitions .wa-event-intro p{max-width:590px;font:17px/1.6 var(--font-display),Georgia,serif;color:#624c3c;margin:0 0 18px}
+.wa-home .wa-exhibitions .wa-event-intro a{font-size:11px;letter-spacing:.15em;color:#6c482f;text-decoration:none;border-bottom:1px solid #aa805e;padding-bottom:7px}
+.wa-home .wa-exhibitions .sg-event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:23px}
+.wa-home .wa-exhibitions .sg-event-card{display:grid;grid-template-columns:36% 1fr;min-width:0;background:#f3e7d9;border:1px solid #d6bcaa;color:#35261d}
+.wa-home .wa-exhibitions .sg-event-visual{height:100%;min-height:210px;background:linear-gradient(0deg,#3b271644,#2e1e1110),url('/gallery/hero.webp') center/cover}
+.wa-home .wa-exhibitions .sg-event-card>div:last-child{padding:25px}
+.wa-home .wa-exhibitions .sg-event-card h3{font:400 clamp(25px,2.5vw,38px)/1.15 var(--font-display),Georgia,serif;margin:9px 0}
+.wa-home .wa-exhibitions .sg-event-card p{line-height:1.5}
+@media(max-width:900px){.wa-home .wa-exhibitions .sg-event-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.wa-home .wa-exhibitions .wa-event-intro{padding:28px 23px}.wa-home .wa-exhibitions .sg-event-card{grid-template-columns:1fr}.wa-home .wa-exhibitions .sg-event-visual{min-height:150px}}
