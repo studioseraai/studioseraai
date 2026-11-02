@@ -133,3 +133,63 @@
  .wa-home .ev3-archive-heading>a{white-space:normal}
 }
 @media(prefers-reduced-motion:reduce){.wa-home *{scroll-behavior:auto!important}}
+
+/* V3 Premium navigation: persistent translucent glass across every public section. */
+.sg.wa>.sg-header,
+.sg.wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"])>.sg-header{
+ position:sticky!important;top:0!important;inset:auto!important;z-index:1000!important;
+ height:96px!important;min-height:96px;display:flex;align-items:center;
+ padding:0 clamp(22px,4.2vw,90px)!important;
+ color:#3b281d!important;background:rgba(241,227,211,.93)!important;
+ border-bottom:1px solid rgba(125,93,69,.2)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(125%);backdrop-filter:blur(18px) saturate(125%);
+ transition:background .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.sg.wa>.sg-header[data-scrolled="true"]{
+ background:rgba(242,228,213,.60)!important;
+ border-bottom-color:rgba(130,92,64,.14)!important;
+ box-shadow:0 10px 32px rgba(66,40,21,.07);
+}
+.sg.wa>.sg-header .sg-v3-wordmark{
+ display:flex!important;flex-direction:column;align-items:flex-start;justify-content:center;
+ flex:0 0 auto!important;width:auto!important;height:auto!important;min-width:172px;
+ color:#3a2515;text-decoration:none;line-height:.76;letter-spacing:-.075em;
+ font-family:var(--font-display),Georgia,serif;font-weight:500;
+}
+.sg.wa>.sg-header .sg-v3-wordmark span:first-child{font-size:clamp(29px,2.15vw,39px)}
+.sg.wa>.sg-header .sg-v3-wordmark span:last-child{font-size:clamp(38px,3.05vw,55px);margin-top:5px}
+.sg.wa>.sg-header .wa-desktop-nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:clamp(22px,2.3vw,43px);margin:0}
+.sg.wa>.sg-header .wa-desktop-nav a{
+ color:#3c291d;font:500 clamp(16px,1.25vw,21px)/1.2 var(--font-display),Georgia,serif!important;
+ letter-spacing:.02em!important;padding:12px 1px;white-space:nowrap;
+ border-bottom:1px solid transparent;transition:border-color .2s,color .2s
+}
+.sg.wa>.sg-header .wa-desktop-nav a:hover{border-bottom-color:#aa7d47;text-decoration:none}
+.sg.wa>.sg-header .sg-header-actions{margin-left:auto;order:2;gap:15px}
+.sg.wa>.sg-header .sg-icon{width:52px;height:52px;min-width:52px;min-height:52px;display:grid;place-items:center;color:#3d2b1e}
+.sg.wa>.sg-header .sg-header-actions .sg-icon svg{width:27px;height:27px;stroke-width:1.75}
+.sg.wa>.sg-header .sg-inquire{
+ min-height:47px;padding:10px 27px;display:inline-flex;align-items:center;justify-content:center;
+ font:600 13px/1 var(--font-interface),Arial,sans-serif!important;letter-spacing:.18em!important;
+ color:#3d2b1e!important;border:1px solid #9a704f!important;background:transparent;transition:background .2s,color .2s
+}
+.sg.wa>.sg-header .sg-inquire:hover{background:#583920;color:#fff!important}
+@media(max-width:1050px){
+ .sg.wa>.sg-header .sg-v3-wordmark{min-width:135px}
+ .sg.wa>.sg-header .wa-desktop-nav{gap:15px}
+ .sg.wa>.sg-header .wa-desktop-nav a{font-size:16px!important}
+ .sg.wa>.sg-header .sg-inquire{padding:10px 15px}
+}
+@media(max-width:800px){
+ .sg.wa>.sg-header,.sg.wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"])>.sg-header{
+ height:78px!important;min-height:78px;padding:0 14px!important;gap:10px}
+ .sg.wa>.sg-header .wa-desktop-nav{display:none!important}
+ .sg.wa>.sg-header>.sg-icon{display:grid!important;order:0!important;width:44px;min-width:44px;height:44px;min-height:44px}
+ .sg.wa>.sg-header .sg-v3-wordmark{position:absolute;left:50%;transform:translateX(-50%);min-width:0!important;align-items:center}
+ .sg.wa>.sg-header .sg-v3-wordmark span:first-child{font-size:24px}
+ .sg.wa>.sg-header .sg-v3-wordmark span:last-child{font-size:33px}
+ .sg.wa>.sg-header .sg-header-actions{order:2;margin-left:auto;gap:5px}
+ .sg.wa>.sg-header .sg-header-actions .sg-icon{display:none!important}
+ .sg.wa>.sg-header .sg-inquire{font-size:10px!important;letter-spacing:.1em!important;padding:9px 11px;min-height:38px}
+}
+@media(prefers-reduced-motion:reduce){.sg.wa>.sg-header{transition:none}}
