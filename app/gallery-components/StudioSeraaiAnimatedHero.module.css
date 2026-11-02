@@ -49,3 +49,6 @@
 /* V3 final hero type and action styling */
 .eyebrow{font-family:var(--font-display),Georgia,serif;font-style:italic;letter-spacing:.19em}
 .cta{border-radius:999px}
+
+/* Ensure italic survives gallery-wide typography rules. */
+.eyebrow{font-style:italic!important;font-synthesis:style}
