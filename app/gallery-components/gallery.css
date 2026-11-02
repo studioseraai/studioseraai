@@ -253,3 +253,25 @@
 .sg.wa .wa-footer-social a:focus-visible{outline:2px solid #8b582e;outline-offset:4px}
 .sg.wa .wa-footer-social .wa-social-letter{font:700 25px/1 Georgia,serif}
 @media(prefers-reduced-motion:reduce){.sg.wa .wa-footer-social a{transition:none}}
+
+/* Final narrow-screen header/footer alignment and accessible controls. */
+@media(max-width:800px){
+ .sg.wa>.sg-header .sg-v3-wordmark{pointer-events:auto;z-index:1}
+ .sg.wa>.sg-header>.sg-icon,.sg.wa>.sg-header .sg-header-actions{position:relative;z-index:2}
+}
+@media(max-width:430px){
+ .sg.wa>.sg-header,.sg.wa:has(section[aria-label="Studio Seraai — A Gallery Without Walls"])>.sg-header{padding:0 9px!important}
+ .sg.wa>.sg-header .sg-v3-wordmark span:first-child{font-size:19px}
+ .sg.wa>.sg-header .sg-v3-wordmark span:last-child{font-size:26px}
+ .sg.wa>.sg-header .sg-inquire{padding:9px 8px;font-size:9px!important}
+ .sg.wa>.sg-header>.sg-icon{width:42px;min-width:42px}
+ .sg.wa .wa-footer-inner{gap:12px}
+ .sg.wa .wa-footer-logo{font-size:26px}
+ .sg.wa .wa-footer-tagline{font-size:15px;max-width:145px}
+ .sg.wa .wa-footer-social{gap:16px;flex-wrap:wrap}
+}
+@media(max-width:360px){
+ .sg.wa>.sg-header .sg-v3-wordmark span:first-child{font-size:17px}
+ .sg.wa>.sg-header .sg-v3-wordmark span:last-child{font-size:23px}
+ .sg.wa .wa-footer-inner nav a{font-size:17px}
+}
