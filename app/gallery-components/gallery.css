@@ -275,3 +275,6 @@
  .sg.wa>.sg-header .sg-v3-wordmark span:last-child{font-size:23px}
  .sg.wa .wa-footer-inner nav a{font-size:17px}
 }
+
+/* Desktop has complete navigation; keep hamburger exclusively for compact screens. */
+@media(min-width:801px){.sg.wa>.sg-header>.sg-icon{display:none!important}}
