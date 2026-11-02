@@ -1,47 +1,29 @@
-.hero {
-  --ease: cubic-bezier(.16,1,.3,1);
-  position: relative; isolation: isolate; overflow: hidden; container-type: inline-size;
-  min-height: 680px; height: max(680px,56.3vw); max-height: 1080px;
-  background: #e2d6c6; color: #2d251e;
-}
-.room { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.navBackdrop { position:absolute; inset:0 0 auto; height:110px; background:linear-gradient(#5c483a70,transparent); pointer-events:none; z-index:5; }
-.sideTables, .mainTable, .cube {position:absolute; pointer-events:none; will-change:transform,opacity;}
-.sideTables img,.mainTable img,.cube img {display:block;width:100%;height:auto;}
-/* Position the transparent full-canvas product PNGs, not a flat composite. */
-.sideTables {left:-5%; bottom:4%; width:38%; z-index:2; animation:sideIn 1.35s var(--ease) .45s both;}
-.mainTable {left:20%; bottom:-4%; width:65%; z-index:3; animation:tableIn 1.55s var(--ease) .16s both;}
-.cube {right:3.5%; top:-15%; width:30%; z-index:2; animation:cubeIn 1.55s var(--ease) 0s both;}
-.copy {position:absolute; left:8%; top:21%; z-index:4; max-width:45%;}
-.eyebrow {margin:0 0 19px; letter-spacing:.30em; font-size:clamp(10px,.9vw,14px); font-weight:500; animation:copyIn .9s var(--ease) 1.06s both;}
-.title {margin:0; font:400 clamp(58px,5.4vw,104px)/.99 var(--font-display), Georgia,serif; letter-spacing:-.035em; animation:copyIn 1s var(--ease) 1.2s both;}
-.title em {font-weight:400;}
-.description {margin:26px 0 29px; font-size:clamp(13px,1.05vw,17px);line-height:1.7; animation:copyIn 1s var(--ease) 1.34s both;}
-.cta {display:inline-flex; align-items:center; gap:25px; min-height:50px; padding:13px 22px; background:#403025; color:#faf5ee; text-decoration:none; font-size:11px; font-weight:600; letter-spacing:.16em; transition:background .25s,transform .25s; animation:copyIn .85s var(--ease) 1.5s both;}
-.cta span {font-size:20px;line-height:1;}
-.cta:hover {background:#6a4931; transform:translateY(-2px);}
-.cta:focus-visible {outline:2px solid #312216;outline-offset:5px;}
-.scrollHint {position:absolute;right:4%;bottom:4%;z-index:4;display:flex;gap:14px;align-items:center;font-size:10px;letter-spacing:.18em;animation:copyIn .8s var(--ease) 1.8s both;}
-.scrollHint span {font-size:21px;}
-@keyframes cubeIn {from {opacity:0;transform:translate3d(0,-75%,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@keyframes tableIn {from {opacity:0;transform:translate3d(0,85%,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@keyframes sideIn {from {opacity:0;transform:translate3d(-105%,0,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@keyframes copyIn {from {opacity:0;transform:translate3d(0,30px,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@media(max-width:1100px){.hero{height:800px}.copy{left:7%;top:20%;max-width:58%}.title{font-size:clamp(55px,7vw,82px)}.sideTables{width:45%;left:-8%;bottom:5%}.mainTable{width:82%;left:12%;bottom:2%}.cube{width:40%;right:-2%;top:-9%}}
-@media(max-width:650px){
-  .hero{height:max(790px,100svh);max-height:none;min-height:750px}
-  .room{object-position:47% center}.navBackdrop{height:90px}
-  .copy{left:7%;right:7%;top:145px;max-width:none}
-  .eyebrow{font-size:9px;margin-bottom:14px;letter-spacing:.23em}
-  .title{font-size:clamp(43px,11vw,65px)}
-  .description{font-size:12px;margin:18px 0 21px}
-  .cta{min-height:45px;padding:12px 16px;font-size:9px;gap:12px}
-  .cube{width:55%;top:-2%;right:-13%}
-  .sideTables{width:65%;left:-19%;bottom:10%}
-  .mainTable{width:130%;left:-12%;bottom:9%}
-  .scrollHint{font-size:8px;bottom:3%;right:5%}
-}
-@media(prefers-reduced-motion:reduce){
- .sideTables,.mainTable,.cube,.eyebrow,.title,.description,.cta,.scrollHint{animation:none;will-change:auto;}
- .cta{transition:none;}
+import styles from './StudioSeraaiAnimatedHero.module.css';
+
+/** Hero V2: asset-driven entrance with CSS-only animation, preserving existing shell/navigation. */
+export default function StudioSeraaiAnimatedHero() {
+  return (
+    <section className={styles.hero} aria-label="Studio Seraai — A Gallery Without Walls">
+      <img className={styles.room} src="/gallery/hero/room.webp" width={1671} height={941} alt="" fetchPriority="high" />
+      <div className={styles.navBackdrop} aria-hidden="true" />
+
+      <div className={styles.sideTables} aria-hidden="true">
+        <img src="/gallery/hero/v2-side-tables.webp" width={1536} height={1024} alt="" />
+      </div>
+      <div className={styles.mainTable} aria-hidden="true">
+        <img src="/gallery/hero/v2-main-table.webp" width={1672} height={941} alt="" />
+      </div>
+      <div className={styles.cube} aria-hidden="true">
+        <img src="/gallery/hero/v2-cube.webp" width={1312} height={1199} alt="" />
+      </div>
+
+      <div className={styles.copy}>
+        <p className={styles.eyebrow}>A GALLERY WITHOUT WALLS</p>
+        <h1 className={styles.title}>Art Belongs<br /><em>Everywhere.</em></h1>
+        <p className={styles.description}>Exceptional art. Thoughtfully curated.<br />Made to live beyond the gallery.</p>
+        <a className={styles.cta} href="#collections">EXPLORE COLLECTIONS <span aria-hidden="true">↗</span></a>
+      </div>
+      <p className={styles.scrollHint} aria-hidden="true">SCROLL TO EXPLORE <span>↓</span></p>
+    </section>
+  );
 }
