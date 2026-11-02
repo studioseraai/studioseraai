@@ -9,10 +9,10 @@
 .sideTables, .mainTable, .cube {position:absolute; pointer-events:none; will-change:transform,opacity;}
 .sideTables img,.mainTable img,.cube img {display:block;width:100%;height:auto;}
 /* Position the transparent full-canvas product PNGs, not a flat composite. */
-.sideTables {left:-5%; bottom:4%; width:38%; z-index:2; animation:sideIn 1.35s var(--ease) .45s both;}
-.mainTable {left:20%; bottom:-4%; width:65%; z-index:3; animation:tableIn 1.55s var(--ease) .16s both;}
-.cube {right:3.5%; top:-15%; width:30%; z-index:2; animation:cubeIn 1.55s var(--ease) 0s both;}
-.copy {position:absolute; left:8%; top:21%; z-index:4; max-width:45%;}
+.sideTables {left:1.5%; bottom:7%; width:32%; z-index:2; animation:sideIn 1.35s var(--ease) .45s both;}
+.mainTable {left:26%; bottom:4%; width:58%; z-index:3; animation:tableIn 1.55s var(--ease) .16s both;}
+.cube {right:8%; top:-8%; width:26%; z-index:2; animation:cubeIn 1.55s var(--ease) 0s both;}
+.copy {position:absolute; left:10%; top:24%; z-index:4; max-width:41%;}
 .eyebrow {margin:0 0 19px; letter-spacing:.30em; font-size:clamp(10px,.9vw,14px); font-weight:500; animation:copyIn .9s var(--ease) 1.06s both;}
 .title {margin:0; font:400 clamp(58px,5.4vw,104px)/.99 var(--font-display), Georgia,serif; letter-spacing:-.035em; animation:copyIn 1s var(--ease) 1.2s both;}
 .title em {font-weight:400;}
@@ -27,7 +27,7 @@
 @keyframes tableIn {from {opacity:0;transform:translate3d(0,85%,0);}to {opacity:1;transform:translate3d(0,0,0);}}
 @keyframes sideIn {from {opacity:0;transform:translate3d(-105%,0,0);}to {opacity:1;transform:translate3d(0,0,0);}}
 @keyframes copyIn {from {opacity:0;transform:translate3d(0,30px,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@media(max-width:1100px){.hero{height:800px}.copy{left:7%;top:20%;max-width:58%}.title{font-size:clamp(55px,7vw,82px)}.sideTables{width:45%;left:-8%;bottom:5%}.mainTable{width:82%;left:12%;bottom:2%}.cube{width:40%;right:-2%;top:-9%}}
+@media(max-width:1100px){.hero{height:800px}.copy{left:8%;top:20%;max-width:54%}.title{font-size:clamp(55px,7vw,82px)}.sideTables{width:39%;left:0%;bottom:8%}.mainTable{width:72%;left:21%;bottom:6%}.cube{width:35%;right:4%;top:-5%}}
 @media(max-width:650px){
   .hero{height:max(790px,100svh);max-height:none;min-height:750px}
   .room{object-position:47% center}.navBackdrop{height:90px}
@@ -36,9 +36,9 @@
   .title{font-size:clamp(43px,11vw,65px)}
   .description{font-size:12px;margin:18px 0 21px}
   .cta{min-height:45px;padding:12px 16px;font-size:9px;gap:12px}
-  .cube{width:55%;top:-2%;right:-13%}
-  .sideTables{width:65%;left:-19%;bottom:10%}
-  .mainTable{width:130%;left:-12%;bottom:9%}
+  .cube{width:46%;top:1%;right:-8%}
+  .sideTables{width:52%;left:-7%;bottom:13%}
+  .mainTable{width:112%;left:-5%;bottom:10%}
   .scrollHint{font-size:8px;bottom:3%;right:5%}
 }
 @media(prefers-reduced-motion:reduce){
