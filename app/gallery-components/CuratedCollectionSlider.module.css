@@ -16,9 +16,9 @@
 .preview:hover,.preview:focus-visible{opacity:1;transform:translateY(-5px)}
 .preview img{display:block;width:100%;height:190px;object-fit:contain;filter:drop-shadow(0 10px 9px #68503a24)}
 .center{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center}
-.fixedFrame{display:flex;align-items:center;justify-content:center;width:100%;height:300px;box-sizing:border-box;padding:15px;background:linear-gradient(135deg,#6c381d,#b97947 12%,#5b2a16 24%,#ad6936 72%,#492316);border:7px ridge #87502b;box-shadow:inset 0 0 0 3px #d4a16a,0 18px 26px #51351e44;text-decoration:none;transition:background .25s}
-.frameSurface{display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#f9f1e6;padding:16px;box-shadow:inset 0 0 0 1px #cfbaa1;overflow:hidden}
-.centerImage{display:block;max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;animation:imageAppear .28s ease both}
+.fixedFrame{display:flex;align-items:center;justify-content:center;width:100%;height:auto;max-height:300px;box-sizing:border-box;padding:13px;background:linear-gradient(135deg,#6c381d,#b97947 12%,#5b2a16 24%,#ad6936 72%,#492316);border:7px ridge #87502b;box-shadow:inset 0 0 0 3px #d4a16a,0 18px 26px #51351e44;text-decoration:none;transition:background .25s}
+.frameSurface{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;background:#f9f1e6;padding:5px;box-shadow:inset 0 0 0 1px #cfbaa1;overflow:hidden}
+.centerImage{display:block;max-height:100%;max-width:100%;width:100%;height:100%;object-fit:contain;animation:imageAppear .28s ease both;transition:transform .4s cubic-bezier(.2,.8,.2,1);transform-origin:center}
 @keyframes imageAppear{from{opacity:.55}to{opacity:1}}
 .fixedFrame[data-frame=black]{background:linear-gradient(135deg,#111,#5d5550 15%,#191715 30%,#3c3834 80%,#111);border-color:#282422;box-shadow:inset 0 0 0 3px #716962,0 18px 26px #3a303044}
 .fixedFrame[data-frame=white]{background:linear-gradient(135deg,#fff,#e3dcd4 22%,#faf9f5 70%,#ccc5bd);border-color:#e6ded6;box-shadow:inset 0 0 0 3px #fff,0 18px 26px #51423930}
@@ -42,3 +42,8 @@
 @media(max-width:1100px){.stage{grid-template-columns:45px minmax(0,1fr) minmax(300px,38vw) minmax(0,1fr) 45px;gap:8px;padding:0 12px}.fixedFrame{height:270px}.preview img{height:150px}}
 @media(max-width:700px){.section{min-height:0;padding:45px 0 55px}.intro{margin-bottom:20px}.intro h2{font-size:clamp(36px,10vw,48px)}.stage{grid-template-columns:38px minmax(0,1fr) 38px;gap:6px;padding:0 10px}.previewSide{display:none}.fixedFrame{height:260px;padding:9px;border-width:5px}.frameSurface{padding:10px}.arrow{width:35px;height:35px;font-size:21px}.caption strong{font-size:17px}.systemNote{font-size:10px;padding:7px 12px;gap:8px}.systemNote i{font-size:13px}.systemNote span{padding-left:8px}.footer{gap:13px}.progress{width:85px}.frameChoice{font-size:9px;padding:6px}.cta{font-size:10px;padding:12px 19px}}
 @media(prefers-reduced-motion:reduce){.preview,.centerImage,.progress i{transition:none;animation:none}}
+
+/* Paintings keep their natural frame shape; zoom stays clipped inside the mat. */
+.fixedFrame:hover .centerImage,.fixedFrame:focus-visible .centerImage{transform:scale(1.13)}
+@media(max-width:700px){.fixedFrame{max-height:260px}}
+@media(prefers-reduced-motion:reduce){.centerImage{transition:none!important}}
