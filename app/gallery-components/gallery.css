@@ -246,3 +246,10 @@
  .sg.wa .wa-footer-social{order:5;width:100%;justify-content:flex-start;gap:27px}
  .sg.wa .wa-footer-bottom{margin-top:34px!important;font-size:9px}
 }
+
+/* V3 footer: real linked social controls */
+.sg.wa .wa-footer-social a{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:42px;color:#422c1d;text-decoration:none;transition:color .2s,transform .2s}
+.sg.wa .wa-footer-social a:hover{color:#a36b32;transform:translateY(-3px)}
+.sg.wa .wa-footer-social a:focus-visible{outline:2px solid #8b582e;outline-offset:4px}
+.sg.wa .wa-footer-social .wa-social-letter{font:700 25px/1 Georgia,serif}
+@media(prefers-reduced-motion:reduce){.sg.wa .wa-footer-social a{transition:none}}
