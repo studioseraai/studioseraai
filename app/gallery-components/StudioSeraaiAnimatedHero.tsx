@@ -23,7 +23,6 @@ export default function StudioSeraaiAnimatedHero() {
         <p className={styles.description}>Exceptional art. Thoughtfully curated.<br />Made to live beyond the gallery.</p>
         <a className={styles.cta} href="#collections">EXPLORE COLLECTIONS <span aria-hidden="true">↗</span></a>
       </div>
-      <p className={styles.scrollHint} aria-hidden="true">SCROLL TO EXPLORE <span>↓</span></p>
     </section>
   );
 }
