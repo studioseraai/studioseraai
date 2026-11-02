@@ -19,7 +19,7 @@ export default function StudioSeraaiAnimatedHero() {
 
       <div className={styles.copy}>
         <p className={styles.eyebrow}>A GALLERY WITHOUT WALLS</p>
-        <h1 className={styles.title}>Art Belongs<br /><em>Everywhere.</em></h1>
+        <h1 className={styles.title}>Vision Meets<br /><em>Collection.</em></h1>
         <p className={styles.description}>Exceptional art. Thoughtfully curated.<br />Made to live beyond the gallery.</p>
         <a className={styles.cta} href="#collections">EXPLORE COLLECTIONS <span aria-hidden="true">↗</span></a>
       </div>
