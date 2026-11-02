@@ -28,3 +28,24 @@
 .flow :global(.wa-exhibitions) :global(.wa-exhibition-heading) :global(.sg-kicker){position:absolute;top:45px;left:0;right:0;text-align:center;font:700 15px Arial,sans-serif;letter-spacing:.22em;color:#3a2a22;pointer-events:none}
 .flow :global(.wa-exhibitions) :global(.wa-exhibition-heading){padding-top:40px}
 @media(max-width:800px){.flow :global(.wa-exhibitions) :global(.wa-exhibition-heading) :global(.sg-kicker){top:29px;font-size:13px}}
+
+/* Seamless Collections → Artists handoff. Match both surfaces without a hard band. */
+.flow :global(#collections)::after{
+  height:160px;
+  bottom:0;
+  inset:auto 0 0;
+  opacity:1;
+  z-index:1;
+  background:linear-gradient(to bottom,rgba(244,233,223,0) 0%,rgba(244,233,223,.48) 49%,#f4e9df 100%);
+}
+.flow :global(section[aria-label="Meet our artists"]){
+  margin-top:-1px!important;
+  z-index:3;
+}
+.flow :global(section[aria-label="Meet our artists"])::before{
+  display:none;
+}
+@media(max-width:800px){
+  .flow :global(#collections)::after{height:95px}
+  .flow :global(section[aria-label="Meet our artists"]){margin-top:-1px!important}
+}
