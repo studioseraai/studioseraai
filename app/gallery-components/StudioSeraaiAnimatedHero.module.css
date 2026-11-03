@@ -67,3 +67,14 @@
   .sideTables{left:3%;width:29%;bottom:-1%}
   .mainTable{left:25%;width:50%;bottom:0}
 }
+
+/* V3 hero final visual alignment — preserve composition and mobile staging. */
+.title,.title em{color:#442e22!important}
+@media(min-width:1101px){
+  .sideTables{left:6.5%;bottom:-2.5%}
+  .mainTable{left:30%;bottom:0}
+}
+@media(min-width:651px) and (max-width:1100px){
+  .sideTables{left:4%;bottom:-2%}
+  .mainTable{left:25%;bottom:0}
+}
