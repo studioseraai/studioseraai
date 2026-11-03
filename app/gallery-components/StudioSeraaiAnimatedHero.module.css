@@ -57,3 +57,13 @@
 .mainTable{left:36%;width:40%}
 @media(max-width:1100px){.mainTable{left:29%;width:50%}}
 @media(max-width:650px){.mainTable{left:5%;width:90%}}
+
+/* Final hero staging: center the main table; align both object bases with floor. */
+@media(min-width:1101px){
+  .sideTables{left:5%;width:24%;bottom:-1%}
+  .mainTable{left:30%;width:40%;bottom:0}
+}
+@media(min-width:651px) and (max-width:1100px){
+  .sideTables{left:3%;width:29%;bottom:-1%}
+  .mainTable{left:25%;width:50%;bottom:0}
+}
