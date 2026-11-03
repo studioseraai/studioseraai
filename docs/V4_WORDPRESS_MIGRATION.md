@@ -70,3 +70,23 @@ SERAAI OS remains the editor, Supabase remains the single database, and the V4 N
 - `theme` key: 0 artwork records.
 
 These are Supabase counts, **not** a guarantee of matching WordPress products. Verify the WordPress count from the extraction report.
+
+
+## Executed migration checkpoint — 2026-11-03
+
+**Database state (verified):**
+- Private schema `seraai_migration` created. Both `anon` and `authenticated` lack USAGE on this schema.
+- `seraai_migration.wordpress_products` holds **577** imported rows from the original private CSV, including the **567** published WordPress products; these are **staged only**, not web-publications.
+- Candidate matching by historical `webId` found **119** pairs across **118** unique WordPress IDs, including one ID collision. Artist mismatch and duplicate cases were excluded from the merge.
+- **95** unique ID/artist/title-or-size validated artworks enriched in `public.seraai_records`. These records received provenance references (`wordpressProductId`, `wordpressTitle`, `wordpressSlug`, `wordpressCategories`, `wordpressSize`, `wordpressImagePaths`, `wordpressMedium`, `wordpressSurface`) and fill-only `theme`, `style`, `surface`, `medium` where values were missing. This did **not** change existing titles, artists, sale status, gallery location, media records, or publication flags.
+- The exact before/after JSON for every affected record lives in `seraai_migration.wordpress_merge_snapshots` with batch `v4_2026_11_03_conservative`; **95 snapshots**, all **95 post-merge records** verified equal to expected after-data.
+- Overall: **511 artwork records**, **71 with theme**, **71 with style**, **95 linked to WordPress**, **499 published**. The extra WordPress image paths are references only—images have **not** been uploaded from the local backup.
+
+**Important limitations / next steps:**
+1. Do not auto-import all 577 WordPress products as new inventory rows: most have not been reconciled with the existing 511 records.
+2. The extra metadata currently appears in raw inventory JSON, but the existing public-gallery Edge Function does **not** return theme/surface/size. An attempted in-place API deployment was blocked by tooling, so **no public-gallery API changes were applied**; website Collection filter changes are pending.
+3. Further matches require review of mismatched artist/title/size, independent legacy IDs, and duplicate ID collisions. Photo filename serials alone are not reliable matches (only 17 artist-confirmed unique pairs among 78 unique serial pairs).
+4. Recover and upload verified original images from `homedir/public_html/wp-content/uploads`, match them by WordPress attachment reference, then link to the correct surviving Supabase artwork IDs.
+5. Keep all snapshot and staging schema contents private. Do not publish the original SQL dump or extracted raw CSV in GitHub.
+
+**Rollback guidance:** Restore `seraai_records.data` from `seraai_migration.wordpress_merge_snapshots.before_data` for this exact batch only after checking that no subsequent edits were made to those artworks; reconcile later edits first rather than overwriting them.
