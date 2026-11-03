@@ -11,7 +11,7 @@ export default function StudioSeraaiAnimatedHero() {
         <img src="/gallery/hero/v2-side-tables.webp" width={1536} height={1024} alt="" />
       </div>
       <div className={styles.mainTable} aria-hidden="true">
-        <img src="/gallery/hero/v2-main-table.webp" width={1672} height={941} alt="" />
+        <img src="/gallery/hero/seraai-v3-new-main-table.webp" width={1448} height={1086} alt="" />
       </div>
       <div className={styles.cube} aria-hidden="true">
         <img src="/gallery/hero/v2-cube.webp" width={1312} height={1199} alt="" />
