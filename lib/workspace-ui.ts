@@ -9,6 +9,11 @@ export type GalleryRecord = {
     webId?: string;
     webCode?: string;
     surface?: string;
+    theme?: string;
+    subject?: string;
+    wordpressSize?: string;
+    wordpressCategories?: string;
+    wordpressProductId?: number;
     originalSize?: string;
     importKey?: string;
     importSource?: string;
