@@ -52,3 +52,8 @@
 
 /* Ensure italic survives gallery-wide typography rules. */
 .eyebrow{font-style:italic!important;font-synthesis:style}
+
+/* V3 main table replacement: compact the 4:3 transparent asset into the existing composition. */
+.mainTable{left:36%;width:40%}
+@media(max-width:1100px){.mainTable{left:29%;width:50%}}
+@media(max-width:650px){.mainTable{left:5%;width:90%}}
