@@ -8,7 +8,7 @@ export default function StudioSeraaiAnimatedHero() {
       <div className={styles.navBackdrop} aria-hidden="true" />
 
       <div className={styles.sideTables} aria-hidden="true">
-        <img src="/gallery/hero/v2-side-tables.webp" width={1536} height={1024} alt="" />
+        <img src="/gallery/hero/seraai-v3-single-cabinet.webp" width={1536} height={1024} alt="" />
       </div>
       <div className={styles.mainTable} aria-hidden="true">
         <img src="/gallery/hero/seraai-v3-new-main-table.webp" width={1448} height={1086} alt="" />
