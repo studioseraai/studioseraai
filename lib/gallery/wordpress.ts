@@ -3,11 +3,11 @@
  *
  * In the existing WordPress admin, create a published Page with slug
  * "seraai-v3-homepage". Its title becomes the hero headline and its
- * excerpt becomes the hero description. This never writes to WordPress.
+ * main editor content becomes the hero description. This never writes to WordPress.
  * If the API fails, the design uses its existing static fallback.
  */
 export type WordPressHero = {title:string;description:string};
-const endpoint='https://studioseraai.com/wp-json/wp/v2/pages?slug=seraai-v3-homepage&_fields=id,slug,status,title,excerpt&per_page=1';
+const endpoint='https://studioseraai.com/wp-json/wp/v2/pages?slug=seraai-v3-homepage&_fields=id,slug,status,title,content,excerpt&per_page=1';
 function textOnly(value:unknown):string {
   if(typeof value!=='string')return '';
   return value.replace(/<[^>]*>/g,' ').replace(/&nbsp;|&#160;/gi,' ')
@@ -28,7 +28,7 @@ export async function getWordPressHero():Promise<WordPressHero|null>{
     const page=json[0];
     if(!page||typeof page!=='object'||page.status!=='publish')return null;
     const title=textOnly(page.title?.rendered);
-    const description=textOnly(page.excerpt?.rendered);
+    const description=textOnly(page.content?.rendered)||textOnly(page.excerpt?.rendered);
     if(!title)return null;
     return {title,description};
   }catch{return null;}
