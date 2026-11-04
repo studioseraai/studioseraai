@@ -1,7 +1,13 @@
 import styles from './StudioSeraaiAnimatedHero.module.css';
+import type {WordPressHero} from '../../lib/gallery/wordpress';
 
 /** Hero V2: asset-driven entrance with CSS-only animation, preserving existing shell/navigation. */
-export default function StudioSeraaiAnimatedHero() {
+export default function StudioSeraaiAnimatedHero({copy}:{copy?:WordPressHero|null}) {
+  const title=copy?.title||'Vision Meets Collection';
+  const words=title.trim().split(/\s+/);
+  const emphasized=words.length>1?words.pop()!:'Collection';
+  const leading=words.length?words.join(' '):'Vision Meets';
+  const description=copy?.description||'Exceptional art. Thoughtfully curated. Made to live beyond the gallery.';
   return (
     <section className={styles.hero} aria-label="Studio Seraai — A Gallery Without Walls">
       <img className={styles.room} src="/gallery/hero/room.webp" width={1671} height={941} alt="" fetchPriority="high" />
@@ -19,8 +25,8 @@ export default function StudioSeraaiAnimatedHero() {
 
       <div className={styles.copy}>
         <p className={styles.eyebrow}>A GALLERY WITHOUT WALLS</p>
-        <h1 className={styles.title}>Vision Meets<br /><em>Collection.</em></h1>
-        <p className={styles.description}>Exceptional art. Thoughtfully curated.<br />Made to live beyond the gallery.</p>
+        <h1 className={styles.title}>{leading}<br /><em>{emphasized}</em></h1>
+        <p className={styles.description}>{description}</p>
         <a className={styles.cta} href="#collections">EXPLORE COLLECTIONS <span aria-hidden="true">↗</span></a>
       </div>
     </section>
