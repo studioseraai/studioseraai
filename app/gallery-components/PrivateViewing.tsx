@@ -18,7 +18,7 @@ export default function PrivateViewing() {
         <div className={s.scene} role="img" aria-label="Studio Seraai private art consultation: a gallery representative presents artwork arrangements to a guest using the art visualizer.">
           <img
             className={s.photo}
-            src="/gallery/studio-seraai-v4-private-viewing-90.webp"
+            src="/studio-seraai-v4-private-viewing-blue-art.webp"
             alt=""
             loading="lazy"
             decoding="async"
