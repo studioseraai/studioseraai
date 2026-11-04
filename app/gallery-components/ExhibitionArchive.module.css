@@ -9,7 +9,7 @@
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .card{position:relative;display:block;min-width:0;aspect-ratio:1.83/1;overflow:hidden;border-radius:5px;color:#fff7ed;text-decoration:none;background-color:#967358;background-size:cover;background-position:center;box-shadow:0 12px 35px #4b2e1722;transition:transform .28s,filter .28s}
 .safar{background-image:linear-gradient(90deg,#321d11e8 0%,#493021d9 37%,#5d3a1b32 77%),url('/gallery/gallery.webp')}
-.ode{background-image:linear-gradient(90deg,#321d11e8 0%,#493021c7 37%,#5d3a1b28 75%),url('/gallery/warm-corridor.webp')}
+.ode{background-image:linear-gradient(90deg,#321d11d6 0%,#493021a8 40%,#5d3a1b16 80%),url('/gallery/an-ode-to-the-masters.webp');background-position:center 48%}
 .card:hover{filter:brightness(1.08);transform:translateY(-4px)}
 .overlay{height:100%;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(25px,3vw,55px)}
 .date,.subtitle{font:600 clamp(9px,.78vw,13px)/1.5 var(--font-interface),Arial,sans-serif;letter-spacing:.19em}
