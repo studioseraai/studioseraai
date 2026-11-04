@@ -13,7 +13,7 @@ export default function ExhibitionArchive(){
  return <section className={s.section} id="exhibitions" aria-labelledby="exhibitions-archive-title">
   <div className={s.heading}>
    <div><p className={s.kicker}>PREVIOUS EXHIBITIONS</p><h2 id="exhibitions-archive-title">From Our Archive.</h2></div>
-   <Link href="/events?period=past" className={s.all}>VIEW ALL EXHIBITIONS <span aria-hidden="true">→</span></Link>
+   <Link href="/events?period=past#exhibitions-list" className={s.all}>VIEW ALL EXHIBITIONS <span aria-hidden="true">→</span></Link>
   </div>
   <div className={s.slider}>
    <button type="button" className={s.prev} aria-label="Previous exhibitions" onClick={()=>setOffset(i=>(i-1+shows.length)%shows.length)}>←</button>
