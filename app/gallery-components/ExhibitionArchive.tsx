@@ -4,8 +4,8 @@ import Link from 'next/link';
 import s from './ExhibitionArchive.module.css';
 
 const shows=[
- {id:'safar',date:'05—09 SEPTEMBER 2026',title:<>Safar-e-<br/><em>Khayal</em></>,subtitle:'IRFAN AHMED · SOLO EXHIBITION',href:'/events/safar-e-khayal-2026'},
- {id:'ode',date:'AUGUST 2026',title:<>An Ode<br/><em>to the</em><br/>Masters</>,subtitle:'STUDIO SERAAI · KARACHI',href:'/events/an-ode-to-the-masters-2026'}
+ {id:'ode',date:'AUGUST 2026',title:<>An Ode<br/><em>to the</em><br/>Masters</>,subtitle:'STUDIO SERAAI · KARACHI',href:'/events/an-ode-to-the-masters-2026'},
+ {id:'safar',date:'05—09 SEPTEMBER 2026',title:<>Safar-e-<br/><em>Khayal</em></>,subtitle:'IRFAN AHMED · SOLO EXHIBITION',href:'/events/safar-e-khayal-2026'}
 ];
 export default function ExhibitionArchive(){
  const [offset,setOffset]=useState(0);
