@@ -46,7 +46,7 @@ export default function LivingCollage({artworks,initialQuery=''}:{artworks:Artwo
  const reset=()=>{setQuery('');setFilters({medium:'',surface:'',style:'',theme:'',artist:'',status:''});setSize('');setLimit(24);};
  const active=Boolean(query||size||Object.values(filters).some(Boolean));
  return <div className={styles.page}>
-  <header className={styles.heading}><span className={styles.eyebrow}>THE COLLECTION</span><span className={styles.line} aria-hidden="true"/><h1>Artworks</h1><p>A Curated Selection from Studio Seraai</p></header>
+  <div className={styles.heading}><span className={styles.eyebrow}>THE COLLECTION</span><span className={styles.line} aria-hidden="true"/><h1>Artworks</h1><p>A Curated Selection from Studio Seraai</p></div>
   <div className={styles.tools}>
    <button className={styles.allButton} type="button" onClick={reset}>All Artworks</button>
    <div className={styles.filters} aria-label="Artwork filters">
