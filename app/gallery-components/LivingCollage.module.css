@@ -7,3 +7,29 @@
 @media(max-width:1100px){.collage{grid-template-columns:repeat(8,minmax(0,1fr))}.collage .artItem[data-shape="portrait"]{grid-column:span 2}.collage .artItem[data-shape="landscape"]{grid-column:span 4}.collage .artItem[data-shape="square"]{grid-column:span 2}.grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.page{padding:38px 18px 58px}.heading{margin-bottom:20px}.tools{gap:10px}.filters{gap:8px}.filter{height:37px;min-width:0;padding-left:13px}.filter select{font-size:13px}.allButton{height:37px;font-size:13px;padding:0 18px}.views{height:37px}.secondary{gap:9px;margin-top:20px}.count{flex-basis:100%}.search{max-width:none;min-width:140px}.extra select,.sort select{max-width:115px}.collage{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.collage .artItem[data-shape="portrait"]{grid-column:span 2}.collage .artItem[data-shape="landscape"]{grid-column:span 4}.collage .artItem[data-shape="square"]{grid-column:span 2}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.artDetails{position:static;opacity:1;transform:none;background:none;box-shadow:none;padding:7px 0}.artDetails strong{font-size:13px}.artDetails small{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.artItem,.artDetails{transition:none}}
+
+/* V4 alignment lock: isolate heading and control rows from legacy global styling. */
+.page .heading{
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ width:100%;height:auto;min-height:0;padding:0;
+ background:transparent;border:0;position:relative;
+ margin:0 auto clamp(25px,3vw,42px);text-align:center;
+}
+.page .heading h1{
+ display:block;width:auto;max-width:100%;position:static;
+ font:400 clamp(50px,5.3vw,86px)/1.12 var(--font-display),Georgia,serif;
+ letter-spacing:-.04em;color:#2c2019;margin:0 0 6px;
+}
+.page .heading p{
+ display:block;position:static;margin:6px 0 0;
+ font:italic 400 clamp(17px,1.65vw,25px)/1.4 var(--font-display),Georgia,serif;
+ color:#71533e;text-wrap:balance;
+}
+.page .tools{width:100%;min-height:48px;align-items:center;justify-content:center}
+.page .secondary{width:100%;min-height:44px;align-items:center}
+@media(max-width:700px){
+ .page .heading{margin-bottom:24px}
+ .page .heading h1{font-size:clamp(46px,11vw,68px)}
+ .page .heading p{font-size:18px}
+ .page .secondary{justify-content:flex-start}
+}
