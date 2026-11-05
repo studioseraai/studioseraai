@@ -34,6 +34,7 @@ function arrange(arts:Artwork[]){
  return assigned;
 }
 export default function LivingCollage({artworks,initialQuery=''}:{artworks:Artwork[];initialQuery?:string}){
+ const [imageRatios,setImageRatios]=useState<Record<number,number>>({});
  const [query,setQuery]=useState(initialQuery),[filters,setFilters]=useState<Record<FilterKey,string>>({medium:'',surface:'',style:'',theme:'',artist:'',status:''}),[size,setSize]=useState(''),[sort,setSort]=useState('featured'),[limit,setLimit]=useState(24),[view,setView]=useState<'collage'|'grid'>('collage');
  const options=(key:FilterKey)=>[...new Set(artworks.map(a=>a[key]).filter(Boolean))].sort();
  const result=useMemo(()=>artworks.filter(a=>{
@@ -67,10 +68,16 @@ export default function LivingCollage({artworks,initialQuery=''}:{artworks:Artwo
    {active&&<button className={styles.clear} onClick={reset}>Clear filters <X size={13}/></button>}
   </div>
   {visible.length?<div className={view==='collage'?styles.collage:styles.grid} aria-label="Artwork collection">
-   {visible.map(({art,shape,frame},i)=><Link href={'/artworks/'+art.id} className={styles.artItem} data-shape={shape} data-frame={frame} key={art.id} style={{'--order':i} as React.CSSProperties}>
-    <div className={styles.frame}><img src={art.photos[0]?.id?'/api/gallery/image/'+art.photos[0].id:''} alt={art.title} loading={i<6?'eager':'lazy'} decoding="async"/></div>
+   {visible.map(({art,shape,frame},i)=>{
+    const storedW=Number(art.width),storedH=Number(art.height);
+    const match=(art.size||'').match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i);
+    const fallback=storedW>0&&storedH>0?storedW/storedH:match?Number(match[1])/Number(match[2]):shape==='portrait'?.72:shape==='landscape'?1.5:1;
+    const ratio=imageRatios[art.id]||fallback;
+    const measuredShape=ratio>1.15?'landscape':ratio<.87?'portrait':'square';
+    return <Link href={'/artworks/'+art.id} className={styles.artItem} data-shape={measuredShape} data-frame={frame} key={art.id} style={{'--order':i} as React.CSSProperties}>
+    <div className={styles.frame} style={{aspectRatio:String(ratio)}}><img src={art.photos[0]?.id?'/api/gallery/image/'+art.photos[0].id:''} alt={art.title} loading={i<6?'eager':'lazy'} decoding="async" onLoad={e=>{const img=e.currentTarget;const r=img.naturalWidth/img.naturalHeight;if(Number.isFinite(r)&&r>0)setImageRatios(prev=>prev[art.id]===r?prev:{...prev,[art.id]:r});}}/></div>
     <span className={styles.artDetails}><strong>{art.title}</strong><small>{art.artist||'Studio Seraai collection'}</small></span>
-   </Link>)}
+   </Link>})}
   </div>:<div className={styles.empty}><span className={styles.eyebrow}>THE COLLECTION</span><h2>{artworks.length?'No artworks match your selection.':'A collection, thoughtfully considered.'}</h2><p>{artworks.length?'Try another search or clear your filters.':'Our online selection is being curated. Contact the gallery to discover available works.'}</p><Link href="/contact">Inquire with the gallery <ArrowRight size={17}/></Link></div>}
   {result.length>limit&&<button className={styles.more} onClick={()=>setLimit(n=>n+24)}>Explore More Artworks <ArrowRight size={19}/></button>}
   {visible.length>0&&result.length<=limit&&<p className={styles.endNote}>EVERY WORK TELLS A STORY.</p>}
