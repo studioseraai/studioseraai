@@ -1,0 +1,43 @@
+/* Studio Seraai V4 — isolated floating navigation */
+.wave{
+ position:absolute;top:0;left:0;right:0;height:clamp(185px,20vw,350px);
+ background:#f1e2d7 url('/gallery/studio-seraai-navbar-wave.webp') center 10%/cover no-repeat;
+ pointer-events:none;z-index:39;
+ -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 23%,transparent 100%);
+ mask-image:linear-gradient(to bottom,#000 0%,#000 23%,transparent 100%);
+}
+.header{
+ position:fixed;top:clamp(14px,1.75vw,27px);left:50%;transform:translateX(-50%);
+ z-index:80;width:min(1820px,calc(100vw - 6%));min-height:clamp(76px,7vw,112px);
+ display:flex;align-items:center;gap:clamp(14px,2.3vw,38px);
+ padding:10px clamp(22px,3.7vw,65px);border-radius:999px;
+ border:1.6px solid #fffdf8ed;
+ background:linear-gradient(125deg,#fff8efad,#f3e5d5a6 52%,#f9efe6a5);
+ box-shadow:0 9px 30px #7c54321d,0 1px 2px #ffffffaa inset;
+ -webkit-backdrop-filter:blur(18px) saturate(125%);backdrop-filter:blur(18px) saturate(125%);
+ color:#39271b;transition:background .25s,box-shadow .25s,padding .25s;
+}
+.header[data-scrolled="true"]{background:linear-gradient(125deg,#fff9f2e8,#f5e9dddf);box-shadow:0 12px 34px #5e381d29}
+.brand{display:flex;flex-direction:column;justify-content:center;flex:none;min-width:clamp(140px,16vw,230px);padding-right:clamp(15px,3vw,60px);border-right:1px solid #ad8f7a88;text-decoration:none;color:#352215;line-height:.89;font-family:var(--font-display),Georgia,serif;letter-spacing:-.055em}
+.brand span:first-child{font-size:clamp(18px,1.65vw,26px);letter-spacing:.13em}
+.brand span:last-child{font-size:clamp(28px,2.7vw,43px)}
+.items{display:flex;align-items:center;justify-content:space-between;gap:clamp(12px,1.6vw,33px);flex:1;min-width:0}
+.navLink{display:inline-flex;align-items:center;gap:clamp(7px,.85vw,15px);font:700 clamp(10px,.82vw,14px)/1.25 var(--font-interface),Arial,sans-serif;letter-spacing:.16em;text-decoration:none;white-space:nowrap;color:#483124;min-height:44px;border-radius:10px;padding:5px}
+.navLink svg{width:clamp(18px,1.6vw,26px);height:clamp(18px,1.6vw,26px);stroke-width:1.75;flex:none}
+.navLink:hover,.navLink:focus-visible{color:#a5703c;background:#ffffff50}
+.actions{display:flex;align-items:center;justify-content:flex-end;flex:none;border-left:1px solid #ae8c74ac;padding-left:clamp(13px,2.5vw,45px)}
+.iconButton{display:grid;place-items:center;flex:none;width:clamp(42px,3.65vw,59px);height:clamp(42px,3.65vw,59px);border-radius:17px;border:1px solid #fffaf0db;background:#ffffff50;color:#36271d;cursor:pointer;box-shadow:inset 0 0 8px #ffffffaa}
+.iconButton:hover{background:#fffaf5c9}
+.iconButton svg{width:clamp(21px,1.7vw,29px);height:clamp(21px,1.7vw,29px);stroke-width:1.8}
+.menuButton{display:none}
+@media(max-width:1280px){.header{padding:10px 25px;gap:16px;width:calc(100vw - 4%)}.brand{min-width:160px;padding-right:18px}.brand span:first-child{font-size:19px}.brand span:last-child{font-size:31px}.navLink{font-size:10px;letter-spacing:.09em;gap:7px}.navLink svg{width:19px;height:19px}.items{gap:6px}.actions{padding-left:15px}}
+@media(max-width:970px){
+ .header{min-height:73px;padding:7px 21px;justify-content:space-between;gap:12px}
+ .items{display:none}.menuButton{display:grid}
+ .brand{border-right:0;padding:0;min-width:0;margin-right:auto}
+ .actions{border:0;padding-left:0;gap:10px}
+ .brand span:first-child{font-size:16px}.brand span:last-child{font-size:27px}
+ .iconButton{width:44px;height:44px;border-radius:15px}
+}
+@media(max-width:500px){.header{width:calc(100vw - 22px);top:12px;min-height:64px;padding:7px 14px}.wave{height:220px;background-position:55% top}.actions{gap:6px}.iconButton{width:38px;height:38px;border-radius:12px}.brand span:first-child{font-size:13px}.brand span:last-child{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.header{transition:none}}
