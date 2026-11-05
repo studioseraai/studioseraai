@@ -1,0 +1,17 @@
+.widget{position:fixed;right:clamp(15px,2vw,32px);bottom:clamp(18px,2.2vw,35px);z-index:95;display:flex;flex-direction:column;align-items:flex-end;gap:13px;pointer-events:none}
+.widget>*{pointer-events:auto}
+.fab{width:58px;height:58px;display:grid;place-items:center;border:1px solid #ffffffd9;border-radius:50%;background:#24b75a;color:white;cursor:pointer;box-shadow:0 8px 23px #174b274b,0 0 0 4px #ffffffb0;transition:transform .2s,background .2s}
+.fab svg{width:32px;height:32px}
+.fab:hover{background:#128c48;transform:translateY(-2px)}
+.fab:focus-visible,.close:focus-visible,.action:focus-visible{outline:3px solid #78502e;outline-offset:4px}
+.popup{position:relative;max-width:min(336px,calc(100vw - 32px));padding:21px 24px 22px;border:1px solid #ffffffee;border-radius:19px;color:#3e2b20;background:linear-gradient(130deg,#fff9f1f4,#f3e4d9ef);box-shadow:0 16px 40px #2b1d1340;-webkit-backdrop-filter:blur(15px);backdrop-filter:blur(15px);animation:appear .35s ease both}
+.kicker{font:700 9px/1.5 var(--font-interface),Arial,sans-serif;letter-spacing:.15em;color:#976c49;margin:0 24px 12px 0}
+.popup h2{font:400 28px/1.08 var(--font-display),Georgia,serif!important;letter-spacing:-.03em;margin:0 0 12px;color:#3b281b}
+.detail{font:400 13px/1.55 var(--font-interface),Arial,sans-serif;margin:0 0 18px;color:#665040}
+.close{position:absolute;right:12px;top:10px;width:28px;height:28px;border:0;border-radius:50%;background:transparent;color:#654a34;cursor:pointer;font-size:23px;line-height:1}
+.close:hover{background:#e6d2c4}
+.action{display:inline-flex;align-items:center;justify-content:center;gap:16px;background:#268b54;color:white;text-decoration:none;border-radius:30px;padding:11px 18px;font:600 12px/1.4 var(--font-interface),Arial,sans-serif}
+.action:hover{background:#17693c}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.widget{right:16px;bottom:calc(18px + env(safe-area-inset-bottom));gap:10px}.fab{width:51px;height:51px}.fab svg{width:29px;height:29px}.popup{max-width:min(310px,calc(100vw - 30px));padding:20px}.popup h2{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.popup{animation:none}.fab{transition:none}}
