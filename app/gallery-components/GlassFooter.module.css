@@ -44,3 +44,14 @@
 @media(max-width:800px){.top{grid-template-columns:1fr;gap:27px}.links{justify-content:flex-start}.glass{padding:28px 28px 21px}.lower{align-items:flex-start}}
 @media(max-width:520px){.shell{padding:31px 13px 20px}.glass{border-radius:26px;padding:25px 20px 18px}.links{gap:12px 19px}.links a{font-size:16px}.legal{gap:9px 20px}.social{gap:9px}.logo{font-size:39px}}
 @media(prefers-reduced-motion:reduce){.social a{transition:none}}
+
+/* V4 compact full-width footer override */
+.shell{padding:0;background:transparent}
+.wave{display:none}
+.glass{max-width:none;width:100%;box-sizing:border-box;margin:0;border-radius:24px 24px 0 0;padding:24px 5% 16px;background:linear-gradient(135deg,rgba(255,251,246,.9),rgba(250,238,225,.88)),url('/gallery/studio-seraai-navbar-wave.webp') center/cover;box-shadow:inset 0 1px 3px rgba(255,255,255,.9)}
+.top{grid-template-columns:minmax(185px,.6fr) minmax(0,1.6fr);gap:30px}
+.identity{gap:8px}
+.logo{font-size:clamp(27px,2.5vw,39px)}
+.rule{margin:16px 0 9px}
+@media(max-width:800px){.top{grid-template-columns:1fr;gap:18px}.glass{padding:23px 6% 16px}}
+@media(max-width:520px){.glass{padding:20px 5% 16px;border-radius:20px 20px 0 0}}
