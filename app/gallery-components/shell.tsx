@@ -4,6 +4,7 @@ import {useEffect,useRef,useState} from 'react';
 import {Menu,Search,X,ArrowUpRight,AtSign,Image as ImageIcon,UsersRound,Layers3,BookOpen,Info,Mail} from 'lucide-react';
 import nav from './FloatingNav.module.css';
 import footer from './GlassFooter.module.css';
+import WhatsAppConcierge from './WhatsAppConcierge';
 const links=[['Artworks','/collections'],['Artists','/artists'],['Exhibitions','/events'],['Journal','/journal'],['Our Story','/about'],['Contact','/contact']];
 const primaryLinks=[{title:'ARTWORKS',href:'/collections',Icon:ImageIcon},{title:'ARTISTS',href:'/artists',Icon:UsersRound},{title:'EXHIBITIONS',href:'/events',Icon:Layers3},{title:'JOURNAL',href:'/journal',Icon:BookOpen},{title:'ABOUT',href:'/about',Icon:Info},{title:'CONTACT US',href:'/contact',Icon:Mail}];
 export default function Shell({children}:{children:React.ReactNode}){const dialog=useRef<HTMLDialogElement>(null);const [mode,setMode]=useState('menu');const [scrolled,setScrolled]=useState(false);useEffect(()=>{const sync=()=>setScrolled(window.scrollY>24);sync();window.addEventListener('scroll',sync,{passive:true});return()=>window.removeEventListener('scroll',sync);},[]);return <div className="sg wa"><a className="sg-skip" href="#gallery-main">Skip to content</a><div className={nav.shell}><div className={nav.wave} aria-hidden="true"/><header className={nav.header} data-scrolled={scrolled}>
@@ -30,4 +31,4 @@ export default function Shell({children}:{children:React.ReactNode}){const dialo
   <div className={footer.legal}><span>© {new Date().getFullYear()} STUDIO SERAAI</span><Link href="/privacy">PRIVACY</Link></div>
  </div>
 </div>
-</footer></div>}
+</footer><WhatsAppConcierge/></div>}
