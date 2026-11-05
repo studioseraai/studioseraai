@@ -33,9 +33,9 @@ function arrange(arts:Artwork[]){
  }
  return assigned;
 }
-export default function LivingCollage({artworks,initialQuery=''}:{artworks:Artwork[];initialQuery?:string}){
+export default function LivingCollage({artworks,initialQuery='',initialArtist=''}:{artworks:Artwork[];initialQuery?:string;initialArtist?:string}){
  const [imageRatios,setImageRatios]=useState<Record<number,number>>({});
- const [query,setQuery]=useState(initialQuery),[filters,setFilters]=useState<Record<FilterKey,string>>({medium:'',surface:'',style:'',theme:'',artist:'',status:''}),[size,setSize]=useState(''),[sort,setSort]=useState('featured'),[limit,setLimit]=useState(24),[view,setView]=useState<'collage'|'grid'>('collage');
+ const [query,setQuery]=useState(initialQuery),[filters,setFilters]=useState<Record<FilterKey,string>>({medium:'',surface:'',style:'',theme:'',artist:initialArtist,status:''}),[size,setSize]=useState(''),[sort,setSort]=useState('featured'),[limit,setLimit]=useState(24),[view,setView]=useState<'collage'|'grid'>('collage');
  const options=(key:FilterKey)=>[...new Set(artworks.map(a=>a[key]).filter(Boolean))].sort();
  const result=useMemo(()=>artworks.filter(a=>{
   if(query&&!([a.title,a.artist,a.medium,a.style,a.theme,a.surface,a.size].join(' ').toLowerCase().includes(query.toLowerCase())))return false;
