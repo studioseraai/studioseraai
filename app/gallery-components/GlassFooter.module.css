@@ -55,3 +55,21 @@
 .rule{margin:16px 0 9px}
 @media(max-width:800px){.top{grid-template-columns:1fr;gap:18px}.glass{padding:23px 6% 16px}}
 @media(max-width:520px){.glass{padding:20px 5% 16px;border-radius:20px 20px 0 0}}
+
+/* V4 branded social hover states: bronze at rest, brand palettes on hover/focus. */
+.social a{transition:color .2s,background-color .2s,background .2s,transform .2s,box-shadow .2s}
+.social a:is(:hover,:focus-visible){transform:translateY(-2px) scale(1.08)}
+.social a[href*="instagram.com"]:is(:hover,:focus-visible){
+ color:#fff;
+ background:linear-gradient(135deg,#feda75 0%,#fa7e1e 23%,#d62976 53%,#962fbf 78%,#4f5bd5 100%);
+ box-shadow:0 3px 10px #d6297638;
+}
+.social a[href*="youtube.com"]:is(:hover,:focus-visible){color:#ff0033;background:#ff003312}
+.social a[href*="pinterest.com"]:is(:hover,:focus-visible){color:#e60023;background:#e6002312}
+.social a[href*="threads.com"]:is(:hover,:focus-visible){color:#111;background:#11111110}
+.social a[href*="x.com"]:is(:hover,:focus-visible){color:#111;background:#11111110}
+.social a[href*="tiktok.com"]:is(:hover,:focus-visible){
+ color:#151515;background:#ffffff80;
+ text-shadow:-2px -1px 0 #25f4ee,2px 1px 0 #fe2c55;
+}
+@media(prefers-reduced-motion:reduce){.social a,.social a:is(:hover,:focus-visible){transition:none;transform:none}}
