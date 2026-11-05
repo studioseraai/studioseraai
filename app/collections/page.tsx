@@ -1,6 +1,10 @@
 import Shell from '../gallery-components/shell';
-import {Intro,ConnectionNotice} from '../gallery-components/views';
-import {Catalog} from '../gallery-components/interactive';
+import {ConnectionNotice} from '../gallery-components/views';
+import LivingCollage from '../gallery-components/LivingCollage';
 import {getGallery} from '../../lib/gallery/server';
-export const metadata={title:'Collections — Studio Seraai'};export const dynamic='force-dynamic';
-export default async function Page({searchParams}:{searchParams:Promise<{q?:string}>}){const data=await getGallery();const q=await searchParams;return <Shell><Intro label="OUR COLLECTION" title="Beyond the Ordinary. Into Art." description="A curated collection of timeless works, from emerging voices to iconic masters." image/><ConnectionNotice data={data}/><Catalog artworks={data.artworks} initialQuery={q.q}/></Shell>;}
+export const metadata={title:'Artworks — Studio Seraai',description:'Explore a curated collection of art in the Studio Seraai living collage.'};
+export const dynamic='force-dynamic';
+export default async function Page({searchParams}:{searchParams:Promise<{q?:string}>}){
+ const [data,q]=await Promise.all([getGallery(),searchParams]);
+ return <Shell><ConnectionNotice data={data}/><LivingCollage artworks={data.artworks} initialQuery={q.q}/></Shell>;
+}
