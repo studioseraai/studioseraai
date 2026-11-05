@@ -10,13 +10,20 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
  const count=works.length;
  const [index,setIndex]=useState(Math.min(2,Math.max(0,count-1)));
  const [frameColor,setFrameColor]=useState<'wood'|'black'|'white'>('wood');
+ const [imageRatios,setImageRatios]=useState<Record<number,number>>({});
  const active=works[index];
  // Use catalogued dimensions to shape the frame for portrait, square and landscape works.
  const width=Number.parseFloat(String(active?.width??''));
  const height=Number.parseFloat(String(active?.height??''));
- const ratio=Number.isFinite(width)&&Number.isFinite(height)&&width>0&&height>0
-  ? Math.max(.55,Math.min(1.7,width/height)) : 1;
- const frameWidth=Math.round(300*ratio);
+ const recordedRatio=Number.isFinite(width)&&Number.isFinite(height)&&width>0&&height>0 ? width/height : 1;
+ // The actual image ratio wins over approximate inventory dimensions when it becomes available.
+ const ratio=imageRatios[active?.id]||recordedRatio;
+ const frameHeight=Math.min(350,Math.round(430/Math.max(ratio,.15)));
+ const frameWidth=Math.round(frameHeight*ratio);
+ const rememberImageRatio=(id:number,img:HTMLImageElement)=>{
+  const next=img.naturalWidth/img.naturalHeight;
+  if(Number.isFinite(next)&&next>0)setImageRatios(previous=>previous[id]===next?previous:{...previous,[id]:next});
+ };
  const choose=(next:number)=>setIndex((next+count)%count);
  const image=(a:Artwork)=>'/api/gallery/image/'+encodeURIComponent(a.photos[0].id);
  return <section className={styles.section} id="collections" aria-labelledby="collection-title">
@@ -30,12 +37,12 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
    <div className={styles.stage} aria-label="Featured artworks">
     <button className={styles.arrow} type="button" onClick={()=>choose(index-1)} disabled={count<2} aria-label="Previous artwork">←</button>
     <div className={styles.previewSide}>
-     {[2,1].map(offset=>{const a=works[(index-offset+count)%count];return <button key={'left-'+offset} type="button" className={styles.preview} disabled={count<2} onClick={()=>choose(index-offset)} aria-label={'Select '+a.title}><img src={image(a)} alt={a.title} loading="lazy"/></button>})}
+     {[2,1].map(offset=>{const a=works[(index-offset+count)%count];return <button key={'left-'+offset} type="button" className={styles.preview} disabled={count<2} onClick={()=>choose(index-offset)} aria-label={'Select '+a.title}><img src={image(a)} alt={a.title} loading="lazy" onLoad={e=>rememberImageRatio(a.id,e.currentTarget)}/></button>})}
     </div>
     <div className={styles.center}>
-     <Link className={styles.fixedFrame} style={{width:`min(100%, ${frameWidth}px)`,aspectRatio:String(ratio)}} href={'/artworks/'+active.id} data-frame={frameColor} aria-label={'View '+active.title} title="Open artwork; hover to zoom" >
+     <Link className={styles.fixedFrame} style={{width:`min(100%, ${frameWidth}px)`,aspectRatio:String(ratio),maxHeight:`${frameHeight}px`}} href={'/artworks/'+active.id} data-frame={frameColor} aria-label={'View '+active.title} title="Open artwork; hover to zoom" >
       <span className={styles.frameSurface}>
-       <img key={active.id} className={styles.centerImage} src={image(active)} alt={active.title} loading="eager"/>
+       <img key={active.id} className={styles.centerImage} src={image(active)} alt={active.title} loading="eager" onLoad={e=>rememberImageRatio(active.id,e.currentTarget)}/>
       </span>
      </Link>
      <div className={styles.caption} aria-live="polite"><strong>{active.title}</strong><small>{active.artist||'STUDIO SERAAI'}</small></div>
