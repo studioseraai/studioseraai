@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import Link from 'next/link';
 import {ArrowLeft,ArrowRight,ImagePlus,Maximize2,Move,RotateCcw,X} from 'lucide-react';
-import type {Artwork} from '../../lib/gallery/types';
+import type {Artwork} from '../../../lib/gallery/types';
 import s from './CollectorsView.module.css';
 
 type Finish='wood'|'black'|'white'|'silver'|'gold';
