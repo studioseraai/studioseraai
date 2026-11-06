@@ -9,7 +9,7 @@ export default function StudioSeraaiAnimatedHero({copy}:{copy?:WordPressHero|nul
   const leading=words.length?words.join(' '):'Vision Meets';
   const description=copy?.description||'Exceptional art. Thoughtfully curated. Made to live beyond the gallery.';
   return (
-    <section className={styles.hero} aria-label="Studio Seraai — A Gallery Without Walls">
+    <section className={styles.hero} aria-label="Studio Seraai — A Gallery Where Walls Breathe Art.">
       <img className={styles.room} src="/gallery/hero/room.webp" width={1671} height={941} alt="" fetchPriority="high" />
       <div className={styles.navBackdrop} aria-hidden="true" />
 
@@ -24,7 +24,7 @@ export default function StudioSeraaiAnimatedHero({copy}:{copy?:WordPressHero|nul
       </div>
 
       <div className={styles.copy}>
-        <p className={styles.eyebrow}>A GALLERY WITHOUT WALLS</p>
+        <p className={styles.eyebrow}>A GALLERY WHERE WALLS BREATHE ART.</p>
         <h1 className={styles.title}>{leading}<br /><em>{emphasized}</em></h1>
         <p className={styles.description}>{description.includes('Made to live beyond the gallery.') ? <>{description.slice(0,description.indexOf('Made to live beyond the gallery.')).trim()}<br />{description.slice(description.indexOf('Made to live beyond the gallery.')).trim()}</> : description}</p>
         <a className={styles.cta} href="#collections">EXPLORE COLLECTIONS <span aria-hidden="true">↗</span></a>
