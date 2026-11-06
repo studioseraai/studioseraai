@@ -24,11 +24,10 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}) {
         </div>
         <div className={s.right}>
           <div className={s.rule} aria-hidden="true"/>
-          <p className={s.eyebrow}>Featured <em>Artist</em>s</p>
-          <h2 className={s.name} id="home-artist-heading">Our Artists</h2>
+          <h2 className={s.eyebrow} id="home-artist-heading">Featured <em>Artist</em>s</h2>
+          
           <p className={s.description}>
-            Meet the creative minds behind the collection—artists whose imagination,
-            craftsmanship, and distinctive perspectives turn ideas into works that stay with us.
+            Meet the creative minds behind the collection—artists whose imagination, craftsmanship, and distinctive perspectives turn ideas into works that will adorn the walls of your home.
           </p>
           <div className={s.actionRow}>
             <Link className={s.cta} href="/artists">
