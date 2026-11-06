@@ -1,5 +1,22 @@
-import Link from 'next/link';import {notFound} from 'next/navigation';
-import Shell from '../../gallery-components/shell';import {Related} from '../../gallery-components/views';import {ArtworkImages} from '../../gallery-components/interactive';import {getGallery} from '../../../lib/gallery/server';
+import {notFound} from 'next/navigation';
+import Shell from '../../gallery-components/shell';
+import CollectorsView from './CollectorsView';
+import {getGallery} from '../../../lib/gallery/server';
+
 export const dynamic='force-dynamic';
-export async function generateMetadata({params}:{params:Promise<{id:string}>}){const {id}=await params;const data=await getGallery();return {title:(data.artworks.find(a=>String(a.id)===id)?.title||'Artwork')+' — Studio Seraai'};}
-export default async function Page({params}:{params:Promise<{id:string}>}){const {id}=await params;const data=await getGallery();if(data.unavailable)throw Error('Gallery unavailable');const a=data.artworks.find(a=>String(a.id)===id);if(!a)notFound();return <Shell><section className="sg-detail sg-light"><ArtworkImages art={a}/><div className="sg-detail-copy"><Link className="sg-kicker" href="/collections">← BACK TO COLLECTION</Link><h1>{a.title}</h1>{a.artist&&<p className="sg-serif"><Link href={'/artists/'+encodeURIComponent(a.artist)}>{a.artist} ↗</Link></p>}<dl>{[['Medium',a.medium],['Surface',a.surface],['Theme',a.theme],['Style',a.style],['Dimensions',a.width&&a.height?`${a.width} × ${a.height} ${a.dimensionUnit||'cm'}`:a.size],['Year',a.year],['Availability',a.status]].filter(([,v])=>v).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>{a.description&&<p>{a.description}</p>}<Link className="sg-button" href={'/contact?artwork='+a.id}>INQUIRE ABOUT THIS WORK ↗</Link><p className="sg-small">Contact the gallery for pricing and viewing arrangements.</p></div></section><Related data={data} exclude={a.id}/></Shell>;}
+
+export async function generateMetadata({params}:{params:Promise<{id:string}>}){
+ const {id}=await params;
+ const data=await getGallery();
+ const art=data.artworks.find(a=>String(a.id)===id);
+ return {title:(art?.title||'Artwork')+' — Studio Seraai',description:art?'Explore '+art.title+' by '+(art.artist||'Studio Seraai')+', including medium, surface, style, theme and dimensions.':'Discover exceptional art at Studio Seraai.'};
+}
+export default async function Page({params}:{params:Promise<{id:string}>}){
+ const {id}=await params;
+ const data=await getGallery();
+ if(data.unavailable)throw Error('Gallery unavailable');
+ const art=data.artworks.find(a=>String(a.id)===id);
+ if(!art||!art.photos?.length)notFound();
+ const related=data.artworks.filter(a=>a.id!==art.id&&a.photos?.length).sort((a,b)=>Number(b.artist===art.artist)-Number(a.artist===art.artist)).slice(0,12);
+ return <Shell><CollectorsView art={art} related={related}/></Shell>;
+}
