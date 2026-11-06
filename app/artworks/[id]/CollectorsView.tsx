@@ -49,7 +49,7 @@ export default function CollectorsView({art,related}:{art:Artwork;related:Artwor
    </div>
   </section>
   {related.length>0&&<section className={s.related} aria-labelledby="related-title">
-   <div className={s.relatedIntro}><div><p className={s.kicker}>CONTINUE EXPLORING</p><h2 id="related-title">Another Way of Seeing</h2></div><div className={s.railControls}><button onClick={()=>move(-1)} aria-label="Previous artworks"><ArrowLeft size={18}/></button><button onClick={()=>move(1)} aria-label="Next artworks"><ArrowRight size={18}/></button></div></div>
+   <div className={s.relatedIntro}><div><p className={s.kicker}>CONTINUE EXPLORING</p><h2 id="related-title">Some Other Artworks That May Incite You!</h2></div><div className={s.railControls}><button onClick={()=>move(-1)} aria-label="Previous artworks"><ArrowLeft size={18}/></button><button onClick={()=>move(1)} aria-label="Next artworks"><ArrowRight size={18}/></button></div></div>
    <div className={s.rail} ref={rail}>{related.map(item=><Link className={s.relatedItem} href={'/artworks/'+item.id} key={item.id}><div className={s.relatedArt}><img src={source(item)} alt={item.title} loading="lazy"/></div><div className={s.relatedCaption}><strong>{item.title}</strong><span>{item.artist||'Studio Seraai'} · {item.medium||'Artwork'}</span></div></Link>)}</div>
   </section>}
  </div>;
