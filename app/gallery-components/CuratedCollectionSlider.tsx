@@ -9,7 +9,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
  const works=[...artworks].filter(a=>a.photos?.[0]?.id).sort((a,b)=>Number(b.featured)-Number(a.featured)).slice(0,12);
  const count=works.length;
  const [index,setIndex]=useState(Math.min(2,Math.max(0,count-1)));
- const [frameColor,setFrameColor]=useState<'wood'|'black'|'white'>('wood');
+ const [frameColor,setFrameColor]=useState<'wood'|'black'|'white'|'silver'|'gold'>('wood');
  const [imageRatios,setImageRatios]=useState<Record<number,number>>({});
  const active=works[index];
  // Use catalogued dimensions to shape the frame for portrait, square and landscape works.
@@ -53,7 +53,7 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
     <button className={styles.arrow} type="button" onClick={()=>choose(index+1)} disabled={count<2} aria-label="Next artwork">→</button>
    </div>
    <div className={styles.footer}>
-    <div className={styles.framePicker} role="group" aria-label="Center painting frame finish"><span>FRAME</span>{(['wood','black','white'] as const).map(color=><button key={color} className={styles.frameChoice} type="button" data-color={color} aria-pressed={frameColor===color} onClick={()=>setFrameColor(color)}><i aria-hidden="true"/>{color.toUpperCase()}</button>)}</div>
+    <div className={styles.framePicker} role="group" aria-label="Center painting frame finish"><span>FRAME</span>{(['wood','black','white','silver','gold'] as const).map(color=><button key={color} className={styles.frameChoice} type="button" data-color={color} aria-pressed={frameColor===color} onClick={()=>setFrameColor(color)}><i aria-hidden="true"/>{color.toUpperCase()}</button>)}</div>
     <span className={styles.counter} aria-live="polite">{String(index+1).padStart(2,'0')} <span className={styles.progress}><i style={{width:`${((index+1)/count)*100}%`}}/></span> {String(count).padStart(2,'0')}</span>
     <Link className={styles.cta} href="/collections">VIEW COLLECTION <span aria-hidden="true">→</span></Link>
    </div>
