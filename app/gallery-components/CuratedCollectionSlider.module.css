@@ -92,3 +92,9 @@
 .frameSurface{box-sizing:border-box;min-width:0;min-height:0}
 .centerImage{display:block;object-fit:contain}
 @media(max-width:700px){.fixedFrame{height:auto!important;max-height:none!important}}
+
+/* V4 frame finish additions: silver and gold */
+.fixedFrame[data-frame=silver]{background:linear-gradient(135deg,#f5f6f6 0%,#b5b9bc 12%,#eeeeee 27%,#858d91 54%,#dce1e1 77%,#a2a8ab 100%);border-color:#aeb4b7;box-shadow:inset 0 0 0 3px #f5f7f7,0 18px 26px #43484d38}
+.fixedFrame[data-frame=gold]{background:linear-gradient(135deg,#e3b75b 0%,#fff0bb 12%,#bb8334 29%,#f5d58e 54%,#a87029 77%,#e3b75b 100%);border-color:#ae7b33;box-shadow:inset 0 0 0 3px #ffe3a3,0 18px 26px #51351e44}
+.frameChoice[data-color=silver] i{background:linear-gradient(140deg,#f8f9fa,#8c959a);border-color:#a2a9af}
+.frameChoice[data-color=gold] i{background:linear-gradient(140deg,#ffe8a2,#b27a29);border-color:#ad7b34}
