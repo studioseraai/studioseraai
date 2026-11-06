@@ -76,7 +76,12 @@ export default function LivingCollage({artworks,initialQuery='',initialArtist=''
     const measuredShape=ratio>1.15?'landscape':ratio<.87?'portrait':'square';
     return <Link href={'/artworks/'+art.id} className={styles.artItem} data-shape={measuredShape} data-frame={frame} key={art.id} style={{'--order':i} as React.CSSProperties}>
     <div className={styles.frame} style={{aspectRatio:String(ratio)}}><img src={art.photos[0]?.id?'/api/gallery/image/'+art.photos[0].id:''} alt={art.title} loading={i<6?'eager':'lazy'} decoding="async" onLoad={e=>{const img=e.currentTarget;const r=img.naturalWidth/img.naturalHeight;if(Number.isFinite(r)&&r>0)setImageRatios(prev=>prev[art.id]===r?prev:{...prev,[art.id]:r});}}/></div>
-    <span className={styles.artDetails}><strong>{art.title}</strong><small>{art.artist||'Studio Seraai collection'}</small></span>
+    <span className={styles.artDetails}>
+      <strong>{art.title}</strong>
+      <small>{art.artist||'Studio Seraai collection'}</small>
+      <span className={styles.attributeLine}>{[art.medium,art.surface,art.style,art.theme].filter(Boolean).join(' · ')}</span>
+      <span className={styles.dimensionLine}>{Number(art.width)>0&&Number(art.height)>0?`${art.width} × ${art.height} ${art.dimensionUnit||'cm'}`:art.size||''}</span>
+    </span>
    </Link>})}
   </div>:<div className={styles.empty}><span className={styles.eyebrow}>THE COLLECTION</span><h2>{artworks.length?'No artworks match your selection.':'A collection, thoughtfully considered.'}</h2><p>{artworks.length?'Try another search or clear your filters.':'Our online selection is being curated. Contact the gallery to discover available works.'}</p><Link href="/contact">Inquire with the gallery <ArrowRight size={17}/></Link></div>}
   {result.length>limit&&<button className={styles.more} onClick={()=>setLimit(n=>n+24)}>Explore More Artworks <ArrowRight size={19}/></button>}
