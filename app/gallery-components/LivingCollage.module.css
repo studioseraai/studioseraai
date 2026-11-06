@@ -39,3 +39,9 @@
 .frame img{object-fit:contain;min-width:0;min-height:0}
 .artItem[data-shape="landscape"] .frame,.artItem[data-shape="portrait"] .frame,.artItem[data-shape="square"] .frame{height:auto}
 .grid .frame{height:auto}
+
+/* Attribute preview: compact details without changing the artwork/frame proportions. */
+.attributeLine,.dimensionLine{display:block;font:500 10px/1.35 var(--font-interface),Arial,sans-serif;color:#806852;overflow-wrap:anywhere}
+.attributeLine{margin-top:4px}
+.dimensionLine{color:#997a5f}
+@media(max-width:700px){.attributeLine,.dimensionLine{font-size:9px;line-height:1.4}}
