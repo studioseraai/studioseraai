@@ -1,10 +1,26 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
 import Link from 'next/link';
 import {ArrowRight, House, Projector} from 'lucide-react';
 import s from './PrivateViewing.module.css';
 
 export default function PrivateViewing() {
+  const sectionRef=useRef<HTMLElement>(null);
+  const [entered,setEntered]=useState(false);
+  const [motionReady,setMotionReady]=useState(false);
+  useEffect(()=>{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+    const section=sectionRef.current;
+    if(!section)return;
+    const observer=new IntersectionObserver(([entry])=>{
+      if(entry.isIntersecting){setEntered(true);observer.disconnect();}
+    },{threshold:0.12});
+    observer.observe(section);
+    setMotionReady(true);
+    return ()=>observer.disconnect();
+  },[]);
   return (
-    <section className={s.section} aria-labelledby="private-viewing-heading">
+    <section ref={sectionRef} className={s.section} data-motion={motionReady?(entered?'visible':'pending'):'off'} aria-labelledby="private-viewing-heading">
       <div className={s.inner}>
         <div className={s.copy}>
           <div className={s.eyebrow}><span>STUDIO SERAAI</span><span className={s.eyebrowRule} aria-hidden="true" /></div>
