@@ -78,9 +78,9 @@ export default function Page(){
    </div>
    <div className={s.founderCopy}>
     <p className={s.kicker}>ABOUT THE FOUNDER</p>
-    <h2 id="about-founder">Dr Nasser Jauyna</h2>
+    <h2 id="about-founder">Dr Nasser Janjua</h2>
     <span className={s.rule} aria-hidden="true"/>
-    <p>After more than thirty years of appreciating and collecting art, Dr Nasser Jauyna founded Studio Seraai following his career as a bureaucrat. His vision is to promote art while ensuring artists receive the respect, recognition and economic appreciation they deserve.</p>
+    <p>After more than thirty years of appreciating and collecting art, Dr Nasser Janjua founded Studio Seraai following his career as a bureaucrat. His vision is to promote art while ensuring artists receive the respect, recognition and economic appreciation they deserve.</p>
     <Link className={s.founderLink} href="/contact">BEGIN A CONVERSATION <ArrowUpRight size={15} aria-hidden="true"/></Link>
    </div>
    <div className={s.founderAccent} aria-hidden="true"/>
