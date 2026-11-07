@@ -37,7 +37,7 @@ export default async function Page({searchParams}:{searchParams:Promise<{period?
    <div className={styles.waveRight} aria-hidden="true"/>
    <div className={styles.intro}>
     <p className={styles.eyebrow}>THE EXHIBITIONS</p>
-    <h1 id="exhibition-page-heading">Our Exhibitions</h1>
+    <h1 id="exhibition-page-heading">Exhibitions</h1>
     <p className={styles.subtitle}>A journey through our past and upcoming exhibitions.</p>
    </div>
    <div className={styles.list} id="exhibitions-list">
