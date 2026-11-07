@@ -27,7 +27,7 @@ export default function Page(){
    <div className={s.heroCopy}>
     <p className={s.kicker}>ABOUT US</p>
     <h1 id="about-title">Studio Seraai</h1>
-    <p className={s.heroTagline}>A Gallery Without Walls.</p>
+    <p className={s.heroTagline}>A GALLERY WHERE WALLS BREATHE ART.</p>
     <span className={s.rule} aria-hidden="true"/>
     <p className={s.heroDescription}>“Seraai” is a Turkish / Persian word for a traveller’s inn or royal palace. A temporary home for art, until it finds a permanent place with those who cherish it.</p>
    </div>
