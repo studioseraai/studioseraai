@@ -21,7 +21,7 @@ export default function Shell({children}:{children:React.ReactNode}){const dialo
  <div className={footer.top}>
   <div className={footer.identity}>
    <Link href="/" className={footer.logo} aria-label="Studio Seraai home"><span>STUDIO</span><span>SERAAI</span></Link>
-   <p className={footer.tagline}>A Gallery Without Walls.</p>
+   <p className={footer.tagline}>A GALLERY WHERE WALLS BREATHE ART.</p>
   </div>
   <nav className={footer.links} aria-label="Footer navigation">{links.map(([label,url])=><Link key={url} href={url}>{label}</Link>)}</nav>
  </div>
