@@ -1,5 +1,5 @@
 import Shell from '../gallery-components/shell';
-import {MapPin,Phone,Clock3,Instagram,Youtube,AtSign,ExternalLink,Navigation} from 'lucide-react';
+import {MapPin,Phone,Clock3,AtSign,ExternalLink,Navigation} from 'lucide-react';
 import {ViewingQuestions} from '../gallery-components/editorial';
 import ContactV4Form from './ContactV4Form';
 import s from './ContactV4.module.css';
@@ -31,8 +31,8 @@ export default async function Page({searchParams}:{searchParams:Promise<{artwork
           <div className={s.follow}>
             <p>FOLLOW US</p>
             <div className={s.socials} aria-label="Follow Studio Seraai">
-              <a href="https://www.instagram.com/studioseraai_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram aria-hidden="true"/></a>
-              <a href="https://www.youtube.com/channel/UC4sp_C-lEp9Iw82owk_uKaw" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><Youtube aria-hidden="true"/></a>
+              <a href="https://www.instagram.com/studioseraai_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.8" cy="6.3" r="1" fill="currentColor" stroke="none"/></svg></a>
+              <a href="https://www.youtube.com/channel/UC4sp_C-lEp9Iw82owk_uKaw" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
               <a href="https://www.pinterest.com/studioseraai/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" className={s.socialLetter}>P</a>
               <a href="https://www.threads.com/@studioseraai_" target="_blank" rel="noopener noreferrer" aria-label="Threads"><AtSign aria-hidden="true"/></a>
               <a href="https://x.com/studioseraai" target="_blank" rel="noopener noreferrer" aria-label="X" className={s.socialLetter}>𝕏</a>
