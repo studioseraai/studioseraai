@@ -19,10 +19,10 @@ export default function PrivateViewing() {
         </div>
         <div className={s.collage} aria-label="Private artwork consultations at home or with Studio Seraai's in-gallery projector">
           <div className={s.homeScene}>
-            <img src="/gallery/studio-seraai-v4-private-viewing-90.webp" alt="Artwork visualization consultation in a warm interior" loading="lazy" decoding="async"/>
+            <img src="/gallery/seraai-v5-cta-home.webp" alt="Artwork visualization consultation in a warm interior" loading="lazy" decoding="async"/>
           </div>
           <div className={s.studioScene}>
-            <img src="/gallery/studio-seraai-v4-private-viewing-blue-art.webp" alt="Studio Seraai representative presenting an artwork placement using a projector" loading="lazy" decoding="async" width={1672} height={941}/>
+            <img src="/gallery/seraai-v5-cta-projector.webp" alt="Studio Seraai representative presenting an artwork placement using a projector" loading="lazy" decoding="async" width={1448} height={1086}/>
           </div>
           <div className={s.homeBadge}><House aria-hidden="true" size={24} strokeWidth={1.6}/><span>HOME VISIT<br/>ART CONSULTATION</span></div>
           <div className={s.studioBadge}><Projector aria-hidden="true" size={25} strokeWidth={1.6}/><span>IN-GALLERY<br/>PROJECTOR VISUALIZATION</span></div>
