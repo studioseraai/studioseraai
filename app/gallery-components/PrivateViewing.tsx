@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import {ArrowRight, House, Projector} from 'lucide-react';
 import s from './PrivateViewing.module.css';
 
 export default function PrivateViewing() {
@@ -6,28 +7,28 @@ export default function PrivateViewing() {
     <section className={s.section} aria-labelledby="private-viewing-heading">
       <div className={s.inner}>
         <div className={s.copy}>
-          <h2 id="private-viewing-heading">Request a <em>Private Viewing</em></h2>
+          <div className={s.eyebrow}><span>STUDIO SERAAI</span><span className={s.eyebrowRule} aria-hidden="true" /></div>
+          <h2 id="private-viewing-heading">Private Viewing &amp; <em>Art Visualization</em></h2>
           <div className={s.rule} aria-hidden="true" />
           <p className={s.description}>
-            Preview selected works and curated wall compositions in a private consultation setting.
+            Studio Seraai can visit your home or welcome you to the studio to help you preview how selected artworks could look in your space.
           </p>
           <Link className={s.cta} href="/contact?viewing=1">
-            <span>Book a Viewing</span><span className={s.arrow} aria-hidden="true">→</span>
+            <span>Request a Private Viewing</span><ArrowRight aria-hidden="true" size={23}/>
           </Link>
         </div>
-        <div className={s.scene} role="img" aria-label="Studio Seraai private art consultation: a gallery representative presents artwork arrangements to a guest using the art visualizer.">
-          <img
-            className={s.photo}
-            src="/gallery/studio-seraai-v4-private-viewing-blue-art.webp"
-            alt=""
-            loading="lazy"
-            decoding="async"
-            width={1672}
-            height={941}
-          />
+        <div className={s.collage} aria-label="Private artwork consultations at home or with Studio Seraai's in-gallery projector">
+          <div className={s.homeScene}>
+            <img src="/gallery/studio-seraai-v4-private-viewing-90.webp" alt="Artwork visualization consultation in a warm interior" loading="lazy" decoding="async"/>
+          </div>
+          <div className={s.studioScene}>
+            <img src="/gallery/studio-seraai-v4-private-viewing-blue-art.webp" alt="Studio Seraai representative presenting an artwork placement using a projector" loading="lazy" decoding="async" width={1672} height={941}/>
+          </div>
+          <div className={s.homeBadge}><House aria-hidden="true" size={24} strokeWidth={1.6}/><span>HOME VISIT<br/>ART CONSULTATION</span></div>
+          <div className={s.studioBadge}><Projector aria-hidden="true" size={25} strokeWidth={1.6}/><span>IN-GALLERY<br/>PROJECTOR VISUALIZATION</span></div>
         </div>
       </div>
-      <div className={s.curve} aria-hidden="true" />
+      <div className={s.curve} aria-hidden="true"/>
     </section>
   );
 }
