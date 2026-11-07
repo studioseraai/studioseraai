@@ -30,3 +30,7 @@
 @media(max-width:960px){.page{padding-left:5%;padding-right:5%}.row{grid-template-columns:minmax(190px,36%) minmax(0,1fr);gap:24px}.action{grid-column:2;justify-content:flex-start;margin-left:clamp(16px,2.6vw,35px);margin-top:-9px}.coverLink{grid-row:span 2}}
 @media(max-width:620px){.page{padding:38px 18px 70px}.intro{margin-bottom:27px}.eyebrow{font-size:10px}.intro h1{font-size:clamp(45px,10vw,62px)}.subtitle{font-size:17px}.row{display:grid;grid-template-columns:1fr;gap:0;padding:22px 0 34px}.coverLink{grid-row:auto;margin-bottom:21px}.details{padding-left:17px}.type{font-size:10px}.details h2{font-size:34px}.action{grid-column:1;margin:16px 0 0 17px}.waveRight{width:95vw}}
 @media(prefers-reduced-motion:reduce){.cover,.action span{transition:none}}
+
+/* The small editorial label is the only visible page heading. */
+.intro h1.eyebrow{font:600 12px/1.4 var(--font-interface),Arial,sans-serif;letter-spacing:.43em;color:#75543e;margin:0}
+@media(max-width:620px){.intro h1.eyebrow{font-size:10px}}
