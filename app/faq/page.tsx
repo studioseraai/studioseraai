@@ -7,14 +7,14 @@ export const metadata={title:'Frequently Asked Questions — Studio Seraai',desc
 
 const groups=[
  {title:'Collecting & Viewing',items:[
-  ['What is Studio Seraai?','Studio Seraai is a Karachi art gallery connecting artists and collectors through original artworks and shared cultural experiences.'],
+  ['What is Studio Seraai?','Studio Seraai deals in contemporary and commercial Pakistani art, and acts as a bridge between artists and art collectors.'],
   ['How can I explore the artworks?','Browse our online collection. Artwork pages include available details such as the artist, medium, surface, style, theme and dimensions.'],
-  ['Are the artworks original?','Studio Seraai presents original artworks. For details or supporting documentation about a specific piece, please contact us.'],
-  ['How do I ask about an artwork’s price or availability?','Use the inquiry option on the artwork page or contact Studio Seraai directly. Our team can provide details about the piece.'],
-  ['Can I see an artwork in person before deciding?','Contact us to discuss viewing an artwork at the gallery. We’ll help arrange a suitable visit.'],
-  ['What is the Art Visualization experience?','At the gallery, we can use a projector to help you preview how selected artworks could look in your space.'],
-  ['Can Studio Seraai visit my home?','Yes. You can request a home consultation to explore artwork placement in your space.'],
-  ['How do I arrange a viewing or consultation?','Contact us by phone or through the website and tell us whether you prefer an in-gallery projector session or a home visit.']
+  ['Are the artworks original?','Studio Seraai exhibits and displays 100% original artworks. Proper documentation, including a Certificate of Authenticity, is provided with each artwork.'],
+  ['How do I ask about an artwork’s price or availability?','Our team will gladly address your queries about an artwork, including its price and availability. Use the inquiry option on the artwork page or contact us directly.'],
+  ['Can I see an artwork in person before deciding?','Visit us for a personal viewing. Please contact us to arrange a suitable visit.'],
+  ['What is the Art Visualization experience?','We can recreate your available home space on a projector and suggest artwork options to adorn your walls. Arrange a session at the gallery to see how selected works could look in your space.'],
+  ['Can Studio Seraai visit my home?','Ask us about a home visit. We can discuss your available space and suggest artwork options for your walls.'],
+  ['How do I arrange a viewing or consultation?','Kindly pay us a visit or contact us by phone or through our website to arrange a personal viewing or consultation.']
  ]},
  {title:'For Artists',items:[
   ['Can artists submit their work to Studio Seraai?','Yes. We welcome serious artists interested in exhibiting their work with us.'],
