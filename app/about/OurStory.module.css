@@ -46,3 +46,19 @@
 @media(max-width:720px){.hero{grid-template-columns:1fr;min-height:0}.heroCopy{padding:53px 7% 37px}.heroCopy h1{font-size:clamp(53px,11vw,75px)}.heroDescription{font-size:18px}.heroImage{min-height:280px;clip-path:ellipse(100% 120% at 67% 48%)}.principles{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 0;padding:45px 5%}.principle{padding:0 12px 22px}.principle:nth-child(3){border-left:0}.principle:nth-child(-n+2){border-bottom:1px solid #decbbd}.purpose{grid-template-columns:1fr}.purposeImage{min-height:265px;height:290px;clip-path:ellipse(110% 105% at 40% 0%)}.purposeCopy{padding:38px 7% 60px}.purposeCopy h2,.artistCopy h2{font-size:clamp(43px,9vw,61px)}.artistInvitation{grid-template-columns:1fr;padding:58px 7% 68px;gap:42px}.criteria{border-left:0;border-top:1px solid #d1b6a2;padding:28px 0 0}.founder{grid-template-columns:1fr}.founderImage{height:210px;min-height:0}.founderCopy{padding:40px 7% 60px}.founderAccent{display:none}}
 @media(max-width:390px){.heroCopy h1{font-size:49px}.principle h2{font-size:27px}.principle p{font-size:14px}.criteria li{font-size:17px}.purposeCopy h2,.artistCopy h2{font-size:41px}}
 @media(prefers-reduced-motion:reduce){.cta{transition:none}}
+
+/* V5 editorial copy update: mission is the lead story, all copy remains readable. */
+.hero{min-height:clamp(610px,43vw,800px);grid-template-columns:minmax(0,49%) minmax(0,51%)}
+.heroCopy{padding-top:clamp(45px,5vw,85px);padding-bottom:clamp(45px,5vw,85px);padding-right:clamp(25px,3vw,56px)}
+.heroCopy h1{font-size:clamp(51px,4.5vw,79px)}
+.heroTagline{font-size:clamp(16px,1.45vw,24px);letter-spacing:.025em}
+.missionLabel{margin:0 0 11px;color:#88654c;font:700 10px/1.5 var(--font-interface),Arial,sans-serif;letter-spacing:.25em}
+.missionCopy{display:grid;gap:13px;max-width:690px}
+.missionCopy p{margin:0;color:#574334;font:400 clamp(15px,1.15vw,19px)/1.52 var(--font-display),Georgia,serif}
+.purposeCopy{max-width:800px;padding-right:clamp(25px,4vw,75px)}
+.purposeCopy>p:not(.kicker)+p{margin-top:18px}
+.artistCopy>p:not(.kicker)+p{margin-top:16px}
+.artistInvitation{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);padding-top:clamp(60px,6vw,95px);padding-bottom:clamp(60px,6vw,95px)}
+.artistCopy>p:not(.kicker){font-size:clamp(16px,1.16vw,20px);line-height:1.55}
+@media(max-width:1050px){.hero{grid-template-columns:52% 48%;min-height:650px}.heroCopy{padding-right:25px}.heroCopy h1{font-size:clamp(43px,5.5vw,64px)}.missionCopy p{font-size:16px}}
+@media(max-width:720px){.hero{grid-template-columns:1fr;min-height:0}.heroCopy{padding:50px 7% 44px}.heroCopy h1{font-size:clamp(49px,10vw,70px)}.heroTagline{font-size:clamp(17px,4vw,23px)}.missionCopy p{font-size:16px;line-height:1.58}.heroImage{height:310px;min-height:310px}.purposeCopy>p:not(.kicker)+p,.artistCopy>p:not(.kicker)+p{margin-top:14px}.artistInvitation{grid-template-columns:1fr}}
