@@ -7,12 +7,12 @@ const finishes=['champagne','gold','walnut','ivory','bronze','gold','ivory','wal
 export default function ArtistExperience({artists}:{artists:ArtistEntry[]}){
  return <section className={s.page} aria-labelledby="artists-heading">
   <div className={s.ribbonLeft} aria-hidden="true"/><div className={s.ribbonRight} aria-hidden="true"/><div className={s.ribbonBottom} aria-hidden="true"/>
-  <header className={s.intro}>
+  <div className={s.intro}>
    <p className={s.eyebrow}>STUDIO SERAAI</p>
    <h1 id="artists-heading">Our Artists</h1>
    <p className={s.subtitle}>A curated community of contemporary artists<br className={s.desktopBreak}/> shaping a more expressive world.</p>
    <span className={s.line} aria-hidden="true">✦</span>
-  </header>
+  </div>
   {artists.length>0?<>
    <div className={s.gallery}>
     {artists.map((artist,i)=><Link
