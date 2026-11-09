@@ -29,7 +29,7 @@
  color:#0D0D0D;text-decoration:none;
 }
 .brandLogo{display:block;width:58px;height:58px;object-fit:contain;flex:none}
-.items{.items{
+.items{
  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
  display:flex;align-items:center;justify-content:center;
  gap:clamp(15px,2.2vw,34px);width:max-content;max-width:calc(100% - 360px);
