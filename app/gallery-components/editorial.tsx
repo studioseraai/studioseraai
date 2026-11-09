@@ -33,8 +33,33 @@ export function EditorialBanner({label,title,description,kind='gallery'}:{label:
  return <section className={'sg-editorial-banner sg-editorial-'+kind}><img src={kind==='gallery'?'/gallery/warm-corridor.webp':'/gallery/warm-collection.webp'} alt="" fetchPriority="high"/><div className="sg-editorial-overlay"/><div className="sg-editorial-copy"><p className="sg-kicker">{label}</p><h1>{title}</h1><p>{description}</p></div><span className="sg-banner-caption">{kind==='gallery'?'AN IMAGINED GALLERY · AN OPEN INVITATION':'STUDIO SERAAI · KARACHI'}</span></section>;
 }
 
-export function ViewingQuestions(){return <div className="sg-faq"><p className="sg-kicker">A FEW THINGS TO KNOW</p>{[
- ['How do I arrange a private viewing?','Send an inquiry with your preferred date and the works you would like to see. Your viewing is confirmed only after the gallery contacts you.'],
- ['How can I find out the price of a work?','Use the inquiry button on the artwork page. The gallery can discuss pricing, availability, and the details of the work with you.'],
- ['Can I ask for help choosing art for my space?','Yes. Tell us about your space, the dimensions you have in mind, and the kinds of work that interest you. Start with a conversation.']
- ].map(([q,a])=><details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div>}
+const viewingFaqGroups=[
+ {title:'Collecting & Viewing',items:[
+  ['What is Studio Seraai?','Studio Seraai is a Karachi art gallery connecting artists and collectors through original artworks and shared cultural experiences.'],
+  ['How can I explore the artworks?','Browse our online collection. Artwork pages include available details such as the artist, medium, surface, style, theme and dimensions.'],
+  ['Are the artworks original?','Studio Seraai presents original artworks. For details or supporting documentation about a specific piece, please contact us.'],
+  ['How do I ask about an artwork’s price or availability?','Use the inquiry option on the artwork page or contact Studio Seraai directly. Our team can provide details about the piece.'],
+  ['Can I see an artwork in person before deciding?','Contact us to discuss viewing an artwork at the gallery. We’ll help arrange a suitable visit.'],
+  ['What is the Art Visualization experience?','At the gallery, we can use a projector to help you preview how selected artworks could look in your space.'],
+  ['Can Studio Seraai visit my home?','Yes. You can request a home consultation to explore artwork placement in your space.'],
+  ['How do I arrange a viewing or consultation?','Contact us by phone or through the website and tell us whether you prefer an in-gallery projector session or a home visit.']
+ ]},
+ {title:'For Artists',items:[
+  ['Can artists submit their work to Studio Seraai?','Yes. We welcome serious artists interested in exhibiting their work with us.'],
+  ['Which artists can get in touch?','We welcome established and emerging artists. Pakistani artists are encouraged to contact us, and artists from elsewhere are welcome too.'],
+  ['Which styles and mediums do you consider?','All styles and mediums are welcome.'],
+  ['What should I include when contacting you about exhibiting?','Share a short introduction and information about your artistic practice. You can include portfolio images or a link to your work.']
+ ]},
+ {title:'Purchases & Artwork Care',items:[
+  ['What payment methods do you accept?','Please contact us about the specific artwork. We’ll confirm the accepted payment options and applicable terms directly.'],
+  ['Do you deliver artworks, and what does delivery cost?','Contact us before confirming a purchase to ask whether delivery is available for your destination and to confirm the cost and arrangements.'],
+  ['Can I return or exchange an artwork?','Please contact Studio Seraai before purchase to confirm the return or cancellation terms that apply to the specific artwork.']
+ ]}
+];
+export function ViewingQuestions(){return <div className="sg-faq">
+ <p className="sg-kicker">A FEW THINGS TO KNOW</p>
+ {viewingFaqGroups.map(group=><section className="sg-faq-group" key={group.title} aria-label={group.title}>
+  <h2>{group.title}</h2>
+  {group.items.map(([q,a])=><details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}
+ </section>)}
+</div>}
