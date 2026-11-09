@@ -8,7 +8,7 @@ import WhatsAppConcierge from './WhatsAppConcierge';
 const links=[['Artworks','/collections'],['Artists','/artists'],['Exhibitions','/events'],['Journal','/journal'],['Our Story','/about'],['Contact','/contact']];
 const primaryLinks=[{title:'ARTWORKS',href:'/collections',Icon:ImageIcon},{title:'ARTISTS',href:'/artists',Icon:UsersRound},{title:'EXHIBITIONS',href:'/events',Icon:Layers3},{title:'JOURNAL',href:'/journal',Icon:BookOpen},{title:'ABOUT',href:'/about',Icon:Info},{title:'CONTACT US',href:'/contact',Icon:Mail}];
 export default function Shell({children}:{children:React.ReactNode}){const dialog=useRef<HTMLDialogElement>(null);const [mode,setMode]=useState('menu');const [scrolled,setScrolled]=useState(false);useEffect(()=>{const sync=()=>setScrolled(window.scrollY>24);sync();window.addEventListener('scroll',sync,{passive:true});return()=>window.removeEventListener('scroll',sync);},[]);return <div className="sg wa"><a className="sg-skip" href="#gallery-main">Skip to content</a><div className={nav.shell}><div className={nav.wave} aria-hidden="true"/><header className={nav.header} data-scrolled={scrolled}>
-<Link className={nav.brand} href="/" aria-label="Studio Seraai homepage"><img className={nav.brandLogo} src="/brand/studio-seraai-logo.png" alt="" aria-hidden="true"/><span className={nav.wordmark}><span>STUDIO</span><span>SERAAI</span></span></Link>
+<Link className={nav.brand} href="/" aria-label="Studio Seraai homepage"><img className={nav.brandLogo} src="/brand/studio-seraai-logo.png" alt="" aria-hidden="true"/></Link>
 <nav className={nav.items} aria-label="Main navigation">
  {primaryLinks.map(({title,href,Icon})=><Link className={nav.navLink} key={href} href={href}><Icon aria-hidden="true"/><span>{title}</span></Link>)}
 </nav>
@@ -20,7 +20,7 @@ export default function Shell({children}:{children:React.ReactNode}){const dialo
 <div className={footer.glass}>
  <div className={footer.top}>
   <div className={footer.identity}>
-   <Link href="/" className={footer.logo} aria-label="Studio Seraai home"><img className={footer.brandLogo} src="/brand/studio-seraai-logo.png" alt="" aria-hidden="true"/><span className={footer.wordmark}><span>STUDIO</span><span>SERAAI</span></span></Link>
+   <Link href="/" className={footer.logo} aria-label="Studio Seraai home"><img className={footer.brandLogo} src="/brand/studio-seraai-logo.png" alt="" aria-hidden="true"/></Link>
    <p className={footer.tagline}>A GALLERY WHERE WALLS BREATHE ART.</p>
   </div>
   <nav className={footer.links} aria-label="Footer navigation">{links.map(([label,url])=><Link key={url} href={url}>{label}</Link>)}</nav>
