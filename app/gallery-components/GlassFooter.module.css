@@ -19,11 +19,13 @@
 }
 .top{display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,1.6fr);gap:clamp(24px,4vw,70px);align-items:center}
 .identity{display:flex;flex-direction:column;align-items:flex-start;gap:17px}
-.logo{display:flex;flex-direction:column;align-items:flex-start;
- text-decoration:none;color:#352317;font:400 clamp(32px,3.2vw,55px)/.85 var(--font-display),Georgia,serif;
+.logo{display:flex;flex-direction:row;align-items:center;gap:14px;
+ text-decoration:none;color:#0D0D0D;font:400 clamp(27px,2.5vw,39px)/.88 var(--font-display),Georgia,serif;
  letter-spacing:-.055em}
-.logo span:first-child{font-size:.75em;letter-spacing:.08em}
-.logo span:last-child{margin-top:7px}
+.brandMark{display:block;width:48px;height:48px;flex:none}
+.wordmark{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;color:inherit}
+.wordmark span:first-child{font-size:.68em;letter-spacing:.1em}
+.wordmark span:last-child{margin-top:4px}
 .tagline{margin:0;color:#74533c;font:italic 400 clamp(16px,1.3vw,21px)/1.4 var(--font-display),Georgia,serif}
 .links{display:flex;flex-wrap:wrap;gap:14px clamp(16px,2vw,36px);justify-content:flex-end}
 .links a{font:500 clamp(14px,1.15vw,18px)/1.3 var(--font-display),Georgia,serif;color:#422d20;text-decoration:none;white-space:nowrap}
@@ -42,7 +44,8 @@
 .legal a{color:inherit;text-decoration:none}.legal a:hover{text-decoration:underline}
 .shell a:focus-visible{outline:2px solid #8e5c35;outline-offset:4px}
 @media(max-width:800px){.top{grid-template-columns:1fr;gap:27px}.links{justify-content:flex-start}.glass{padding:28px 28px 21px}.lower{align-items:flex-start}}
-@media(max-width:520px){.shell{padding:31px 13px 20px}.glass{border-radius:26px;padding:25px 20px 18px}.links{gap:12px 19px}.links a{font-size:16px}.legal{gap:9px 20px}.social{gap:9px}.logo{font-size:39px}}
+@media(max-width:520px){.shell{padding:31px 13px 20px}.glass{border-radius:26px;padding:25px 20px 18px}.links{gap:12px 19px}.links a{font-size:16px}.legal{gap:9px 20px}.social{gap:9px}.logo{font-size:34px;gap:11px}
+.brandMark{width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.social a{transition:none}}
 
 /* V4 compact full-width footer override */
@@ -52,6 +55,7 @@
 .top{grid-template-columns:minmax(185px,.6fr) minmax(0,1.6fr);gap:30px}
 .identity{gap:8px}
 .logo{font-size:clamp(27px,2.5vw,39px)}
+.brandMark{width:43px;height:43px}
 .rule{margin:16px 0 9px}
 @media(max-width:800px){.top{grid-template-columns:1fr;gap:18px}.glass{padding:23px 6% 16px}}
 @media(max-width:520px){.glass{padding:20px 5% 16px;border-radius:20px 20px 0 0}}
