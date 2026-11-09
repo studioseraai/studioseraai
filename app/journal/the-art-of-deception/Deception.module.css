@@ -22,4 +22,4 @@
 @media(max-width:1100px){.articleColumns{grid-template-columns:minmax(0,1fr) 220px;gap:32px}.toc{padding:20px 15px}}
 @media(max-width:850px){.sidebar{display:none}.articleColumns{display:block}.intro{column-count:1;max-width:750px}.heroContent{padding-top:160px}.hero{min-height:490px}}
 @media(max-width:580px){.hero{min-height:520px}.heroImage{object-position:68% center}.heroShade{background:linear-gradient(90deg,#100d0cdd,#100d0c4d 100%),linear-gradient(0deg,#0b0908c2,transparent 65%)}.heroContent{width:88%;padding:145px 0 48px}.backLink{margin-bottom:40px}.hero h1{font-size:clamp(47px,11vw,68px)}.heroSubtitle{font-size:24px}.heroMeta{font-size:10px}.opening{padding-top:43px}.opening p{font-size:23px}.intro{margin-bottom:45px}.section{padding:32px 0 38px}.section h2{font-size:35px}.section>p{font-size:17px}.figure img{max-height:370px}.questions li{font-size:16px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){.page{scroll-behavior:auto!important}}
