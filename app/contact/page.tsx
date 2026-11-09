@@ -1,6 +1,5 @@
 import Shell from '../gallery-components/shell';
 import {MapPin,Phone,Clock3,AtSign,ExternalLink,Navigation} from 'lucide-react';
-import {ViewingQuestions} from '../gallery-components/editorial';
 import ContactV4Form from './ContactV4Form';
 import s from './ContactV4.module.css';
 
@@ -53,6 +52,5 @@ export default async function Page({searchParams}:{searchParams:Promise<{artwork
         <iframe title="Map showing Studio Seraai address at Shahbaz Commercial, DHA Phase 6, Karachi" src="https://www.google.com/maps?q=1st%20Floor%2C%2040-C%2C%20Lane%204%2C%20Shahbaz%20Commercial%2C%20DHA%20Phase%206%2C%20Karachi%2C%20Pakistan&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen/>
       </div>
     </section>
-    <section className={s.faq}><div className={s.faqInner}><ViewingQuestions/></div></section>
   </Shell>;
 }
