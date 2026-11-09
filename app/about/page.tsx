@@ -32,8 +32,8 @@ export default function Page(){
     <p className={s.heroDescription}>“Seraai” is a Turkish / Persian word for a traveller’s inn or royal palace. A temporary home for art, until it finds a permanent place with those who cherish it.</p>
    </div>
    <div className={s.heroImage}>
-    <img src="/gallery/warm-corridor.webp" alt="Warm gallery-inspired interior with framed artworks" fetchPriority="high"/>
-    <span className={s.photoCaption}>GALLERY-INSPIRED VISUAL</span>
+    <img src="/gallery/studio-seraai-office-about.webp" alt="Studio Seraai gallery office with framed artworks, consultation seating and wooden bookshelves" fetchPriority="high"/>
+    <span className={s.photoCaption}>STUDIO SERAAI · KARACHI</span>
    </div>
   </section>
 
