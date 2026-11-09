@@ -87,7 +87,7 @@ export default function Page(){
     <p className={s.kicker}>ABOUT THE FOUNDER</p>
     <h2 id="about-founder">Dr Nasser Janjua</h2>
     <span className={s.rule} aria-hidden="true"/>
-    <p>Nurturing a passion for art appreciation and collecting for over thirty years, it was only natural that, after ending his bureaucratic journey, Dr Nasser Janjua gravitated further into the art world by opening an art gallery. His intent and passion are to promote art and ensure artists receive their due share of respect and appreciation, both professionally and economically.</p>
+    <p>Nurturing my passion for art appreciation and collecting it for over thirty years, it was only natural that, after ending my bureaucratic journey, I gravitated further into the art world by opening an art gallery. My intent and passion are to promote art and ensure artists receive their due share of respect and appreciation, both professionally and economically.</p>
     <Link className={s.founderLink} href="/contact">BEGIN A CONVERSATION <ArrowUpRight size={15} aria-hidden="true"/></Link>
    </div>
    <div className={s.founderAccent} aria-hidden="true"/>
