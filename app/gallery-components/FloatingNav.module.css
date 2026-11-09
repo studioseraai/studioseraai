@@ -1,8 +1,8 @@
 /* V4 compact glass navbar — dedicated row ABOVE page content, never over Hero. */
 .shell{
- position:relative;isolation:isolate;height:100px;width:100%;
+ position:sticky;top:0;isolation:isolate;height:100px;width:100%;
  display:flex;align-items:center;justify-content:center;
- background:#f0dfd1;z-index:40;
+ background:#f0dfd1;z-index:80;
 }
 .wave{
  position:absolute;inset:0;pointer-events:none;z-index:-1;
