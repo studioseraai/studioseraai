@@ -18,7 +18,7 @@ const criteria=[
  'Original artworks',
  'All styles and mediums welcome',
  'Professional presentation',
- 'Pakistani artists encouraged; everyone welcome'
+ 'Pakistani artists encouraged; all artists welcome to contact us'
 ];
 
 export default function Page(){
@@ -29,7 +29,11 @@ export default function Page(){
     <h1 id="about-title">Studio Seraai</h1>
     <p className={s.heroTagline}>A GALLERY WHERE WALLS BREATHE ART.</p>
     <span className={s.rule} aria-hidden="true"/>
-    <p className={s.heroDescription}>“Seraai” is a Turkish / Persian word for a traveller’s inn or royal palace. A temporary home for art, until it finds a permanent place with those who cherish it.</p>
+    <p className={s.missionLabel}>OUR MISSION</p>
+    <div className={s.missionCopy}>
+      <p>Our mission is to make fine art a shared experience rather than a closed privilege. We are redefining the relationship between the creator and the collector by stripping away the gatekeeping that separates them. Our gallery is a dynamic canvas where art is accessible, dialogue is encouraged and trust is foundational.</p>
+      <p>We champion artists by giving their voices room to breathe, and we guide art lovers into becoming confident collectors, moving art out of isolated spaces and into our collective cultural life.</p>
+    </div>
    </div>
    <div className={s.heroImage}>
     <img src="/gallery/studio-seraai-office-about.webp" alt="Studio Seraai gallery office with framed artworks, consultation seating and wooden bookshelves" fetchPriority="high"/>
@@ -50,10 +54,11 @@ export default function Page(){
     <img src="/gallery/warm-collection.webp" alt="Textured artworks in a warm-toned gallery environment" loading="lazy"/>
    </div>
    <div className={s.purposeCopy}>
-    <p className={s.kicker}>OUR PURPOSE</p>
-    <h2 id="about-purpose">A Bridge Between<br/>Artists and Collectors.</h2>
+    <p className={s.kicker}>THE MEANING BEHIND OUR NAME</p>
+    <h2 id="about-purpose">Why Seraai?</h2>
     <span className={s.rule} aria-hidden="true"/>
-    <p>Studio Seraai transforms creative expression into shared cultural experiences — connecting artists and collectors through art that inspires, tells stories and brings spaces to life.</p>
+    <p>“Serai” is a Turkish / Persian word which literally means a traveller’s inn or a royal palace. Studio Seraai envisages acting as a bridge between artists and art collectors, transforming artistic creative expressions into shared cultural experiences.</p>
+    <p>Hence, Studio Seraai is a temporary abode for an artwork until it finds a permanent place in the homes of art lovers and collectors.</p>
    </div>
   </section>
 
@@ -62,7 +67,9 @@ export default function Page(){
     <p className={s.kicker}>CALL TO ARTISTS</p>
     <h2 id="artist-invitation">Exhibit With Us.</h2>
     <span className={s.rule} aria-hidden="true"/>
-    <p>We welcome emerging and established artists to share their original work. Our aim is to nurture lasting relationships built on respect, visibility, opportunity and professional growth.</p>
+    <p>We invite and encourage all serious artists to join hands with us and exhibit their works. We endeavour to support artists so our interactions breed respect, economic benefit and professional progression.</p>
+    <p>For us, art connects people, tells stories and makes a space alive. We look forward to exhibiting original works by established and emerging artists across styles and mediums, and helping work created with passion and intent find the love and care it deserves.</p>
+    <p>We intend to break the economic shackles in which many Pakistani artists find themselves.</p>
     <Link className={s.cta} href="/contact?subject=Collaboration">SUBMIT YOUR PORTFOLIO <ArrowUpRight aria-hidden="true" size={17}/></Link>
    </div>
    <div className={s.criteria}>
@@ -80,7 +87,7 @@ export default function Page(){
     <p className={s.kicker}>ABOUT THE FOUNDER</p>
     <h2 id="about-founder">Dr Nasser Janjua</h2>
     <span className={s.rule} aria-hidden="true"/>
-    <p>After more than thirty years of appreciating and collecting art, Dr Nasser Janjua founded Studio Seraai following his career as a bureaucrat. His vision is to promote art while ensuring artists receive the respect, recognition and economic appreciation they deserve.</p>
+    <p>Nurturing a passion for art appreciation and collecting for over thirty years, it was only natural that, after ending his bureaucratic journey, Dr Nasser Janjua gravitated further into the art world by opening an art gallery. His intent and passion are to promote art and ensure artists receive their due share of respect and appreciation, both professionally and economically.</p>
     <Link className={s.founderLink} href="/contact">BEGIN A CONVERSATION <ArrowUpRight size={15} aria-hidden="true"/></Link>
    </div>
    <div className={s.founderAccent} aria-hidden="true"/>
