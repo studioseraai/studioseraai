@@ -5,7 +5,7 @@ import './gallery-components/gallery.css';
 import localFont from 'next/font/local';
 const display = localFont({ src: '../public/fonts/cormorant-garamond.woff', variable: '--font-display', display: 'swap', weight: '300 700' });
 const ui = localFont({ src: '../public/fonts/manrope.woff', variable: '--font-interface', display: 'swap', weight: '200 800' });
-export const metadata: Metadata = { title: 'Studio Seraai — A GALLERY WHERE WALLS BREATHE ART', applicationName:'Studio Seraai', icons:{icon:'/brand/seraai-os-logo.webp'}, description: 'Discover art, artists, and exhibitions with Studio Seraai. A GALLERY WHERE WALLS BREATHE ART — Karachi.' };
+export const metadata: Metadata = { title: 'Studio Seraai — A GALLERY WHERE WALLS BREATHE ART', applicationName:'Studio Seraai', icons:{icon:'/favicon.svg'}, description: 'Discover art, artists, and exhibitions with Studio Seraai. A GALLERY WHERE WALLS BREATHE ART — Karachi.' };
 export default function RootLayout({ children }: {
     children: React.ReactNode;
 }) { return <html lang="en" className={`${display.variable} ${ui.variable}`}><body>{children}</body></html>; }
