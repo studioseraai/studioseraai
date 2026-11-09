@@ -1,14 +1,15 @@
 'use client';
 import {useMemo,useState} from 'react';
+import Link from 'next/link';
 import s from './Journal.module.css';
 
 type Story={id:string;category:string;title:string;summary:string;image:string;position?:string};
 const featured:Story={
- id:'language-of-texture',
- category:'Reflection',
- title:'The Language of Texture',
- summary:'How surface, material and gesture shape meaning in contemporary art.',
- image:'/gallery/warm-collection.webp',
+ id:'the-art-of-deception',
+ category:'Art & Culture',
+ title:'The Art of Deception',
+ summary:'Inside the hidden world of art forgeries — from a museum scandal to provenance, scientific analysis and collecting with confidence.',
+ image:'/gallery/journal-deception-hero.webp',
  position:'center center'
 };
 const stories:Story[]=[
@@ -19,7 +20,7 @@ const stories:Story[]=[
  {id:'living-gallery',category:'Studio Journal',title:'The Living Gallery',summary:'How architecture and art change the way we experience a collection.',image:'/gallery/warm-corridor.webp'},
  {id:'material',category:'Reflection',title:'Material, Form and Feeling',summary:'The quiet relationship between surfaces, objects and the stories they tell.',image:'/gallery/hero/seraai-v3-new-main-table.webp'}
 ];
-const categories=['All Posts','Reflection','Artist Stories','Exhibition Notes','Studio Journal'];
+const categories=['All Posts','Art & Culture','Reflection','Artist Stories','Exhibition Notes','Studio Journal'];
 const preview='EDITORIAL PREVIEW · COMING SOON';
 export default function JournalIndex(){
  const [category,setCategory]=useState('All Posts');
@@ -34,12 +35,12 @@ export default function JournalIndex(){
     <p className={s.tagline}>Stories, reflections and insights from the world of Studio Seraai.</p>
    </div>
    <section className={s.featured} aria-labelledby="journal-featured-title">
-    <div className={s.featureImage}><img src={featured.image} style={{objectPosition:featured.position}} alt="Textured painting from the Studio Seraai gallery" fetchPriority="high"/></div>
+    <Link href="/journal/the-art-of-deception" className={s.featureImage} aria-label="Read The Art of Deception"><img src={featured.image} style={{objectPosition:featured.position}} alt="A conservator examining a painting with a magnifying lens" fetchPriority="high"/></Link>
     <div className={s.featureText}>
-     <p className={s.kicker}>REFLECTION <span aria-hidden="true"/></p>
-     <h2 id="journal-featured-title">{featured.title}</h2>
+     <p className={s.kicker}>ART &amp; CULTURE <span aria-hidden="true"/></p>
+     <h2 id="journal-featured-title"><Link href="/journal/the-art-of-deception">{featured.title}</Link></h2>
      <p className={s.summary}>{featured.summary}</p>
-     <p className={s.featurePreview}>{preview}</p>
+     <Link className={s.featurePreview} href="/journal/the-art-of-deception">READ THE FEATURE ↗</Link>
      <div className={s.dots} aria-hidden="true"><i/><i/><i/><i/></div>
     </div>
    </section>
