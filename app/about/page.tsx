@@ -80,9 +80,6 @@ export default function Page(){
   </section>
 
   <section className={s.founder} aria-labelledby="about-founder">
-   <div className={s.founderImage}>
-    <img src="/gallery/studio-seraai-founder-portrait.webp" alt="Portrait of Dr Nasser Janjua, founder of Studio Seraai" loading="lazy"/>
-   </div>
    <div className={s.founderCopy}>
     <p className={s.kicker}>ABOUT THE FOUNDER</p>
     <h2 id="about-founder">Dr Nasser Janjua</h2>
