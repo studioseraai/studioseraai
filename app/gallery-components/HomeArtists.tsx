@@ -12,10 +12,10 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}) {
             <div className={s.frameInner}>
               <img
                 className={s.artistImage}
-                src="/gallery/studio-seraai-v4-artists-sculpture.webp"
+                src="/gallery/studio-seraai-featured-artist.webp"
                 alt="Sculptural hands and a flowing golden painter's brushstroke"
-                width={1122}
-                height={1402}
+                width={900}
+                height={1124}
                 loading="lazy"
                 decoding="async"
               />
