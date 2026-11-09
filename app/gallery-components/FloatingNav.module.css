@@ -24,16 +24,12 @@
 }
 .header[data-scrolled="true"]{background:rgba(255,249,240,.76)}
 .brand{
- display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;
- flex:0 0 190px;width:190px;padding-right:22px;
- border-right:1px solid rgba(154,123,100,.45);
+ display:flex;align-items:center;justify-content:flex-start;flex:0 0 92px;width:92px;
+ padding-right:17px;border-right:1px solid rgba(154,123,100,.45);
  color:#0D0D0D;text-decoration:none;
 }
-.brandMark{display:block;width:35px;height:35px;flex:none}
-.wordmark{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;color:inherit;font-family:var(--font-display),Georgia,serif;line-height:.88;letter-spacing:-.055em}
-.wordmark span:first-child{font-size:15px;letter-spacing:.1em}
-.wordmark span:last-child{font-size:27px}
-.items{
+.brandLogo{display:block;width:58px;height:58px;object-fit:contain;flex:none}
+.items{.items{
  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
  display:flex;align-items:center;justify-content:center;
  gap:clamp(15px,2.2vw,34px);width:max-content;max-width:calc(100% - 360px);
@@ -59,9 +55,8 @@
 .iconButton svg{width:22px;height:22px;stroke-width:1.75}
 .menuButton{display:none}
 @media(max-width:1250px){
- .brand{flex-basis:158px;width:158px;padding-right:14px;gap:8px}
- .brandMark{width:30px;height:30px}
- .wordmark span:first-child{font-size:13px}.wordmark span:last-child{font-size:23px}
+ .brand{flex-basis:82px;width:82px;padding-right:12px}
+ .brandLogo{width:52px;height:52px}
  .header{width:calc(100% - 36px);padding:8px 23px;gap:16px}
  .items{gap:clamp(9px,1.1vw,15px);max-width:calc(100% - 290px)}.navLink{font-size:10px;gap:5px;letter-spacing:.045em}
  .navLink svg{width:18px;height:18px}.actions{padding-left:15px}
@@ -76,8 +71,7 @@
 }
 @media(max-width:520px){
  .shell{height:76px}.header{width:calc(100% - 22px);height:60px;min-height:60px;padding:7px 15px}
- .brandMark{width:29px;height:29px}
- .wordmark span:first-child{font-size:12px}.wordmark span:last-child{font-size:22px}
+ .brandLogo{width:50px;height:50px}
  .iconButton{width:36px;height:36px}.actions{gap:6px}
  .wave{background-size:auto 100%;background-position:50% center}
 }
