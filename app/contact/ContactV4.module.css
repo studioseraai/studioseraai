@@ -65,3 +65,9 @@
 @media(max-width:1100px){.hero{padding-top:145px;padding-bottom:115px}.intro{margin-bottom:25px}.detail{padding:12px 0}.follow{margin-top:17px}}
 @media(max-width:760px){.visit{padding:44px 6% 65px}.visitHeader{align-items:flex-start;flex-direction:column;gap:18px}.mapFrame{aspect-ratio:1.15/1;min-height:320px}.details{max-width:none}.socials a{width:42px;height:42px}}
 @media(prefers-reduced-motion:reduce){.socials a,.directions{transition:none}}
+
+/* Contact FAQ groups */
+.faqInner :global(.sg-faq-group){margin-top:44px}
+.faqInner :global(.sg-faq-group h2){margin:0 0 5px;padding-bottom:13px;border-bottom:1px solid #c5b298;color:#7e5c41;font:700 11px/1.4 var(--font-interface),Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.faqInner :global(.sg-faq-group details:first-of-type){margin-top:0}
+@media(max-width:760px){.faqInner :global(.sg-faq-group){margin-top:34px}}
