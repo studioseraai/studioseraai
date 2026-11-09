@@ -37,7 +37,7 @@ export default function FAQPage(){return <Shell>
  </section>
  <section className={styles.content} aria-label="Frequently asked questions">
   {groups.map((group,groupIndex)=><section className={styles.group} key={group.title} aria-labelledby={'faq-group-'+groupIndex}>
-   <header className={styles.groupHeading}><span>0{groupIndex+1}</span><h2 id={'faq-group-'+groupIndex}>{group.title}</h2><i aria-hidden="true"/></header>
+   <div className={styles.groupHeading}><span>0{groupIndex+1}</span><h2 id={'faq-group-'+groupIndex}>{group.title}</h2><i aria-hidden="true"/></header>
    <div className={styles.questions}>{group.items.map(([question,answer],index)=><details className={styles.item} key={question}>
     <summary><span className={styles.number}>{String(groups.slice(0,groupIndex).reduce((n,g)=>n+g.items.length,0)+index+1).padStart(2,'0')}</span><span className={styles.question}>{question}</span><span className={styles.toggle} aria-hidden="true"/></summary>
     <p className={styles.answer}>{answer}</p>

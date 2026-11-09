@@ -12,7 +12,7 @@
 .rule{display:flex;justify-content:space-between;max-width:1120px;margin:0 auto;color:#8a7866}
 .content{background:#f6f1e9;padding:12px max(7vw,24px) 90px}
 .group{max-width:1120px;margin:0 auto 68px}
-.groupHeading{display:grid;grid-template-columns:48px auto 1fr;gap:15px;align-items:center;margin-bottom:18px}
+.groupHeading{display:grid;grid-template-columns:48px auto 1fr;gap:15px;align-items:center;margin-bottom:18px;background:transparent;color:#30271f;box-shadow:none}
 .groupHeading>span{color:#947b61}
 .groupHeading h2{font:400 clamp(24px,3vw,34px)/1.1 var(--font-display),Georgia,serif;margin:0;color:#30271f}
 .groupHeading i{height:1px;background:#d8c9b8}
