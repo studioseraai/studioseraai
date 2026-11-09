@@ -36,7 +36,7 @@
 .artistObject{position:absolute;left:-42px;bottom:-47px;width:210px;height:210px;background:radial-gradient(ellipse at 42% 31%,#dbc1a4,#a78769 72%,#745640);border-radius:50% 50% 40% 40%;opacity:.17;filter:blur(2px);pointer-events:none}
 .founder{position:relative;isolation:isolate;display:grid;grid-template-columns:30% minmax(0,1fr) 20%;min-height:350px;background:linear-gradient(115deg,#e7d0bd,#fff9f1 49%,#e5cdb9);overflow:hidden}
 .founderImage{position:relative;overflow:hidden;min-height:350px}
-.founderImage img{display:block;width:100%;height:100%;object-fit:cover;object-position:left center}
+.founderImage img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .founderCopy{z-index:1;padding:clamp(45px,5vw,85px) clamp(28px,6vw,100px)}
 .founderCopy h2{font-size:clamp(42px,3.5vw,70px)}
 .founderCopy .rule{margin:20px 0}
