@@ -13,9 +13,9 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}) {
               <img
                 className={s.artistImage}
                 src="/gallery/studio-seraai-featured-artist.webp"
-                alt="Sculptural hands and a flowing golden painter's brushstroke"
-                width={900}
-                height={1124}
+                alt="Abstract artist-inspired painting with bold oil brushstrokes, paint splashes and calligraphic marks in warm orange, rust and cream"
+                width={1199}
+                height={1312}
                 loading="lazy"
                 decoding="async"
               />
