@@ -41,7 +41,7 @@
 .founderCopy h2{font-size:clamp(42px,3.5vw,70px)}
 .founderCopy .rule{margin:20px 0}
 .founderLink{display:inline-flex;gap:10px;align-items:center;margin-top:25px;text-decoration:none;border-bottom:1px solid #ae8b73;padding-bottom:6px;color:#5a3d2b;font:650 10px var(--font-interface),Arial,sans-serif;letter-spacing:.14em}
-.founderAccent{clip-path:ellipse(105% 85% at 100% 60%);background:url('/gallery/warm-collection.webp') center/cover no-repeat}
+.founderAccent{clip-path:ellipse(105% 85% at 100% 60%);background:#e8ddcb;overflow:hidden;min-width:0}.founderAccent img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 32%}
 @media(max-width:1050px){.hero{grid-template-columns:45% 55%}.heroCopy{padding-left:7%}.heroCopy h1{font-size:clamp(45px,5.8vw,70px)}.artistInvitation{padding-left:7%;padding-right:7%;gap:40px}.founder{grid-template-columns:31% 1fr 12%}.founderCopy{padding-left:6%;padding-right:6%}}
 @media(max-width:720px){.hero{grid-template-columns:1fr;min-height:0}.heroCopy{padding:53px 7% 37px}.heroCopy h1{font-size:clamp(53px,11vw,75px)}.heroDescription{font-size:18px}.heroImage{min-height:280px;clip-path:ellipse(100% 120% at 67% 48%)}.principles{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 0;padding:45px 5%}.principle{padding:0 12px 22px}.principle:nth-child(3){border-left:0}.principle:nth-child(-n+2){border-bottom:1px solid #decbbd}.purpose{grid-template-columns:1fr}.purposeImage{min-height:265px;height:290px;clip-path:ellipse(110% 105% at 40% 0%)}.purposeCopy{padding:38px 7% 60px}.purposeCopy h2,.artistCopy h2{font-size:clamp(43px,9vw,61px)}.artistInvitation{grid-template-columns:1fr;padding:58px 7% 68px;gap:42px}.criteria{border-left:0;border-top:1px solid #d1b6a2;padding:28px 0 0}.founder{grid-template-columns:1fr}.founderImage{height:210px;min-height:0}.founderCopy{padding:40px 7% 60px}.founderAccent{display:none}}
 @media(max-width:390px){.heroCopy h1{font-size:49px}.principle h2{font-size:27px}.principle p{font-size:14px}.criteria li{font-size:17px}.purposeCopy h2,.artistCopy h2{font-size:41px}}
@@ -62,3 +62,8 @@
 .artistCopy>p:not(.kicker){font-size:clamp(16px,1.16vw,20px);line-height:1.55}
 @media(max-width:1050px){.hero{grid-template-columns:52% 48%;min-height:650px}.heroCopy{padding-right:25px}.heroCopy h1{font-size:clamp(43px,5.5vw,64px)}.missionCopy p{font-size:16px}}
 @media(max-width:720px){.hero{grid-template-columns:1fr;min-height:0}.heroCopy{padding:50px 7% 44px}.heroCopy h1{font-size:clamp(49px,10vw,70px)}.heroTagline{font-size:clamp(17px,4vw,23px)}.missionCopy p{font-size:16px;line-height:1.58}.heroImage{height:310px;min-height:310px}.purposeCopy>p:not(.kicker)+p,.artistCopy>p:not(.kicker)+p{margin-top:14px}.artistInvitation{grid-template-columns:1fr}}
+
+/* Founder's sketched portrait appears opposite his photograph and text. */
+@media(min-width:721px){.founder{grid-template-columns:27% minmax(0,1fr) 24%}.founderAccent img{object-fit:cover;object-position:50% 30%}}
+@media(max-width:1050px) and (min-width:721px){.founder{grid-template-columns:28% minmax(0,1fr) 21%}}
+@media(max-width:720px){.founderAccent{display:block;clip-path:none;height:260px;max-width:100%;background:#e8ddcb}.founderAccent img{object-fit:contain;object-position:center;background:#e8ddcb}}
