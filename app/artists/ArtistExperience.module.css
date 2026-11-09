@@ -44,3 +44,14 @@
 @media(max-width:700px){.hero{display:flex;flex-direction:column;align-items:stretch;min-height:auto;padding:116px 24px 100px}.heroCopy{max-width:580px;padding:0}.eyebrow{margin-bottom:24px;font-size:10px}.hero h1{font-size:clamp(57px,12vw,78px);margin-bottom:20px}.heroDescription{font-size:16px;max-width:520px;margin-bottom:24px}.heroCta{min-width:225px;padding:13px 19px;font-size:15px}.heroVisual{min-height:370px;height:82vw;max-height:520px;margin:0 -5vw -45px}.heroVisual img{max-height:100%;width:100%}.wave{height:95px;bottom:-1px}.directory{padding:42px 20px 70px}.directoryHeading{gap:14px;margin-bottom:34px}.directoryHeading span{width:35px}.directoryHeading h2{font-size:10px;letter-spacing:.3em}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 12px}.card,.card:nth-child(10n + 2),.card:nth-child(10n + 7),.card:nth-child(10n + 4),.card:nth-child(10n + 9){grid-column:span 1;min-height:116px;padding:20px 8px}.artistName{font-size:clamp(17px,4vw,24px)}.cardMark{margin-top:12px}.cardHover{display:none}.notice{font-size:12px;margin-top:36px}}
 @media(max-width:360px){.directory{padding-left:15px;padding-right:15px}.gallery{gap:14px 10px}.card{min-height:107px!important}.artistName{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.heroCta,.card,.cardMark,.cardHover,.explore{transition:none}}
+
+/* Three independent, touch-friendly artist rows. */
+.sliderRows{display:grid;gap:clamp(17px,2vw,27px);max-width:1540px;margin:0 auto}
+.sliderRow{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;align-items:center;gap:clamp(8px,1.2vw,18px)}
+.sliderTrack{display:flex;gap:clamp(14px,1.6vw,22px);min-width:0;overflow-x:auto;padding:10px 4px 17px;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;scrollbar-width:none}
+.sliderTrack::-webkit-scrollbar{display:none}
+.sliderRow .card{display:flex;flex:0 0 clamp(185px,18vw,255px);width:clamp(185px,18vw,255px);grid-column:auto;min-height:clamp(112px,10vw,150px);scroll-snap-align:start}
+.sliderArrow{display:grid;place-items:center;width:40px;height:40px;border:1px solid #c9a889;border-radius:50%;background:#fff8ef;color:#704623;font:400 28px/1 var(--font-interface),Arial,sans-serif;transition:background .2s,transform .2s}
+.sliderArrow:not(:disabled):hover{background:#ead6c4;transform:scale(1.04)}
+.sliderArrow:disabled{opacity:.45;cursor:default}
+@media(max-width:700px){.sliderRows{gap:15px}.sliderRow{grid-template-columns:30px minmax(0,1fr) 30px;gap:6px}.sliderArrow{width:30px;height:30px;font-size:23px}.sliderTrack{gap:12px;padding:8px 2px 12px}.sliderRow .card{flex-basis:clamp(170px,58vw,220px);width:clamp(170px,58vw,220px);min-height:112px}}
