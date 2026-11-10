@@ -16,18 +16,6 @@ export default function ArtistExperience({artists}:{artists:ArtistEntry[]}){
   track.scrollBy({left:direction*((card?.getBoundingClientRect().width||230)+20)*2,behavior:'smooth'});
  };
  return <main className={s.page}>
-  <section className={s.hero} aria-labelledby="artists-heading">
-   <div className={s.heroCopy}>
-    <p className={s.eyebrow}>OUR ARTISTS <span aria-hidden="true"/></p>
-    <h1 id="artists-heading">Meet the<br/><em>Creative Minds</em></h1>
-    <p className={s.heroDescription}>The artists behind the collection—visionaries whose imagination, craftsmanship, and distinctive perspectives turn ideas into works that will adorn the walls of your home.</p>
-    <Link className={s.heroCta} href="#artist-directory">Explore Our Artists <span aria-hidden="true">→</span></Link>
-   </div>
-   <div className={s.heroVisual}>
-    <img src="/gallery/artist-page-muse.webp" alt="A classical sculptural muse with expressive abstract brushwork in warm gallery tones" width={1350} height={1165} fetchPriority="high"/>
-   </div>
-   <div className={s.wave} aria-hidden="true"/>
-  </section>
   <section className={s.directory} id="artist-directory" aria-labelledby="directory-heading">
    <div className={s.directoryHeading}><span aria-hidden="true"/><h2 id="directory-heading">Featured Artists</h2><span aria-hidden="true"/></div>
    {artists.length>0?<>
