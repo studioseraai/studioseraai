@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import {useMemo, useState, type KeyboardEvent} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import Link from 'next/link';
 import type {Artwork} from '../../lib/gallery/types';
 import type {WordPressHero} from '../../lib/gallery/wordpress';
@@ -10,8 +10,6 @@ import styles from './StudioSeraaiAnimatedHero.module.css';
 type HeroSlide = {
   id: string;
   src: string;
-  title: string;
-  artist: string;
   width: number;
   height: number;
 };
@@ -19,8 +17,6 @@ type HeroSlide = {
 const suppliedArtwork: HeroSlide = {
   id: 'seraai-reference-artwork',
   src: '/gallery/hero/v5-featured-art.webp',
-  title: 'Featured artwork',
-  artist: 'Studio Seraai',
   width: 686,
   height: 330,
 };
@@ -57,8 +53,6 @@ export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPr
       .map(({art}) => ({
         id: String(art.id),
         src: '/api/gallery/image/' + art.photos[0].id,
-        title: art.title,
-        artist: art.artist || 'Studio Seraai',
         width: 1200,
         height: 590,
       }));
@@ -66,12 +60,25 @@ export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPr
   }, [artworks]);
 
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [motionAllowed, setMotionAllowed] = useState(false);
   const current = slides[active] || suppliedArtwork;
-  const move = (step: number) => setActive(index => (index + step + slides.length) % slides.length);
-  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'ArrowRight') { event.preventDefault(); move(1); }
-    if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); }
-  };
+
+  useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updatePreference = () => setMotionAllowed(!preference.matches);
+    updatePreference();
+    preference.addEventListener('change', updatePreference);
+    return () => preference.removeEventListener('change', updatePreference);
+  }, []);
+
+  useEffect(() => {
+    if (!motionAllowed || paused || slides.length < 2) return;
+    const timer = window.setInterval(() => {
+      setActive(index => (index + 1) % slides.length);
+    }, 5500);
+    return () => window.clearInterval(timer);
+  }, [motionAllowed, paused, slides.length]);
 
   return <section className={styles.hero} aria-label="Studio Seraai — a contemporary art gallery">
     <div className={styles.room} aria-hidden="true">
@@ -80,20 +87,22 @@ export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPr
 
     <div className={styles.decor} aria-hidden="true">
       <Image className={styles.sideTable} src="/gallery/hero/v5-side-table.webp" width={1536} height={1024} alt="" sizes="14vw" />
-      <Image className={styles.mainTable} src="/gallery/hero/v5-main-table.webp" width={1448} height={1086} alt="" sizes="(max-width: 650px) 70vw, (max-width: 1100px) 46vw, 43vw" />
+      <Image className={styles.mainTable} src="/gallery/hero/v5-main-table.webp" width={1448} height={1086} alt="" sizes="(max-width: 650px) 72vw, (max-width: 1100px) 49vw, 46vw" />
       <Image className={styles.cube} src="/gallery/hero/v5-cube.webp" width={1312} height={1199} alt="" sizes="(max-width: 650px) 14vw, (max-width: 1100px) 19vw, 20vw" />
     </div>
 
-    <div className={styles.artStage} role="region" aria-label="Featured artwork slider" tabIndex={0} onKeyDown={onKeyDown}>
+    <div
+      className={styles.artStage}
+      role="region"
+      aria-label="Featured artwork"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       <div className={styles.artFrame} key={current.id}>
-        <Image src={current.src} alt={current.title} width={current.width} height={current.height} sizes="(max-width: 650px) 86vw, (max-width: 1100px) 52vw, 42vw" className={styles.artImage} priority={active === 0} />
+        <Image src={current.src} alt="Featured artwork" width={current.width} height={current.height} sizes="(max-width: 650px) 86vw, (max-width: 1100px) 52vw, 42vw" className={styles.artImage} priority={active === 0} />
       </div>
-      <div className={styles.artCaption} aria-live="polite"><span>{current.title}</span><span>{current.artist}</span></div>
-      {slides.length > 1 && <div className={styles.controls}>
-        <button type="button" aria-label="Previous artwork" onClick={() => move(-1)}>‹</button>
-        <div className={styles.dots}>{slides.map((slide, index) => <button key={slide.id} type="button" aria-label={'Show artwork ' + (index + 1)} aria-current={index === active ? 'true' : undefined} onClick={() => setActive(index)} />)}</div>
-        <button type="button" aria-label="Next artwork" onClick={() => move(1)}>›</button>
-      </div>}
     </div>
 
     <div className={styles.copy}>
