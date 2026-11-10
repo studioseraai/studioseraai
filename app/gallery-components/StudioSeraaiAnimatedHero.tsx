@@ -80,8 +80,8 @@ export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPr
 
     <div className={styles.decor} aria-hidden="true">
       <Image className={styles.sideTable} src="/gallery/hero/v5-side-table.webp" width={1536} height={1024} alt="" sizes="14vw" />
-      <Image className={styles.mainTable} src="/gallery/hero/v5-main-table.webp" width={1448} height={1086} alt="" sizes="35vw" />
-      <Image className={styles.cube} src="/gallery/hero/v5-cube.webp" width={1312} height={1199} alt="" sizes="12vw" />
+      <Image className={styles.mainTable} src="/gallery/hero/v5-main-table.webp" width={1448} height={1086} alt="" sizes="(max-width: 650px) 70vw, (max-width: 1100px) 46vw, 43vw" />
+      <Image className={styles.cube} src="/gallery/hero/v5-cube.webp" width={1312} height={1199} alt="" sizes="(max-width: 650px) 14vw, (max-width: 1100px) 19vw, 20vw" />
     </div>
 
     <div className={styles.artStage} role="region" aria-label="Featured artwork slider" tabIndex={0} onKeyDown={onKeyDown}>

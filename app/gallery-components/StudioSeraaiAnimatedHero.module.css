@@ -15,8 +15,8 @@
 .decor { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 .sideTable,.mainTable,.cube { position: absolute; display: block; height: auto; object-fit: contain; will-change: transform,opacity; }
 .sideTable { left: 3.5%; bottom: 0; width: 14%; z-index: 1; animation: sideIn 1s cubic-bezier(.16,1,.3,1) 1.7s both; }
-.mainTable { left: 27.5%; bottom: 0; width: min(33vw,48vh); z-index: 2; animation: tableIn 1.2s cubic-bezier(.16,1,.3,1) 1.05s both; }
-.cube { right: 4.5%; top: 0; width: 14%; z-index: 3; animation: cubeIn 1.2s cubic-bezier(.16,1,.3,1) 1.45s both; }
+.mainTable { left: 43%; bottom: 0; width: min(43vw,53vh); z-index: 2; animation: tableIn 1.2s cubic-bezier(.16,1,.3,1) 1.05s both; }
+.cube { right: 1%; top: 0; width: min(20vw,31vh); z-index: 3; animation: cubeIn 1.2s cubic-bezier(.16,1,.3,1) 1.45s both; }
 .copy { position: absolute; left: 5%; top: 20%; z-index: 5; width: 23.5%; max-width: 500px; }
 .eyebrow { margin: 0 0 17px; color: #805632; font: 600 clamp(9px,.72vw,12px)/1.4 Arial,sans-serif; letter-spacing: .25em; animation: copyIn .7s cubic-bezier(.16,1,.3,1) 1.95s both; }
 .title { margin: 0; color: #34251a; font: 400 clamp(38px,2.85vw,56px)/.98 var(--font-display),Georgia,serif; letter-spacing: -.035em; }
@@ -27,7 +27,7 @@
 .cta:hover { background: #704b2e; transform: translateY(-2px); }
 .cta:focus-visible,.controls button:focus-visible,.dots button:focus-visible,.artStage:focus-visible { outline: 2px solid #55391f; outline-offset: 4px; }
 .cta span { font-size: 20px; line-height: 1; }
-.artStage { position: absolute; left: 30%; top: 11%; width: min(30vw,48vh,560px); z-index: 4; display: flex; flex-direction: column; align-items: stretch; animation: paintingReveal .95s cubic-bezier(.16,1,.3,1) .72s both; }
+.artStage { position: absolute; right: 18%; top: 15%; width: min(42vw,54vh,680px); z-index: 4; display: flex; flex-direction: column; align-items: stretch; animation: paintingReveal .95s cubic-bezier(.16,1,.3,1) .72s both; }
 .artFrame { position: relative; display: grid; flex: none; width: 100%; aspect-ratio: 4 / 3; min-height: 0; padding: clamp(5px,.48vw,10px); overflow: hidden; place-items: center; background: linear-gradient(135deg,#dbad69,#73491f 36%,#c38b40 69%,#69421e); box-shadow: 0 12px 24px #34211355,0 2px 5px #35221466; animation: artworkChange .45s ease both; }
 .artImage { display: block; width: 100%; height: 100%; object-fit: contain; background: #f5eee4; }
 .artCaption { display: flex; justify-content: space-between; gap: 12px; padding: 7px 2px 0; color: #5d4734; font: 500 clamp(7px,.48vw,9px)/1.2 Arial,sans-serif; letter-spacing: .1em; text-transform: uppercase; }
@@ -43,12 +43,12 @@
 @keyframes paintingReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes tableIn { from { opacity: 0; transform: translateY(13%); } to { opacity: 1; transform: translateY(0); } }
 @keyframes cubeIn { from { opacity: 0; transform: translateY(-17%); } to { opacity: 1; transform: translateY(0); } }
-@keyframes sideIn { from { opacity: 0; transform: translateX(12%); } to { opacity: 1; transform: translateX(0); } }
+@keyframes sideIn { from { opacity: 0; transform: translateX(-16%); } to { opacity: 1; transform: translateX(0); } }
 @keyframes copyIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes artworkChange { from { opacity: .55; } to { opacity: 1; } }
 @media(max-width:1500px) and (min-width:1101px) {
   .description { font-size: 13px; }
-  .artStage { left: 30%; width: min(30vw,48vh,560px); }
+  .artStage { right: 18%; width: min(42vw,54vh,680px); }
   .controls { inset-inline: 9px; }
 }
 @media(max-width:1100px) {
@@ -59,13 +59,13 @@
   .eyebrow { font-size: 10px; margin-bottom: 13px; }
   .title { font-size: clamp(42px,5vw,56px); }
   .description { margin: 16px 0 18px; font-size: 13px; }
-  .artStage { left: 49%; top: 16%; width: min(36vw,42vh); }
+  .artStage { right: 6%; top: 17%; width: min(40vw,39vh); }
   .artCaption { font-size: 8px; }
   .controls { inset-inline: 7px; }
   .controls button { width: 34px; height: 34px; }
-  .mainTable { left: 49%; bottom: 0; width: min(38vw,42vh); }
+  .mainTable { left: auto; right: 10%; bottom: 0; width: min(46vw,48vh); }
   .sideTable { left: 1%; bottom: 0; width: 19%; }
-  .cube { right: 2%; top: 0; width: 14%; }
+  .cube { right: 1%; top: 0; width: min(19vw,25vh); }
 }
 @media(max-width:650px) {
   .hero { height: calc(100svh - 90px); min-height: min(520px,calc(100svh - 90px)); }
@@ -75,7 +75,7 @@
   .title { font-size: clamp(34px,9vw,44px); }
   .description { max-width: 440px; margin: 10px 0 12px; font-size: 11px; line-height: 1.45; }
   .cta { min-height: 40px; padding: 10px 16px; gap: 12px; font-size: 11px; }
-  .artStage { left: 50%; top: 36%; width: min(80vw,38vh); }
+  .artStage { left: 50%; right: auto; top: 36%; width: min(80vw,38vh); }
   .artFrame { padding: 5px; }
   .artCaption { padding-top: 6px; font-size: 7px; letter-spacing: .06em; }
   .controls { inset-inline: 7px; }
