@@ -106,8 +106,8 @@ export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPr
     </div>
 
     <div className={styles.copy}>
-      <p className={styles.eyebrow}>CURATED ART COLLECTIONS</p>
-      <h1 className={styles.title}><span>Art for</span><em>Inspired Spaces</em></h1>
+      <p className={styles.eyebrow}>A GALLERY WHERE WALLS BREATHE ART.</p>
+      <h1 className={styles.title}><span>Vision Meets</span><em>Collection</em></h1>
       <p className={styles.description}>Original artworks, thoughtfully selected to bring character, culture, and creativity to your space.</p>
       <Link className={styles.cta} href="/collections">Explore Collections <span aria-hidden="true">→</span></Link>
     </div>
