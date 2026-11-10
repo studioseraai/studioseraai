@@ -51,7 +51,7 @@ export default function Page(){
 
   <section className={s.purpose} aria-labelledby="about-purpose">
    <div className={s.purposeImage}>
-    <img src="/gallery/studio-seraai-why-seraai.webp" alt="Studio Seraai golden wall sign in a warm gallery interior" loading="lazy"/>
+    <img src="/gallery/studio-seraai-why-seraai-20261110.png" alt="Studio Seraai golden wall sign in a warm gallery interior" loading="lazy"/>
    </div>
    <div className={s.purposeCopy}>
     <p className={s.kicker}>THE MEANING BEHIND OUR NAME</p>
