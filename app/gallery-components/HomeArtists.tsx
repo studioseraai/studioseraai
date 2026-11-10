@@ -12,10 +12,10 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}) {
             <div className={s.frameInner}>
               <img
                 className={s.artistImage}
-                src="/gallery/studio-seraai-featured-artist.webp"
-                alt="An impasto painting with a painter’s palette and brushes against a vivid field of orange, blue, red and cream brushstrokes"
-                width={1254}
-                height={1254}
+                src="/gallery/studio-seraai-featured-artist-vase.webp"
+                alt="Ornate ceramic vase decorated with calligraphic designs and colorful bands"
+                width={1024}
+                height={1536}
                 loading="lazy"
                 decoding="async"
               />
