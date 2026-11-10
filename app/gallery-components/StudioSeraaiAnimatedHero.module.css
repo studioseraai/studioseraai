@@ -12,17 +12,16 @@
 .room { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .roomImage { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: fill; }
 .roomEmpty { opacity: 1; animation: roomIn .65s ease-out both; }
-.roomPainted { opacity: 0; animation: paintingRoomIn 1.1s cubic-bezier(.2,.75,.2,1) .45s both; }
 .decor { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 .sideTable,.mainTable,.cube { position: absolute; display: block; height: auto; object-fit: contain; will-change: transform,opacity; }
-.sideTable { right: 3.5%; bottom: -1%; width: 14%; z-index: 1; animation: sideIn 1s cubic-bezier(.16,1,.3,1) 1.7s both; }
-.mainTable { left: 27.5%; bottom: -14%; width: 33%; z-index: 2; animation: tableIn 1.2s cubic-bezier(.16,1,.3,1) 1.05s both; }
-.cube { right: 4.5%; top: -5%; width: 9%; z-index: 3; animation: cubeIn 1.2s cubic-bezier(.16,1,.3,1) 1.45s both; }
+.sideTable { right: 3.5%; bottom: 0; width: 14%; z-index: 1; animation: sideIn 1s cubic-bezier(.16,1,.3,1) 1.7s both; }
+.mainTable { left: 27.5%; bottom: 0; width: 33%; z-index: 2; animation: tableIn 1.2s cubic-bezier(.16,1,.3,1) 1.05s both; }
+.cube { right: 4.5%; top: 1%; width: 9%; z-index: 3; animation: cubeIn 1.2s cubic-bezier(.16,1,.3,1) 1.45s both; }
 .copy { position: absolute; left: 5%; top: 20%; z-index: 5; width: 23.5%; max-width: 500px; }
 .eyebrow { margin: 0 0 17px; color: #805632; font: 600 clamp(9px,.72vw,12px)/1.4 Arial,sans-serif; letter-spacing: .25em; animation: copyIn .7s cubic-bezier(.16,1,.3,1) 1.95s both; }
 .title { margin: 0; color: #34251a; font: 400 clamp(38px,2.85vw,56px)/.98 var(--font-display),Georgia,serif; letter-spacing: -.035em; }
 .title span,.title em { display: block; animation: copyIn .8s cubic-bezier(.16,1,.3,1) 2.05s both; }
-.title em { color: #8b5b33; font-style: italic; animation-delay: 2.17s; }
+.title em { color: #8b5b33; font-size: .88em; font-style: italic; white-space: nowrap; animation-delay: 2.17s; }
 .description { max-width: 480px; margin: 20px 0 23px; color: #514239; font-size: clamp(12px,.92vw,16px); line-height: 1.65; animation: copyIn .75s cubic-bezier(.16,1,.3,1) 2.3s both; }
 .cta { display: inline-flex; align-items: center; gap: 20px; min-height: 48px; padding: 12px 22px; border-radius: 999px; background: #443025; color: #fff8ef; text-decoration: none; font-size: 12px; font-weight: 500; transition: background .22s,transform .22s; animation: copyIn .75s cubic-bezier(.16,1,.3,1) 2.45s both; }
 .cta:hover { background: #704b2e; transform: translateY(-2px); }
@@ -30,7 +29,7 @@
 .cta span { font-size: 20px; line-height: 1; }
 .artStage { position: absolute; left: 28.4%; top: 20.7%; width: 43.2%; height: 39%; z-index: 4; display: flex; flex-direction: column; align-items: stretch; animation: paintingReveal .95s cubic-bezier(.16,1,.3,1) .72s both; }
 .artFrame { position: relative; display: grid; flex: 1 1 auto; min-height: 0; padding: clamp(5px,.48vw,10px); overflow: hidden; place-items: center; background: linear-gradient(135deg,#dbad69,#73491f 36%,#c38b40 69%,#69421e); box-shadow: 0 12px 24px #34211355,0 2px 5px #35221466; animation: artworkChange .45s ease both; }
-.artImage { display: block; width: 100%; height: 100%; object-fit: contain; background: #f5eee4; }
+.artImage { display: block; width: 100%; height: 100%; object-fit: cover; background: #f5eee4; }
 .artCaption { display: flex; justify-content: space-between; gap: 12px; padding: 7px 2px 0; color: #5d4734; font: 500 clamp(7px,.48vw,9px)/1.2 Arial,sans-serif; letter-spacing: .1em; text-transform: uppercase; }
 .artCaption span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .artCaption span:last-child { flex: 0 0 auto; white-space: nowrap; }
@@ -41,7 +40,6 @@
 .dots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 20px; background: #89664d88; cursor: pointer; transition: width .2s,background .2s; }
 .dots button[aria-current=true] { width: 20px; background: #784a25; }
 @keyframes roomIn { from { opacity: .45; } to { opacity: 1; } }
-@keyframes paintingRoomIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes paintingReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes tableIn { from { opacity: 0; transform: translateY(13%); } to { opacity: 1; transform: translateY(0); } }
 @keyframes cubeIn { from { opacity: 0; transform: translateY(-17%); } to { opacity: 1; transform: translateY(0); } }
@@ -66,9 +64,9 @@
   .artCaption { font-size: 8px; }
   .controls { inset-inline: 7px; }
   .controls button { width: 34px; height: 34px; }
-  .mainTable { left: 22%; bottom: -5%; width: 42%; }
+  .mainTable { left: 22%; bottom: 0; width: 42%; }
   .sideTable { right: 1%; bottom: -1%; width: 19%; }
-  .cube { right: 2%; top: 0; width: 14%; }
+  .cube { right: 2%; top: 1%; width: 14%; }
 }
 @media(max-width:650px) {
   .hero { height: max(calc(100svh - 90px),940px); min-height: 940px; }
@@ -84,11 +82,11 @@
   .controls { inset-inline: 7px; }
   .controls button { width: 30px; height: 30px; font-size: 25px; }
   .dots { bottom: 8px; }
-  .mainTable { left: 13%; bottom: -1%; width: 74%; }
+  .mainTable { left: 13%; bottom: 0; width: 74%; }
   .sideTable { display: none; }
   .cube { right: 5%; top: 25%; width: 16%; }
 }
 @media(prefers-reduced-motion:reduce) {
-  .roomEmpty,.roomPainted,.sideTable,.mainTable,.cube,.eyebrow,.title span,.title em,.description,.cta,.artStage,.artFrame { animation: none; will-change: auto; opacity: 1; transform: none; }
+  .roomEmpty,.sideTable,.mainTable,.cube,.eyebrow,.title span,.title em,.description,.cta,.artStage,.artFrame { animation: none; will-change: auto; opacity: 1; transform: none; }
   .cta,.controls button,.dots button { transition: none; }
 }

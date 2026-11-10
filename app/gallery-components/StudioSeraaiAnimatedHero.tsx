@@ -21,8 +21,8 @@ const suppliedArtwork: HeroSlide = {
   src: '/gallery/hero/v5-featured-art.webp',
   title: 'Featured artwork',
   artist: 'Studio Seraai',
-  width: 687,
-  height: 339,
+  width: 686,
+  height: 330,
 };
 
 function dimensions(art: Artwork) {
@@ -76,7 +76,6 @@ export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPr
   return <section className={styles.hero} aria-label="Studio Seraai — a contemporary art gallery">
     <div className={styles.room} aria-hidden="true">
       <Image className={`${styles.roomImage} ${styles.roomEmpty}`} src="/gallery/hero/v5-empty-wall.webp" width={1774} height={887} alt="" priority sizes="100vw" />
-      <Image className={`${styles.roomImage} ${styles.roomPainted}`} src="/gallery/hero/v5-wall-painted.webp" width={1672} height={941} alt="" priority sizes="100vw" />
     </div>
 
     <div className={styles.decor} aria-hidden="true">
