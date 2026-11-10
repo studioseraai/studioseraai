@@ -278,3 +278,20 @@
 
 /* Desktop has complete navigation; keep hamburger exclusively for compact screens. */
 @media(min-width:801px){.sg.wa>.sg-header>.sg-icon{display:none!important}}
+
+
+/* V5 public-site responsive safeguards — scoped to the gallery, not SERAAI OS. */
+.sg.wa { width:100%; max-width:100%; overflow-x:clip; }
+.sg.wa #gallery-main { width:100%; max-width:100%; min-width:0; }
+.sg.wa #gallery-main img,.sg.wa #gallery-main video { max-width:100%; }
+.sg.wa #gallery-main :where(section,article,aside,figure) { min-width:0; }
+@media (max-width:800px) {
+  .sg.wa .sg-dialog { max-width:calc(100vw - 24px); max-height:calc(100dvh - 24px); overflow:auto; }
+  .sg.wa #gallery-main :where(h1,h2,h3,p) { overflow-wrap:break-word; }
+  .sg.wa #gallery-main :where(button,a,input,select,textarea) { touch-action:manipulation; }
+}
+@media (max-width:520px) {
+  .sg.wa #gallery-main { overflow-x:clip; }
+  .sg.wa #gallery-main :where(.wa-home,.wa-collections,.wa-artists,.wa-exhibitions) { max-width:100%; min-width:0; }
+  .sg.wa #gallery-main :where(input,select,textarea) { max-width:100%; }
+}
