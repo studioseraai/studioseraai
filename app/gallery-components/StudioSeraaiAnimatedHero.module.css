@@ -1,109 +1,60 @@
 .hero {
-  --ease: cubic-bezier(.16,1,.3,1);
-  position: relative; isolation: isolate; overflow: hidden; container-type: inline-size;
-  min-height: 580px; height: calc(100svh - 110px); max-height: 900px;
-  background: #e2d6c6; color: #2d251e;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  container-type:inline-size;
+  min-height:580px;
+  height:calc(100svh - 110px);
+  max-height:900px;
+  background:#e8d8c7;
+  color:#2d251e;
 }
-.room { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.navBackdrop { display:none; }
-.sideTables, .mainTable, .cube {position:absolute; pointer-events:none; will-change:transform,opacity;}
-.sideTables img,.mainTable img,.cube img {display:block;width:100%;height:auto;}
-/* Position the transparent full-canvas product PNGs, not a flat composite. */
-.sideTables {left:5%; bottom:-1%; width:28%; z-index:2; animation:sideIn 1.35s var(--ease) .45s both;}
-.mainTable {left:30%; bottom:4%; width:54%; z-index:3; animation:tableIn 1.55s var(--ease) .16s both;}
-.cube {right:8%; top:1%; width:24%; z-index:2; animation:cubeIn 1.55s var(--ease) 0s both;}
-.copy {position:absolute; left:10%; top:17%; z-index:4; max-width:38%;}
-.eyebrow {margin:0 0 19px; letter-spacing:.30em; font-size:clamp(10px,.9vw,14px); font-weight:500; animation:copyIn .9s var(--ease) 1.06s both;}
-.title {margin:0; font:400 clamp(58px,5.4vw,104px)/.99 var(--font-display), Georgia,serif; letter-spacing:-.035em; animation:copyIn 1s var(--ease) 1.2s both;}
-.title em {font-weight:400;}
-.description {margin:26px 0 29px; font-size:clamp(13px,1.05vw,17px);line-height:1.7; animation:copyIn 1s var(--ease) 1.34s both;}
-.cta {display:inline-flex; align-items:center; gap:25px; min-height:50px; padding:13px 22px; background:#403025; color:#faf5ee; text-decoration:none; font-size:11px; font-weight:600; letter-spacing:.16em; transition:background .25s,transform .25s; animation:copyIn .85s var(--ease) 1.5s both;}
-.cta span {font-size:20px;line-height:1;}
-.cta:hover {background:#6a4931; transform:translateY(-2px);}
-.cta:focus-visible {outline:2px solid #312216;outline-offset:5px;}
-.scrollHint {position:absolute;right:4%;bottom:4%;z-index:4;display:flex;gap:14px;align-items:center;font-size:10px;letter-spacing:.18em;animation:copyIn .8s var(--ease) 1.8s both;}
-.scrollHint span {font-size:21px;}
-@keyframes cubeIn {from {opacity:0;transform:translate3d(0,-100%,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@keyframes tableIn {from {opacity:0;transform:translate3d(0,85%,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@keyframes sideIn {from {opacity:0;transform:translate3d(-105%,0,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@keyframes copyIn {from {opacity:0;transform:translate3d(0,30px,0);}to {opacity:1;transform:translate3d(0,0,0);}}
-@media(max-width:1100px){.hero{height:calc(100svh - 110px);min-height:650px}.copy{left:8%;top:15%;max-width:50%}.title{font-size:clamp(55px,7vw,82px)}.sideTables{width:34%;left:3%;bottom:0%}.mainTable{width:64%;left:25%;bottom:5%}.cube{width:31%;right:4%;top:1%}}
-@media(max-width:650px){
-  .hero{height:calc(100svh - 90px);max-height:none;min-height:650px}
-  .room{object-position:47% center}.navBackdrop{height:90px}
-  .copy{left:7%;right:7%;top:105px;max-width:none}
-  .eyebrow{font-size:9px;margin-bottom:14px;letter-spacing:.23em}
-  .title{font-size:clamp(43px,11vw,65px)}
-  .description{font-size:12px;margin:18px 0 21px}
-  .cta{min-height:45px;padding:12px 16px;font-size:9px;gap:12px}
-  .cube{width:42%;top:1%;right:-4%}
-  .sideTables{display:none}
-  .mainTable{width:98%;left:0%;bottom:7%}
-  .scrollHint{font-size:8px;bottom:3%;right:5%}
+.room {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:-1}
+.copy {position:absolute;left:8%;top:17%;z-index:2;max-width:37%}
+.eyebrow {margin:0 0 19px;letter-spacing:.19em;font:italic 500 clamp(10px,.9vw,14px)/1.4 var(--font-display),Georgia,serif;color:#704a30}
+.title {margin:0;color:#442e22;font:400 clamp(58px,5.1vw,94px)/.99 var(--font-display),Georgia,serif;letter-spacing:-.035em}
+.title em {font-weight:400}
+.description {margin:23px 0 26px;max-width:510px;font-size:clamp(13px,1.05vw,17px);line-height:1.7;color:#463a30}
+.cta {display:inline-flex;align-items:center;gap:20px;min-height:48px;padding:12px 20px;background:#403025;color:#faf5ee;text-decoration:none;font-size:10px;font-weight:600;letter-spacing:.15em;border-radius:999px;transition:background .25s,transform .25s}
+.cta span {font-size:20px;line-height:1}
+.cta:hover {background:#6a4931;transform:translateY(-2px)}
+.cta:focus-visible,.controls button:focus-visible,.dots button:focus-visible {outline:2px solid #312216;outline-offset:4px}
+.slider {position:absolute;z-index:1;left:57%;top:9%;height:75%;width:39%;display:flex;flex-direction:column;align-items:center;justify-content:center;outline:none}
+.artFrame {height:min(59vh,560px);max-height:100%;max-width:100%;width:auto;flex:0 1 auto;display:grid;place-items:center;padding:10px;background:linear-gradient(135deg,#d2a15d,#70471f 38%,#c38b40 72%,#573919);box-shadow:0 15px 28px #39251540,0 2px 5px #39251570;animation:artReveal .6s cubic-bezier(.16,1,.3,1) both}
+.artFrame img {display:block;width:100%;height:100%;object-fit:contain;background:#f5efe5;box-shadow:inset 0 0 0 1px #fff8}
+.artCaption {display:flex;justify-content:space-between;gap:18px;max-width:min(43vw,680px);width:100%;margin-top:13px;color:#594532;text-shadow:0 1px 8px #fff9;font:500 10px/1.3 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.artCaption span:first-child {overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.artCaption span:last-child {white-space:nowrap}
+.controls {display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px}
+.controls button {width:42px;height:42px;display:grid;place-items:center;border:1px solid #704b2c66;border-radius:50%;background:#fff2e8e8;color:#593a21;font:30px/1 Georgia,serif;cursor:pointer;transition:background .2s,transform .2s}
+.controls button:hover {background:#fff;color:#2e2016;transform:scale(1.05)}
+.dots {display:flex;align-items:center;gap:8px}
+.dots button {width:7px;height:7px;padding:0;border:0;border-radius:99px;background:#7b543c66;cursor:pointer;transition:width .2s,background .2s}
+.dots button[aria-current=true] {width:22px;background:#754821}
+@keyframes artReveal {from{opacity:.45;transform:translateY(8px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:1100px) {
+  .hero {height:calc(100svh - 110px);min-height:650px}
+  .copy {left:7%;top:11%;max-width:43%}
+  .title {font-size:clamp(50px,6.3vw,76px)}
+  .slider {left:53%;top:12%;width:43%;height:71%}
+  .artFrame {height:min(52vh,500px)}
 }
-@media(prefers-reduced-motion:reduce){
- .sideTables,.mainTable,.cube,.eyebrow,.title,.description,.cta,.scrollHint{animation:none;will-change:auto;}
- .cta{transition:none;}
+@media(max-width:650px) {
+  .hero {height:calc(100svh - 90px);max-height:none;min-height:700px}
+  .room {object-position:48% center}
+  .copy {left:7%;right:7%;top:8%;max-width:none}
+  .eyebrow {font-size:9px;margin-bottom:12px;letter-spacing:.16em}
+  .title {font-size:clamp(43px,11vw,63px)}
+  .description {font-size:12px;line-height:1.5;margin:14px 0 17px;max-width:460px}
+  .cta {min-height:43px;padding:11px 17px;font-size:9px;gap:13px}
+  .slider {left:8%;right:8%;top:49%;bottom:4%;height:auto;width:auto;justify-content:center}
+  .artFrame {height:min(33vh,290px);max-width:78vw;padding:7px}
+  .artCaption {max-width:78vw;margin-top:9px;font-size:8px;letter-spacing:.08em}
+  .controls {gap:13px;margin-top:10px}
+  .controls button {width:34px;height:34px;font-size:26px}
+  .dots {gap:6px}
 }
-
-/* V3 final hero type and action styling */
-.eyebrow{font-family:var(--font-display),Georgia,serif;font-style:italic;letter-spacing:.19em}
-.cta{border-radius:999px}
-
-/* Ensure italic survives gallery-wide typography rules. */
-.eyebrow{font-style:italic!important;font-synthesis:style}
-
-/* V3 main table replacement: compact the 4:3 transparent asset into the existing composition. */
-.mainTable{left:36%;width:40%}
-@media(max-width:1100px){.mainTable{left:29%;width:50%}}
-@media(max-width:650px){.mainTable{left:5%;width:90%}}
-
-/* Final hero staging: center the main table; align both object bases with floor. */
-@media(min-width:1101px){
-  .sideTables{left:5%;width:24%;bottom:-1%}
-  .mainTable{left:30%;width:40%;bottom:0}
-}
-@media(min-width:651px) and (max-width:1100px){
-  .sideTables{left:3%;width:29%;bottom:-1%}
-  .mainTable{left:25%;width:50%;bottom:0}
-}
-
-/* V3 hero final visual alignment — preserve composition and mobile staging. */
-.title,.title em{color:#442e22!important}
-@media(min-width:1101px){
-  .sideTables{left:6.5%;bottom:-2.5%}
-  .mainTable{left:30%;bottom:0}
-}
-@media(min-width:651px) and (max-width:1100px){
-  .sideTables{left:4%;bottom:-2%}
-  .mainTable{left:25%;bottom:0}
-}
-
-/* V4 hero zoom correction.
-   Keep the original cabinet scale and wall-side position; avoid overlap by
-   lifting the copy and reducing vertical type spacing on narrower desktops.
-   Wide desktop (>1700px) and mobile (<=650px) remain as before. */
-@media (min-width:1101px) and (max-width:1700px) {
-  .copy {left:8%;top:7%;max-width:37%}
-  .title {font-size:clamp(52px,4.5vw,72px);line-height:.98}
-  .eyebrow {margin-bottom:12px}
-  .description {margin:15px 0 16px;line-height:1.45}
-  .cta {min-height:44px;padding:11px 18px;gap:16px}
-  .sideTables {left:6.5%;width:24%;bottom:-2.5%}
-}
-@media (min-width:901px) and (max-width:1100px) {
-  .copy {left:8%;top:6%;max-width:44%}
-  .title {font-size:clamp(48px,5.1vw,60px);line-height:.98}
-  .eyebrow {margin-bottom:10px}
-  .description {margin:13px 0 14px;line-height:1.45}
-  .cta {min-height:43px;padding:10px 17px;gap:14px}
-  .sideTables {left:4%;width:29%;bottom:-2%}
-}
-@media (min-width:651px) and (max-width:900px) {
-  .copy {left:7%;top:6%;max-width:47%}
-  .title {font-size:clamp(44px,5.6vw,54px);line-height:.98}
-  .eyebrow {margin-bottom:10px}
-  .description {margin:12px 0 13px;line-height:1.45}
-  .cta {min-height:42px;padding:10px 16px;gap:12px}
-  .sideTables {left:4%;width:29%;bottom:-2%}
+@media(prefers-reduced-motion:reduce) {
+  .artFrame {animation:none}
+  .cta,.controls button,.dots button {transition:none}
 }
