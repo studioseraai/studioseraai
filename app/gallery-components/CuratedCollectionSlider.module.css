@@ -98,3 +98,50 @@
 .fixedFrame[data-frame=gold]{background:linear-gradient(135deg,#e3b75b 0%,#fff0bb 12%,#bb8334 29%,#f5d58e 54%,#a87029 77%,#e3b75b 100%);border-color:#ae7b33;box-shadow:inset 0 0 0 3px #ffe3a3,0 18px 26px #51351e44}
 .frameChoice[data-color=silver] i{background:linear-gradient(140deg,#f8f9fa,#8c959a);border-color:#a2a9af}
 .frameChoice[data-color=gold] i{background:linear-gradient(140deg,#ffe8a2,#b27a29);border-color:#ad7b34}
+
+/* Tablet: reduce the preview rails and let the featured frame stay prominent. */
+@media (min-width:701px) and (max-width:900px){
+ .section{min-height:0;padding:42px 0 58px}
+ .intro{max-width:720px;padding:0 24px;margin-bottom:22px}
+ .intro h2{font-size:clamp(43px,6vw,58px)}
+ .description{max-width:560px}
+ .stage{grid-template-columns:42px minmax(0,1fr) minmax(280px,36vw) minmax(0,1fr) 42px;gap:7px;padding:0 12px}
+ .arrow{width:40px;height:40px;font-size:23px}
+ .previewSide{gap:4px}
+ .preview{padding:2px}
+ .preview img{height:clamp(105px,15vw,140px)}
+ .fixedFrame{padding:9px;border-width:6px}
+ .caption{min-height:44px;margin-top:10px}
+ .caption strong{font-size:18px}
+ .footer{gap:10px}
+ .framePicker{gap:5px}
+ .frameChoice{padding:7px 6px;font-size:10px;letter-spacing:.08em}
+}
+@media (max-width:700px){
+ .section{min-height:0;padding:38px 0 48px}
+ .intro{padding:0 20px;margin-bottom:18px}
+ .intro h2{font-size:clamp(37px,9.5vw,48px)}
+ .description{max-width:440px;font-size:14px}
+ .stage{grid-template-columns:36px minmax(0,1fr) 36px;gap:4px;padding:0 8px}
+ .arrow{width:34px;height:34px}
+ .fixedFrame{width:min(100%,430px)!important;padding:7px;border-width:5px}
+ .frameSurface{padding:6px}
+ .caption{min-height:42px;margin-top:9px}
+ .caption strong{font-size:16px}
+ .caption small{font-size:9px}
+ .footer{width:100%;box-sizing:border-box;gap:9px;padding:0 8px}
+ .framePicker{width:100%;box-sizing:border-box;gap:2px;padding:0}
+ .framePicker>span{width:100%;text-align:center;margin:0 0 2px}
+ .frameChoice{flex:1;justify-content:center;gap:4px;min-width:0;padding:6px 3px;font-size:9px;letter-spacing:.04em}
+ .frameChoice i{width:12px;height:12px;flex:none}
+ .counter{gap:10px;font-size:11px}
+ .progress{width:80px}
+ .cta{min-height:42px;justify-content:center;padding:10px 17px}
+}
+@media (max-width:380px){
+ .stage{grid-template-columns:32px minmax(0,1fr) 32px;gap:2px;padding:0 5px}
+ .arrow{width:30px;height:30px}
+ .frameChoice{font-size:8px;gap:3px}
+ .frameChoice i{width:10px;height:10px}
+ .progress{width:64px}
+}
