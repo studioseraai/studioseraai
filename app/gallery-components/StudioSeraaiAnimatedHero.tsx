@@ -28,7 +28,8 @@ export default function StudioSeraaiAnimatedHero({copy,artworks=[]}:{copy?:WordP
   const slides=useMemo(()=>{
     const ranked=artworks.filter(art=>art.photos?.[0]?.id).map(art=>({art,...dimensions(art)})).sort((a,b)=>b.area-a.area||b.longest-a.longest);
     const large=ranked.filter(item=>item.longest>=100);
-    return (large.length?large:ranked).slice(0,5).map(item=>item.art);
+    const selected=(large.length?large:ranked).slice(0,5);
+    return selected.filter(({art})=>art.id!==4478&&art.id!==4636).map(item=>item.art);
   },[artworks]);
   const [active,setActive]=useState(0);
   const [paused,setPaused]=useState(false);
