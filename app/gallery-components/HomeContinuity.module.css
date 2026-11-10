@@ -64,3 +64,6 @@
 .flow :global(#exhibitions)::before{content:"";position:absolute;inset:0 0 auto;height:34px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,#f0dfd3,rgba(240,223,211,0))}
 .flow :global(#exhibitions)::after{background:linear-gradient(180deg,rgba(240,225,211,.15),#eee1d6)}
 .flow :global(section[aria-labelledby="private-viewing-heading"]){background-color:#eee2d9;margin-top:-1px}
+
+/* Keep the hero furniture fully visible: no collection overlap at the seam. */
+.flow :global(#collections){margin-top:0!important;z-index:1}
