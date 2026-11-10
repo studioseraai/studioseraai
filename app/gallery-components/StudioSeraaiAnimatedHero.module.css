@@ -27,7 +27,7 @@
 .cta:hover { background: #704b2e; transform: translateY(-2px); }
 .cta:focus-visible { outline: 2px solid #55391f; outline-offset: 4px; }
 .cta span { font-size: 20px; line-height: 1; }
-.artStage { position: absolute; right: 18%; top: 15%; width: min(42vw,54vh,680px); z-index: 4; display: flex; flex-direction: column; align-items: stretch; animation: paintingReveal .95s cubic-bezier(.16,1,.3,1) .72s both; }
+.artStage { position: absolute; right: 15%; top: 15%; width: min(42vw,54vh,680px); z-index: 4; display: flex; flex-direction: column; align-items: stretch; animation: paintingReveal .95s cubic-bezier(.16,1,.3,1) .72s both; }
 .artFrame { position: relative; display: grid; flex: none; width: 100%; aspect-ratio: 4 / 3; min-height: 0; padding: clamp(5px,.48vw,10px); overflow: hidden; place-items: center; background: linear-gradient(135deg,#dbad69,#73491f 36%,#c38b40 69%,#69421e); box-shadow: 0 12px 24px #34211355,0 2px 5px #35221466; animation: artworkChange .45s ease both; }
 .artImage { display: block; width: 100%; height: 100%; object-fit: contain; background: #f5eee4; }
 @keyframes roomIn { from { opacity: .45; } to { opacity: 1; } }
@@ -39,7 +39,7 @@
 @keyframes artworkChange { from { opacity: .55; } to { opacity: 1; } }
 @media(max-width:1500px) and (min-width:1101px) {
   .description { font-size: 13px; }
-  .artStage { right: 18%; width: min(42vw,54vh,680px); }
+  .artStage { right: 15%; width: min(42vw,54vh,680px); }
 }
 @media(max-width:1100px) {
   .hero { height: calc(100svh - 110px); min-height: min(540px,calc(100svh - 110px)); max-height: none; }
@@ -49,7 +49,7 @@
   .eyebrow { font-size: 10px; margin-bottom: 13px; }
   .title { font-size: clamp(42px,5vw,56px); }
   .description { margin: 16px 0 18px; font-size: 13px; }
-  .artStage { right: 6%; top: 17%; width: min(40vw,39vh); }
+  .artStage { right: 4%; top: 17%; width: min(40vw,39vh); }
   .mainTable { left: auto; right: 28%; bottom: 0; width: min(58.8vw,61.2vh); }
   .sideTable { left: 0; bottom: 0; width: 24.7%; }
   .cube { right: 1%; top: 0; width: min(19vw,25vh); }
