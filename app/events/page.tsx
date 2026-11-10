@@ -11,6 +11,11 @@ export const metadata={
 export const dynamic='force-dynamic';
 
 const covers:Record<string,{src:string;alt:string;date:string}>={
+ 'sm-naqvi-november-2026':{
+  src:'/gallery/naqvi-upcoming-exhibition.webp',
+  alt:'S. M. Naqvi seated in his art studio',
+  date:'25 NOVEMBER 2026'
+ },
  'an-ode-to-the-masters-2026':{
   src:'/gallery/an-ode-to-the-masters.webp',
   alt:'Original An Ode to the Masters exhibition cover',
