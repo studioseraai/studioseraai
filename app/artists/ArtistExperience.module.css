@@ -58,3 +58,20 @@
 
 /* Artist portraits are supplied from the artist profile maintained in SERAAI OS. */
 .card{overflow:hidden;isolation:isolate}.artistPortrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 34%;z-index:0;transition:transform .55s cubic-bezier(.2,.7,.2,1)}.portraitShade{position:absolute;z-index:0;inset:0;background:linear-gradient(180deg,#21170f10 28%,#1c120cbf 100%);pointer-events:none}.card:has(.artistPortrait) .artistName{z-index:2;color:#fffaf1;text-shadow:0 2px 12px #1a100caa;font-style:normal}.card:has(.artistPortrait) .cardMark{z-index:2;background:#f2d6a6}.card:has(.artistPortrait) .cardHover{z-index:2;color:#fff1d7}.card:has(.artistPortrait) .paper{z-index:1;border-color:#fff9e877}.card:hover .artistPortrait,.card:focus-visible .artistPortrait{transform:scale(1.035)}
+
+/* Searchable artist directory */
+.searchArea{display:flex;align-items:center;justify-content:center;gap:16px;max-width:560px;margin:-32px auto clamp(30px,4vw,54px);padding:0 12px}
+.searchBox{display:flex;align-items:center;gap:12px;width:min(100%,430px);min-height:48px;padding:0 15px;border:1px solid #c9a889;border-radius:28px;background:#fff9f2d9;box-shadow:0 5px 16px #76543c10;transition:border-color .2s,box-shadow .2s}
+.searchBox:focus-within{border-color:#9a6d47;box-shadow:0 0 0 3px #ba93632b}
+.searchBox svg{flex:0 0 18px;width:18px;height:18px;fill:none;stroke:#805c40;stroke-width:1.6;stroke-linecap:round}
+.searchBox input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#38291e;font:400 14px/1.4 var(--font-interface),Arial,sans-serif}
+.searchBox input::placeholder{color:#927a65;opacity:1}
+.searchBox input::-webkit-search-cancel-button{-webkit-appearance:none}
+.clearSearch{display:grid;place-items:center;flex:0 0 26px;width:26px;height:26px;padding:0;border:0;border-radius:50%;background:#efe0d1;color:#69482e;font:400 20px/1 var(--font-interface),Arial,sans-serif;cursor:pointer}
+.searchCount{min-width:74px;margin:0;color:#80644d;font:400 12px/1.4 var(--font-interface),Arial,sans-serif}
+.noResults{text-align:center;max-width:500px;margin:0 auto;padding:38px 20px 55px;color:#38291e}
+.noResults h3{margin:0 0 8px;font:400 clamp(27px,3vw,38px)/1.2 var(--font-display),Georgia,serif}
+.noResults p{margin:0 0 20px;color:#80644d;font:400 14px/1.5 var(--font-interface),Arial,sans-serif}
+.noResults button{border:1px solid #b68d6f;border-radius:24px;padding:11px 18px;background:transparent;color:#533728;font:700 10px/1.4 var(--font-interface),Arial,sans-serif;letter-spacing:.15em;cursor:pointer}
+.noResults button:hover{background:#e8d2bd}
+@media(max-width:700px){.searchArea{gap:9px;margin:-14px auto 30px;padding:0}.searchBox{min-height:44px;padding:0 12px}.searchBox input{font-size:13px}.searchCount{min-width:56px;font-size:11px}}
