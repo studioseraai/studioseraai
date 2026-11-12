@@ -1,6 +1,5 @@
 import 'server-only';
 import type {GalleryData} from './types';
-import {unstable_cache} from 'next/cache';
 export async function galleryBackend(path:string,init:RequestInit={},service:'public-gallery'|'catalog-attributes-v4'='public-gallery'){
  const origin=process.env.SERAAI_BACKEND_URL,token=process.env.SERAAI_BACKEND_TOKEN;
  if(!origin||!token)throw Error('Gallery connection is unavailable');
@@ -8,7 +7,7 @@ export async function galleryBackend(path:string,init:RequestInit={},service:'pu
  const url=new URL(base.origin+'/functions/v1/'+service+'/'+path);
  return fetch(url,{...init,headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`,...init.headers},cache:'no-store',signal:AbortSignal.timeout(15000)});
 }
-async function loadGallery():Promise<GalleryData>{
+export async function getGallery():Promise<GalleryData>{
  try{
   const original=await galleryBackend('catalog');
   if(!original.ok)throw Error('Public catalog failed');
@@ -30,7 +29,3 @@ async function loadGallery():Promise<GalleryData>{
   return {...data,now:Date.now()};
  }catch{return {artworks:[],events:[],unavailable:true,now:Date.now()};}
 }
-
-// Reuse public gallery reads briefly; private admin and inquiry requests stay uncached.
-const cachedGallery=unstable_cache(loadGallery,['studio-seraai-public-gallery-v1'],{revalidate:60});
-export async function getGallery():Promise<GalleryData>{return cachedGallery();}
