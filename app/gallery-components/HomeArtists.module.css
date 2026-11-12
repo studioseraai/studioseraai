@@ -20,3 +20,30 @@
 @media(max-width:650px){.section{background-size:auto 60%;background-position:20% top;background-repeat:no-repeat}.canvas{grid-template-columns:1fr}.left{min-height:410px}.displayBlocks{left:50%;bottom:0;width:min(100%,460px);max-height:100%;transform:translateX(-50%)}.featuredVase{left:50%;bottom:calc(22% - 10px);width:min(58%,250px);max-width:260px;transform:translateX(-50%)}.right{padding:15px 7% 75px;background:linear-gradient(#f5e9dfed,#f0e1d5f5)}.name{font-size:clamp(47px,11vw,70px)}.eyebrow{font-size:28px}.description{font-size:17px;margin-bottom:26px}.cta{font-size:17px;min-height:57px}.navigation button{width:41px;height:41px}}
 @keyframes objectFade{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.displayBlocks,.featuredVase,.name{animation:none}.cta{transition:none}}
+
+/* One combined artist still-life asset replaces the former separate block and vase layers. */
+.displayComposite {
+  position:absolute;
+  z-index:2;
+  left:50%;
+  bottom:0;
+  display:block;
+  width:auto;
+  height:min(100%,790px);
+  max-width:96%;
+  object-fit:contain;
+  object-position:center bottom;
+  transform:translateX(-50%);
+  filter:drop-shadow(0 14px 18px #4c35243c);
+  animation:objectFade .9s ease both;
+}
+@media(max-width:900px) {
+  .displayComposite { height:min(100%,620px);max-width:98%; }
+}
+@media(max-width:650px) {
+  .left { min-height:clamp(390px,108vw,470px); }
+  .displayComposite { height:100%;max-width:96%; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .displayComposite { animation:none; }
+}

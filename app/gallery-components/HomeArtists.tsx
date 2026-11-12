@@ -10,22 +10,14 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}) {
       <div className={s.canvas}>
         <div className={s.left} aria-hidden="true">
           <Image
-            className={s.displayBlocks}
-            src="/gallery/studio-seraai-travertine-blocks.webp"
+            className={s.displayComposite}
+            src="/gallery/studio-seraai-featured-artist-display.png"
             alt=""
-            width={1362}
-            height={1155}
-            loading="lazy"
-            sizes="(max-width: 700px) 90vw, 46vw"
-          />
-          <Image
-            className={s.featuredVase}
-            src="/gallery/studio-seraai-featured-vase-pedestal.webp"
-            alt=""
-            width={1122}
-            height={1402}
+            width={1187}
+            height={1326}
             loading="lazy"
             decoding="async"
+            sizes="(max-width: 650px) 92vw, (max-width: 900px) 46vw, 40vw"
           />
         </div>
         <div className={s.right}>
