@@ -11,7 +11,7 @@ export default function CuratedCollectionSlider({artworks,selectedArtworkIds}:{a
  const ordered=selectedArtworkIds ? selectedArtworkIds.map(id=>byId.get(id)).filter((a):a is Artwork=>Boolean(a)) : [...artworks].sort((a,b)=>Number(b.featured)-Number(a.featured)).slice(0,12);
  const works=ordered.filter(a=>a.photos?.[0]?.id).slice(0,12);
  const count=works.length;
- const [index,setIndex]=useState(Math.min(2,Math.max(0,count-1)));
+ const [index,setIndex]=useState(0);
  const [frameColor,setFrameColor]=useState<'wood'|'black'|'white'|'silver'|'gold'>('wood');
  const [imageRatios,setImageRatios]=useState<Record<number,number>>({});
  const active=works[index];
