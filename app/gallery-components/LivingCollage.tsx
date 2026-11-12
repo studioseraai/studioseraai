@@ -81,6 +81,7 @@ export default function LivingCollage({artworks,initialQuery='',initialArtist=''
       <small>{art.artist||'Studio Seraai collection'}</small>
       <span className={styles.attributeLine}>{[art.medium,art.surface,art.style,art.theme].filter(Boolean).join(' · ')}</span>
       <span className={styles.dimensionLine}>{Number(art.width)>0&&Number(art.height)>0?`${art.width} × ${art.height} ${art.dimensionUnit||'cm'}`:art.size||''}</span>
+      <span className={styles.attributeLine}>Price: Contact with the gallery</span>
     </span>
    </Link>})}
   </div>:<div className={styles.empty}><span className={styles.eyebrow}>THE COLLECTION</span><h2>{artworks.length?'No artworks match your selection.':'A collection, thoughtfully considered.'}</h2><p>{artworks.length?'Try another search or clear your filters.':'Our online selection is being curated. Contact the gallery to discover available works.'}</p><Link href="/contact">Inquire with the gallery <ArrowRight size={17}/></Link></div>}
