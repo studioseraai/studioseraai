@@ -1,10 +1,11 @@
 import {galleryBackend} from '../../../../lib/gallery/server';
 import {createHash} from 'node:crypto';
 export const dynamic='force-dynamic';
+const IMAGE_CACHE='public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800';
 export async function GET(request:Request,{params}:{params:Promise<{path:string[]}>}){
  const {path}=await params;
  if(path.length!==2||path[0]!=='image'||!/^[a-f0-9-]{36}$/i.test(path[1]))return new Response('Not found',{status:404});
- try{const r=await galleryBackend('image/'+path[1]);return new Response(r.body,{status:r.status,headers:{'Content-Type':r.headers.get('content-type')||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});}catch{return new Response('Image unavailable',{status:503});}
+ try{const r=await galleryBackend('image/'+path[1]);return new Response(r.body,{status:r.status,headers:{'Content-Type':r.headers.get('content-type')||'application/octet-stream','Cache-Control':r.ok?IMAGE_CACHE:'no-store','X-Content-Type-Options':'nosniff'}});}catch{return new Response('Image unavailable',{status:503});}
 }
 export async function POST(request:Request,{params}:{params:Promise<{path:string[]}>}){
  const {path}=await params;if(path.join('/')!=='inquire')return new Response('Not found',{status:404});
