@@ -16,7 +16,7 @@ async function catalog(){
  for(let i=0;i<pubs.length;i+=100){const ids=pubs.slice(i,i+100).map((p:Publication)=>p.artwork_id).join(',');if(!ids)continue;
  const records=await rows('seraai_records?kind=eq.artwork&id=in.('+ids+')&select=id,data');
  const photos=await rows('seraai_media?artwork_id=in.('+ids+')&select=id,artwork_id,category&order=created.asc&limit=10000');
- for(const r of records){const d=r.data;if(d.sample||d.archived)continue;const images=photos.filter((p:Photo)=>p.artwork_id===r.id).map((p:Photo)=>({id:p.id,category:p.category}));if(!images.length)continue;const pub=pubs.find((p:Publication)=>p.artwork_id===r.id);const a:PublicArtwork={id:r.id,description:pub.description,featured:pub.featured,photos:images};for(const k of ['title','artist','medium','style','status','width','height','dimensionUnit','year'])a[k]=String(d[k]??'');artworks.push(a);}
+ for(const r of records){const d=r.data;if(d.sample||d.archived)continue;const images=photos.filter((p:Photo)=>p.artwork_id===r.id).map((p:Photo)=>({id:p.id,category:p.category}));const pub=pubs.find((p:Publication)=>p.artwork_id===r.id);const a:PublicArtwork={id:r.id,description:pub.description,featured:pub.featured,photos:images};for(const k of ['title','artist','medium','style','status','width','height','dimensionUnit','year'])a[k]=String(d[k]??'');artworks.push(a);}
  }
  const names=new Map<string,string>();for(const artwork of artworks){const name=String(artwork.artist||'').trim();if(name)names.set(name.toLocaleLowerCase(),name);}
  const artistProfiles=[];
@@ -71,7 +71,7 @@ Deno.serve(async(req:Request)=>{
  if(b.action==='publication'){
  if(!Number.isSafeInteger(b.artwork_id)||typeof b.published!=='boolean'||typeof b.featured!=='boolean'||typeof b.description!=='string'||b.description.length>6000)return json({error:'Invalid publication'},400);
  const records=await rows('seraai_records?kind=eq.artwork&id=eq.'+b.artwork_id+'&select=data');if(!records.length)return json({error:'Artwork not found'},404);
- if(b.published&&(records[0].data.sample||records[0].data.archived||!(await rows('seraai_media?artwork_id=eq.'+b.artwork_id+'&select=id&limit=1')).length))return json({error:'Only real, active artworks with photographs may be published.'},400);
+ if(b.published&&(records[0].data.sample||records[0].data.archived))return json({error:'Only real, active artworks may be published.'},400);
  await post('seraai_publications?on_conflict=artwork_id',{artwork_id:b.artwork_id,published:b.published,featured:b.featured,description:b.description,updated:new Date().toISOString()},true);return json({ok:true});
  }
  if(b.action==='event'){

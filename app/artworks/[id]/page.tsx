@@ -16,7 +16,7 @@ export default async function Page({params}:{params:Promise<{id:string}>}){
  const data=await getGallery();
  if(data.unavailable)throw Error('Gallery unavailable');
  const art=data.artworks.find(a=>String(a.id)===id);
- if(!art||!art.photos?.length)notFound();
+ if(!art)notFound();
  const related=data.artworks.filter(a=>a.id!==art.id&&a.photos?.length).sort((a,b)=>Number(b.artist===art.artist)-Number(a.artist===art.artist)).slice(0,12);
  return <Shell><CollectorsView art={art} related={related}/></Shell>;
 }

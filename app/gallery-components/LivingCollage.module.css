@@ -45,3 +45,5 @@
 .attributeLine{margin-top:4px}
 .dimensionLine{color:#997a5f}
 @media(max-width:700px){.attributeLine,.dimensionLine{font-size:9px;line-height:1.4}}
+
+.noPhoto{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;height:100%;min-height:180px;padding:20px;box-sizing:border-box;background:linear-gradient(145deg,#eee1cd,#d8c3a8);color:#74583e;text-align:center}.noPhoto span{font:600 9px/1 var(--font-interface),Arial,sans-serif;letter-spacing:.2em}.noPhoto strong{font:400 clamp(18px,2vw,26px)/1.1 var(--font-display),Georgia,serif}

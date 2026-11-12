@@ -75,7 +75,7 @@ export default function LivingCollage({artworks,initialQuery='',initialArtist=''
     const ratio=imageRatios[art.id]||fallback;
     const measuredShape=ratio>1.15?'landscape':ratio<.87?'portrait':'square';
     return <Link href={'/artworks/'+art.id} className={styles.artItem} data-shape={measuredShape} data-frame={frame} key={art.id} style={{'--order':i} as React.CSSProperties}>
-    <div className={styles.frame} style={{aspectRatio:String(ratio)}}><img src={art.photos[0]?.id?'/api/gallery/image/'+art.photos[0].id:''} alt={art.title} loading={i<6?'eager':'lazy'} decoding="async" onLoad={e=>{const img=e.currentTarget;const r=img.naturalWidth/img.naturalHeight;if(Number.isFinite(r)&&r>0)setImageRatios(prev=>prev[art.id]===r?prev:{...prev,[art.id]:r});}}/></div>
+    <div className={styles.frame} style={{aspectRatio:String(ratio)}}>{art.photos?.[0]?.id?<img src={'/api/gallery/image/'+art.photos[0].id} alt={art.title} loading={i<6?'eager':'lazy'} decoding="async" onLoad={e=>{const img=e.currentTarget;const r=img.naturalWidth/img.naturalHeight;if(Number.isFinite(r)&&r>0)setImageRatios(prev=>prev[art.id]===r?prev:{...prev,[art.id]:r});}}/>:<div className={styles.noPhoto} role="img" aria-label="Artwork photograph coming soon"><span>PHOTOGRAPH</span><strong>COMING SOON</strong></div>}</div>
     <span className={styles.artDetails}>
       <strong>{art.title}</strong>
       <small>{art.artist||'Studio Seraai collection'}</small>

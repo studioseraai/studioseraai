@@ -7,14 +7,14 @@ import s from './CollectorsView.module.css';
 
 type Finish='wood'|'black'|'white'|'silver'|'gold';
 const finishes:Finish[]=['wood','black','white','silver','gold'];
-const source=(art:Artwork)=>'/api/gallery/image/'+encodeURIComponent(art.photos[0].id);
+const source=(art:Artwork)=>art.photos?.[0]?.id?'/api/gallery/image/'+encodeURIComponent(art.photos[0].id):'';
 const clamp=(v:number)=>Math.max(0,Math.min(100,v));
 function ArtworkFrame({art,finish,preview=false,onMove,onLeave,onEnter,zoomPoint}:{art:Artwork;finish:Finish;preview?:boolean;onMove?:(e:React.PointerEvent<HTMLDivElement>)=>void;onLeave?:()=>void;onEnter?:()=>void;zoomPoint?:{x:number;y:number}|null}){
  const width=Number(art.width),height=Number(art.height);
  const [imageRatio,setImageRatio]=useState(0);
  const ratio=imageRatio||(width>0&&height>0?width/height:1);
  return <div className={preview?s.previewFrame:s.artFrame} data-finish={finish} style={{aspectRatio:String(ratio),width:preview?'100%':`min(100%, ${Math.min(790,Math.max(260,660*ratio))}px)`}}>
-  <div className={s.mat}><div className={s.paintingSurface} onPointerMove={onMove} onPointerEnter={onEnter} onPointerLeave={onLeave}><img src={source(art)} alt={preview?'':art.title} loading="eager" draggable={false} onLoad={e=>{const image=e.currentTarget;if(image.naturalWidth&&image.naturalHeight)setImageRatio(image.naturalWidth/image.naturalHeight);}}/>{zoomPoint&&<span className={s.zoomTarget} style={{left:zoomPoint.x+'%',top:zoomPoint.y+'%'}} aria-hidden="true"/>}</div></div>
+  <div className={s.mat}><div className={s.paintingSurface+(source(art)?'':' '+s.noPhotoSurface)} onPointerMove={source(art)?onMove:undefined} onPointerEnter={source(art)?onEnter:undefined} onPointerLeave={onLeave}>{source(art)?<img src={source(art)} alt={preview?'':art.title} loading="eager" draggable={false} onLoad={e=>{const image=e.currentTarget;if(image.naturalWidth&&image.naturalHeight)setImageRatio(image.naturalWidth/image.naturalHeight);}}/>:<div className={s.missingPhoto} role="img" aria-label="Artwork photograph coming soon"><span>STUDIO SERAAI</span><strong>Photograph coming soon</strong></div>}{zoomPoint&&source(art)&&<span className={s.zoomTarget} style={{left:zoomPoint.x+'%',top:zoomPoint.y+'%'}} aria-hidden="true"/>}</div></div>
  </div>;
 }
 export default function CollectorsView({art,related}:{art:Artwork;related:Artwork[]}){
@@ -29,7 +29,7 @@ export default function CollectorsView({art,related}:{art:Artwork;related:Artwor
   <section className={s.hero} aria-label={'Artwork: '+art.title}>
    <div className={s.galleryWall}>
     <div className={s.artworkPlacement}><ArtworkFrame art={art} finish={finish} onMove={zoomMove} onLeave={()=>setZoom(null)} onEnter={()=>setZoom({x:50,y:50})} zoomPoint={zoom}/></div>
-    {zoom&&<div className={s.zoomPanel} aria-hidden="true"><span className={s.zoomLabel}>⊕ HOVER ZOOM · 2.5×</span><div className={s.zoomDetail} style={{backgroundImage:`url("${source(art)}")`,backgroundPosition:`${zoom.x}% ${zoom.y}%`}}/></div>}
+    {zoom&&source(art)&&<div className={s.zoomPanel} aria-hidden="true"><span className={s.zoomLabel}>⊕ HOVER ZOOM · 2.5×</span><div className={s.zoomDetail} style={{backgroundImage:`url("${source(art)}")`,backgroundPosition:`${zoom.x}% ${zoom.y}%`}}/></div>}
     <span className={s.wallLabel}>STUDIO SERAAI · COLLECTOR'S VIEW</span>
    </div>
    <div className={s.info}>
@@ -37,7 +37,7 @@ export default function CollectorsView({art,related}:{art:Artwork;related:Artwor
     <h1>{art.title}</h1>
     {art.artist&&<Link className={s.artist} href={'/collections?artist='+encodeURIComponent(art.artist)}>{art.artist} <span aria-hidden="true">↗</span></Link>}
     <dl className={s.attributes}>{attributes.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
-    {art.description&&<p className={s.description}>{art.description}</p>}
+    {!art.photos?.length&&<p className={s.description}>A photograph of this artwork is being prepared. Contact the gallery to enquire about it.</p>}{art.description&&<p className={s.description}>{art.description}</p>}
     <div className={s.finishSection}><p className={s.kicker}>FRAME FINISH</p><div className={s.finishes} role="group" aria-label="Choose frame finish">
      {finishes.map(v=><button type="button" className={s.finishOption} key={v} aria-pressed={finish===v} onClick={()=>setFinish(v)}><span className={s.finishSwatch} data-finish={v}><i/></span><span>{v==='wood'?'Wood':v[0].toUpperCase()+v.slice(1)}</span></button>)}
     </div><p className={s.finishDisclaimer}>Frame finishes are illustrative previews.</p></div>
