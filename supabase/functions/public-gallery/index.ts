@@ -25,10 +25,11 @@ async function catalog(){
   }
  }
  const events=await rows('seraai_events?published=eq.true&select=id,title,description,starts_at,venue,category&order=starts_at.asc');
- const homepageRows=await rows('seraai_homepage_content?select=hero_artwork_id,collection_artwork_ids&limit=1');
+ const homepageRows=await rows('seraai_homepage_content?select=hero_artwork_id,hero_artwork_ids,collection_artwork_ids&limit=1');
  const saved=homepageRows[0];
  const homepageContent=saved?{
   heroArtworkId:Number(saved.hero_artwork_id)||null,
+  heroArtworkIds:Array.isArray(saved.hero_artwork_ids)?saved.hero_artwork_ids.map(Number).filter(Number.isSafeInteger):[],
   collectionArtworkIds:Array.isArray(saved.collection_artwork_ids)?saved.collection_artwork_ids.map(Number).filter(Number.isSafeInteger):[],
  }:undefined;
  return {artworks,events,artistProfiles,homepageContent};
