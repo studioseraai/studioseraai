@@ -9,7 +9,7 @@ export async function galleryBackend(path:string,init:RequestInit={},service:'pu
  const base=new URL(origin);if(base.protocol!=='https:')throw Error('Invalid gallery backend');
  const url=new URL(base.origin+'/functions/v1/'+service+'/'+path);
  const catalog=path==='catalog'&&(!init.method||init.method==='GET');
- return fetch(url,{...init,headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`,...init.headers},...(catalog?{next:{revalidate:60}}:{cache:'no-store'}),signal:AbortSignal.timeout(catalog?9000:15000)});
+ return fetch(url,{...init,headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`,...init.headers},...(catalog?{next:{revalidate:10}}:{cache:'no-store'}),signal:AbortSignal.timeout(catalog?9000:15000)});
 }
 export async function getGallery():Promise<GalleryData>{
  try{

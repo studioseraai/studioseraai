@@ -25,7 +25,13 @@ async function catalog(){
   }
  }
  const events=await rows('seraai_events?published=eq.true&select=id,title,description,starts_at,venue,category&order=starts_at.asc');
- return {artworks,events,artistProfiles};
+ const homepageRows=await rows('seraai_homepage_content?select=hero_artwork_id,collection_artwork_ids&limit=1');
+ const saved=homepageRows[0];
+ const homepageContent=saved?{
+  heroArtworkId:Number(saved.hero_artwork_id)||null,
+  collectionArtworkIds:Array.isArray(saved.collection_artwork_ids)?saved.collection_artwork_ids.map(Number).filter(Number.isSafeInteger):[],
+ }:undefined;
+ return {artworks,events,artistProfiles,homepageContent};
 }
 Deno.serve(async(req:Request)=>{
  const token=(req.headers.get('authorization')||'').replace(/^Bearer /,'');

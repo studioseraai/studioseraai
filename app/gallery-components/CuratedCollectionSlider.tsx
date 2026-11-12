@@ -6,8 +6,10 @@ import type {Artwork} from '../../lib/gallery/types';
 import styles from './CuratedCollectionSlider.module.css';
 
 /** A fixed central gallery frame: switch the artwork, not the frame. */
-export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]}){
- const works=[...artworks].filter(a=>a.photos?.[0]?.id).sort((a,b)=>Number(b.featured)-Number(a.featured)).slice(0,12);
+export default function CuratedCollectionSlider({artworks,selectedArtworkIds}:{artworks:Artwork[];selectedArtworkIds?:number[]}){
+ const byId=new Map(artworks.map(a=>[a.id,a]));
+ const ordered=selectedArtworkIds ? selectedArtworkIds.map(id=>byId.get(id)).filter((a):a is Artwork=>Boolean(a)) : [...artworks].sort((a,b)=>Number(b.featured)-Number(a.featured)).slice(0,12);
+ const works=ordered.filter(a=>a.photos?.[0]?.id).slice(0,12);
  const count=works.length;
  const [index,setIndex]=useState(Math.min(2,Math.max(0,count-1)));
  const [frameColor,setFrameColor]=useState<'wood'|'black'|'white'|'silver'|'gold'>('wood');

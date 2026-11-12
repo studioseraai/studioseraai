@@ -39,7 +39,7 @@ function dimensions(art: Artwork) {
   return {area: width > 0 && height > 0 ? width * height : 0, longest: Math.max(width, height)};
 }
 
-export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPressHero | null; artworks?: Artwork[]}) {
+export default function StudioSeraaiAnimatedHero({artworks = [], heroArtworkId}: {copy?: WordPressHero | null; artworks?: Artwork[]; heroArtworkId?: number}) {
   const slides = useMemo<HeroSlide[]>(() => {
     const ranked = artworks
       .filter(art => art.photos?.[0]?.id)
@@ -56,8 +56,16 @@ export default function StudioSeraaiAnimatedHero({artworks = []}: {copy?: WordPr
         width: 1200,
         height: 590,
       }));
-    return [suppliedArtwork, ...verifiedCandidates];
-  }, [artworks]);
+    const chosenHero = artworks.find(art => art.id === heroArtworkId && art.photos?.[0]?.id);
+    if (!chosenHero) return [suppliedArtwork, ...verifiedCandidates];
+    const selectedSlide: HeroSlide = {
+      id: String(chosenHero.id),
+      src: '/api/gallery/image/' + chosenHero.photos[0].id,
+      width: 1200,
+      height: 590,
+    };
+    return [selectedSlide, ...verifiedCandidates.filter(slide => slide.id !== String(chosenHero.id))];
+  }, [artworks, heroArtworkId]);
 
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
