@@ -1,9 +1,10 @@
 'use client';
 import {useRef,useState} from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type {Artwork} from '../../lib/gallery/types';
 export {default as Hero} from './StudioSeraaiAnimatedHero';
-export function ArtCard({art}:{art:Artwork}){return <Link className="sg-art-card" href={'/artworks/'+art.id}><div className="sg-art-image"><img src={'/api/gallery/image/'+art.photos[0]?.id} alt={art.title} loading="lazy" decoding="async"/></div><h3>{art.title}</h3><p>{art.artist||'Artist not recorded'}</p><small>{art.medium}<span>↗</span></small></Link>}
+export function ArtCard({art}:{art:Artwork}){return <Link className="sg-art-card" href={'/artworks/'+art.id}><div className="sg-art-image"><Image src={'/api/gallery/image/'+art.photos[0]?.id} alt={art.title} width={600} height={600} sizes="(max-width: 600px) 44vw, (max-width: 1000px) 42vw, 28vw" loading="lazy"/></div><h3>{art.title}</h3><p>{art.artist||'Artist not recorded'}</p><small>{art.medium}<span>↗</span></small></Link>}
 export function CollectionCarousel({artworks}:{artworks:Artwork[]}) {
  const rail=useRef<HTMLDivElement>(null);
  const [index,setIndex]=useState(0);

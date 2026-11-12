@@ -1,6 +1,7 @@
 'use client';
 import {useState} from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type {Artwork} from '../../lib/gallery/types';
 import styles from './CuratedCollectionSlider.module.css';
 
@@ -37,18 +38,18 @@ export default function CuratedCollectionSlider({artworks}:{artworks:Artwork[]})
    <div className={styles.stage} aria-label="Featured artworks">
     <button className={styles.arrow} type="button" onClick={()=>choose(index-1)} disabled={count<2} aria-label="Previous artwork">←</button>
     <div className={styles.previewSide}>
-     {[2,1].map(offset=>{const a=works[(index-offset+count)%count];return <button key={'left-'+offset} type="button" className={styles.preview} disabled={count<2} onClick={()=>choose(index-offset)} aria-label={'Select '+a.title}><img src={image(a)} alt={a.title} loading="lazy" onLoad={e=>rememberImageRatio(a.id,e.currentTarget)}/></button>})}
+     {[2,1].map(offset=>{const a=works[(index-offset+count)%count];return <button key={'left-'+offset} type="button" className={styles.preview} disabled={count<2} onClick={()=>choose(index-offset)} aria-label={'Select '+a.title}><Image src={image(a)} alt={a.title} width={360} height={360} sizes="(max-width: 700px) 1px, (max-width: 1100px) 14vw, 17vw" loading="lazy" onLoad={e=>rememberImageRatio(a.id,e.currentTarget)}/></button>})}
     </div>
     <div className={styles.center}>
      <Link className={styles.fixedFrame} style={{width:`min(100%, ${frameWidth}px)`,aspectRatio:String(ratio),maxHeight:`${frameHeight}px`}} href={'/artworks/'+active.id} data-frame={frameColor} aria-label={'View '+active.title} title="Open artwork; hover to zoom" >
       <span className={styles.frameSurface}>
-       <img key={active.id} className={styles.centerImage} src={image(active)} alt={active.title} loading="eager" onLoad={e=>rememberImageRatio(active.id,e.currentTarget)}/>
+       <Image key={active.id} className={styles.centerImage} src={image(active)} alt={active.title} width={900} height={900} sizes="(max-width: 700px) 82vw, (max-width: 1100px) 38vw, 29vw" loading="lazy" onLoad={e=>rememberImageRatio(active.id,e.currentTarget)}/>
       </span>
      </Link>
      <div className={styles.caption} aria-live="polite"><strong>{active.title}</strong><small>{active.artist||'STUDIO SERAAI'}</small></div>
     </div>
     <div className={styles.previewSide}>
-     {[1,2].map(offset=>{const a=works[(index+offset)%count];return <button key={'right-'+offset} type="button" className={styles.preview} disabled={count<2} onClick={()=>choose(index+offset)} aria-label={'Select '+a.title}><img src={image(a)} alt={a.title} loading="lazy"/></button>})}
+     {[1,2].map(offset=>{const a=works[(index+offset)%count];return <button key={'right-'+offset} type="button" className={styles.preview} disabled={count<2} onClick={()=>choose(index+offset)} aria-label={'Select '+a.title}><Image src={image(a)} alt={a.title} width={360} height={360} sizes="(max-width: 700px) 1px, (max-width: 1100px) 14vw, 17vw" loading="lazy"/></button>})}
     </div>
     <button className={styles.arrow} type="button" onClick={()=>choose(index+1)} disabled={count<2} aria-label="Next artwork">→</button>
    </div>

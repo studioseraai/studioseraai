@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type {Artwork} from '../../lib/gallery/types';
 import s from './HomeArtists.module.css';
 
@@ -8,16 +9,16 @@ export default function HomeArtists({artworks}:{artworks:Artwork[]}) {
     <section className={s.section} id="featured-artists" aria-labelledby="home-artist-heading">
       <div className={s.canvas}>
         <div className={s.left} aria-hidden="true">
-          <img
+          <Image
             className={s.displayBlocks}
             src="/gallery/studio-seraai-travertine-blocks.webp"
             alt=""
             width={1362}
             height={1155}
             loading="lazy"
-            decoding="async"
+            sizes="(max-width: 700px) 90vw, 46vw"
           />
-          <img
+          <Image
             className={s.featuredVase}
             src="/gallery/studio-seraai-featured-vase-pedestal.webp"
             alt=""
