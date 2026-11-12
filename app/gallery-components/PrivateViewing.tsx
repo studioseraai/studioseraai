@@ -28,7 +28,7 @@ export default function PrivateViewing() {
           <h2 id="private-viewing-heading">Private Viewing &amp; <em>Art Visualization</em></h2>
           <div className={s.rule} aria-hidden="true" />
           <p className={s.description}>
-            Studio Seraai can visit your home or welcome you to the studio to help you preview how selected artworks could look in your space.
+            Studio Seraai can visit your home or welcome you to the studio to help you preview how selected artworks will look in your space.
           </p>
           <Link className={s.cta} href="/contact?viewing=1">
             <span>Request a Private Viewing</span><ArrowRight aria-hidden="true" size={23}/>

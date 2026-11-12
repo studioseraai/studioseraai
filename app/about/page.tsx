@@ -57,7 +57,7 @@ export default function Page(){
     <p className={s.kicker}>THE MEANING BEHIND OUR NAME</p>
     <h2 id="about-purpose">Why Seraai?</h2>
     <span className={s.rule} aria-hidden="true"/>
-    <p>“Serai” is a Turkish / Persian word which literally means a traveller’s inn or a royal palace. Studio Seraai envisages acting as a bridge between artists and art collectors, transforming artistic creative expressions into shared cultural experiences.</p>
+    <p>“Serai” is a Turkish / Persian word which literally means a traveller’s inn or a Royal Palace. Studio Seraai envisages acting as a bridge between artists and art collectors, transforming artistic creative expressions into shared cultural experiences.</p>
     <p>Hence, Studio Seraai is a temporary abode for an artwork until it finds a permanent place in the homes of art lovers and collectors.</p>
    </div>
   </section>
