@@ -55,3 +55,6 @@
 .sliderArrow:not(:disabled):hover{background:#ead6c4;transform:scale(1.04)}
 .sliderArrow:disabled{opacity:.45;cursor:default}
 @media(max-width:700px){.sliderRows{gap:15px}.sliderRow{grid-template-columns:30px minmax(0,1fr) 30px;gap:6px}.sliderArrow{width:30px;height:30px;font-size:23px}.sliderTrack{gap:12px;padding:8px 2px 12px}.sliderRow .card{flex-basis:clamp(170px,58vw,220px);width:clamp(170px,58vw,220px);min-height:112px}}
+
+/* Artist portraits are supplied from the artist profile maintained in SERAAI OS. */
+.card{overflow:hidden;isolation:isolate}.artistPortrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 34%;z-index:0;transition:transform .55s cubic-bezier(.2,.7,.2,1)}.portraitShade{position:absolute;z-index:0;inset:0;background:linear-gradient(180deg,#21170f10 28%,#1c120cbf 100%);pointer-events:none}.card:has(.artistPortrait) .artistName{z-index:2;color:#fffaf1;text-shadow:0 2px 12px #1a100caa;font-style:normal}.card:has(.artistPortrait) .cardMark{z-index:2;background:#f2d6a6}.card:has(.artistPortrait) .cardHover{z-index:2;color:#fff1d7}.card:has(.artistPortrait) .paper{z-index:1;border-color:#fff9e877}.card:hover .artistPortrait,.card:focus-visible .artistPortrait{transform:scale(1.035)}

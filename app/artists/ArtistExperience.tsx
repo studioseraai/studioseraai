@@ -4,7 +4,7 @@ import {useRef} from 'react';
 import type {Artwork} from '../../lib/gallery/types';
 import s from './ArtistExperience.module.css';
 
-type ArtistEntry={name:string;works:Artwork[]};
+type ArtistEntry={name:string;works:Artwork[];photoId?:string};
 const finishes=['champagne','gold','walnut','ivory','bronze','gold','ivory','walnut'];
 export default function ArtistExperience({artists}:{artists:ArtistEntry[]}){
  const rowRefs=useRef<Array<HTMLDivElement|null>>([]);
@@ -30,6 +30,8 @@ export default function ArtistExperience({artists}:{artists:ArtistEntry[]}){
         key={artist.name}
         role="listitem"
         aria-label={'Explore artworks by '+artist.name}>
+        {artist.photoId&&<img className={s.artistPortrait} src={'/api/gallery/image/'+encodeURIComponent(artist.photoId)} alt="" loading="lazy" decoding="async"/>}
+        {artist.photoId&&<span className={s.portraitShade} aria-hidden="true"/>}
         <span className={s.paper} aria-hidden="true"/>
         <span className={s.artistName}>{artist.name}</span>
         <span className={s.cardMark} aria-hidden="true"/>

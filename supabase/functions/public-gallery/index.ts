@@ -18,8 +18,14 @@ async function catalog(){
  const photos=await rows('seraai_media?artwork_id=in.('+ids+')&select=id,artwork_id,category&order=created.asc&limit=10000');
  for(const r of records){const d=r.data;if(d.sample||d.archived)continue;const images=photos.filter((p:Photo)=>p.artwork_id===r.id).map((p:Photo)=>({id:p.id,category:p.category}));if(!images.length)continue;const pub=pubs.find((p:Publication)=>p.artwork_id===r.id);const a:PublicArtwork={id:r.id,description:pub.description,featured:pub.featured,photos:images};for(const k of ['title','artist','medium','style','status','width','height','dimensionUnit','year'])a[k]=String(d[k]??'');artworks.push(a);}
  }
+ const names=new Map<string,string>();for(const artwork of artworks){const name=String(artwork.artist||'').trim();if(name)names.set(name.toLocaleLowerCase(),name);}
+ const artistProfiles=[];
+ if(names.size){const profiles=await rows('seraai_records?kind=eq.artist&select=id,data&limit=2000');const matching=profiles.filter((r:{id:number;data:Record<string,unknown>})=>names.has(String(r.data.title||'').trim().toLocaleLowerCase()));const ids=matching.map((r:{id:number})=>r.id);
+  if(ids.length){const media=await rows('seraai_media?artwork_id=in.('+ids.join(',')+')&category=eq.Artist%20portrait&select=id,artwork_id,created&order=created.desc&limit=2000');const seen=new Set<number>();for(const p of media){if(seen.has(p.artwork_id))continue;seen.add(p.artwork_id);const record=matching.find((r:{id:number})=>r.id===p.artwork_id);if(record){const name=String(record.data.title||'').trim();artistProfiles.push({name,city:String(record.data.city||''),photoId:p.id});}}
+  }
+ }
  const events=await rows('seraai_events?published=eq.true&select=id,title,description,starts_at,venue,category&order=starts_at.asc');
- return {artworks,events};
+ return {artworks,events,artistProfiles};
 }
 Deno.serve(async(req:Request)=>{
  const token=(req.headers.get('authorization')||'').replace(/^Bearer /,'');
@@ -30,8 +36,17 @@ Deno.serve(async(req:Request)=>{
  if(path==='catalog'&&req.method==='GET')return json(await catalog());
  if(path?.startsWith('image/')&&req.method==='GET'){
  const id=path.slice(6);if(!/^[a-f0-9-]{36}$/i.test(id))return json({error:'Not found'},404);
- const media=await rows('seraai_media?id=eq.'+id+'&select=artwork_id');if(!media.length)return json({error:'Not found'},404);
- const aid=media[0].artwork_id;const [pubs,records]=await Promise.all([rows('seraai_publications?artwork_id=eq.'+aid+'&published=eq.true&select=artwork_id'),rows('seraai_records?id=eq.'+aid+'&kind=eq.artwork&select=data')]);if(!pubs.length||!records.length||records[0].data.sample||records[0].data.archived)return json({error:'Not found'},404);
+ const media=await rows('seraai_media?id=eq.'+id+'&select=artwork_id,category');if(!media.length)return json({error:'Not found'},404);
+ const aid=media[0].artwork_id;
+ if(media[0].category==='Artist portrait'){
+  const [artistRows,published]=await Promise.all([rows('seraai_records?id=eq.'+aid+'&kind=eq.artist&select=data'),rows('seraai_publications?published=eq.true&select=artwork_id')]);
+  if(!artistRows.length)return json({error:'Not found'},404);
+  const name=String(artistRows[0].data.title||'').trim().toLocaleLowerCase();let eligible=false;
+  for(let i=0;i<published.length&&!eligible;i+=100){const ids=published.slice(i,i+100).map((p:{artwork_id:number})=>p.artwork_id).join(',');if(!ids)continue;const works=await rows('seraai_records?kind=eq.artwork&id=in.('+ids+')&select=data');eligible=works.some((r:{data:Record<string,unknown>})=>!r.data.sample&&!r.data.archived&&String(r.data.artist||'').trim().toLocaleLowerCase()===name);}
+  if(!eligible)return json({error:'Not found'},404);
+ }else{
+  const [pubs,records]=await Promise.all([rows('seraai_publications?artwork_id=eq.'+aid+'&published=eq.true&select=artwork_id'),rows('seraai_records?id=eq.'+aid+'&kind=eq.artwork&select=data')]);if(!pubs.length||!records.length||records[0].data.sample||records[0].data.archived)return json({error:'Not found'},404);
+ }
  const image=await api('/storage/v1/object/seraai-artworks/'+id);return new Response(image.body,{headers:{'Content-Type':image.headers.get('Content-Type')||'image/jpeg','Cache-Control':'no-store'}});
  }
  if(path==='inquire'&&req.method==='POST'){
