@@ -23,7 +23,7 @@ export default function CollectorsView({art,related}:{art:Artwork;related:Artwor
  const [zoom,setZoom]=useState<{x:number;y:number}|null>(null);
  const zoomMove=(e:React.PointerEvent<HTMLDivElement>)=>{if(e.pointerType==='touch')return;const rect=e.currentTarget.getBoundingClientRect();setZoom({x:clamp((e.clientX-rect.left)/rect.width*100),y:clamp((e.clientY-rect.top)/rect.height*100)});};
  const dimensions=Number(art.width)>0&&Number(art.height)>0?`${art.width} × ${art.height} ${art.dimensionUnit||'cm'}`:art.size;
- const attributes=[['Medium',art.medium],['Surface',art.surface],['Theme',art.theme],['Style',art.style],['Dimensions',dimensions]].filter(([,value])=>Boolean(value));
+ const attributes=[['Price','Contact with the gallery'],['Medium',art.medium],['Surface',art.surface],['Theme',art.theme],['Style',art.style],['Dimensions',dimensions]].filter(([,value])=>Boolean(value));
  const move=(direction:number)=>{const list=rail.current;if(!list)return;const first=list.querySelector('a');const distance=first?(first.getBoundingClientRect().width+24):300;list.scrollBy({left:direction*distance,behavior:'smooth'});};
  return <div className={s.page}>
   <section className={s.hero} aria-label={'Artwork: '+art.title}>
