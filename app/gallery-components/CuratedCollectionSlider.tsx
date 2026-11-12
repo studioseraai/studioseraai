@@ -48,7 +48,7 @@ export default function CuratedCollectionSlider({artworks,selectedArtworkIds}:{a
        <Image key={active.id} className={styles.centerImage} src={image(active)} alt={active.title} width={900} height={900} sizes="(max-width: 700px) 82vw, (max-width: 1100px) 38vw, 29vw" loading="lazy" onLoad={e=>rememberImageRatio(active.id,e.currentTarget)}/>
       </span>
      </Link>
-     <div className={styles.caption} aria-live="polite"><strong>{active.title}</strong><small>{active.artist||'STUDIO SERAAI'}</small></div>
+     <div className={styles.caption} aria-live="polite"><strong>{active.title}</strong><small>{active.artist||'STUDIO SERAAI'}</small><small className={styles.price}>Price: Contact with the gallery</small></div>
     </div>
     <div className={styles.previewSide}>
      {[1,2].map(offset=>{const a=works[(index+offset)%count];return <button key={'right-'+offset} type="button" className={styles.preview} disabled={count<2} onClick={()=>choose(index+offset)} aria-label={'Select '+a.title}><Image src={image(a)} alt={a.title} width={360} height={360} sizes="(max-width: 700px) 1px, (max-width: 1100px) 14vw, 17vw" loading="lazy"/></button>})}
