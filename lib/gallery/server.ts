@@ -9,7 +9,13 @@ export async function galleryBackend(path:string,init:RequestInit={},service:'pu
  const base=new URL(origin);if(base.protocol!=='https:')throw Error('Invalid gallery backend');
  const url=new URL(base.origin+'/functions/v1/'+service+'/'+path);
  const catalog=path==='catalog'&&(!init.method||init.method==='GET');
- return fetch(url,{...init,headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`,...init.headers},...(catalog?{next:{revalidate:10}}:{cache:'no-store'}),signal:AbortSignal.timeout(catalog?9000:15000)});
+ const options={...init,headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`,...init.headers},...(catalog?{next:{revalidate:10}}:{cache:'no-store'})};
+ // A transient Supabase TLS reset should not blank the entire homepage.
+ if(catalog){
+  try{return await fetch(url,{...options,signal:AbortSignal.timeout(12000)});}
+  catch{return fetch(url,{...options,cache:'no-store',next:undefined,signal:AbortSignal.timeout(15000)});}
+ }
+ return fetch(url,{...options,signal:AbortSignal.timeout(15000)});
 }
 export async function getGallery():Promise<GalleryData>{
  try{
