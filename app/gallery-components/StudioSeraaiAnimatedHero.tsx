@@ -111,7 +111,7 @@ export default function StudioSeraaiAnimatedHero({artworks = [], heroArtworkId, 
       onBlur={() => setPaused(false)}
     >
       <div className={styles.artFrame} key={current.id}>
-        <Image src={current.src} alt="Featured artwork" width={current.width} height={current.height} sizes="(max-width: 650px) 86vw, (max-width: 1100px) 52vw, 42vw" className={styles.artImage} priority={active === 0} />
+        <Image src={current.src} alt="Featured artwork" width={current.width} height={current.height} sizes="(max-width: 650px) 86vw, (max-width: 1100px) 52vw, 42vw" className={styles.artImage} priority={active === 0} unoptimized />
       </div>
     </div>
 
